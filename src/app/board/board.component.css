@@ -1,0 +1,68 @@
+.sideBar {
+  background: #1C2B36;
+  margin-left: 0px !important;
+  position: absolute;
+  height: 100%;
+  width: 15%;
+  cursor: pointer;
+}
+
+.active {
+  background: #197CD3;
+  border-bottom: 1px solid #197CD3;
+}
+
+.collapse a {
+  text-decoration: none;
+}
+
+.dId {
+  padding: 12px 10px 14px 13px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#demo,
+#demo2 {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.glyPlace {
+  margin-right: 7px;
+  font-size: 14px;
+  margin-left: 10%;
+}
+
+.mDiv {
+  padding: 15px 10px 14px 13px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.mDiv:hover,
+.dId:hover {
+  background: #080808;
+}
+
+.active:hover {
+  background: #578EBE;
+  border-bottom: 1px solid #578EBE;
+}
+
+.glyphicon {
+  position: relative;
+  top: 0px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

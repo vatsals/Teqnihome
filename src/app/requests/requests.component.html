@@ -1,0 +1,149 @@
+<mat-card class="myCard" style="font-family: 'Roboto'; margin-top: 20px;">
+  <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 35px; align-items: center;">
+    <p class="gInfo" style="display: flex; flex: 3; font-size: 20px;">Friend Requests</p>
+    <div style="display: flex; align-items: center; flex: 1; justify-content: flex-end;">
+      <div style="display: flex; flex-direction: column; justify-content: center; flex: 1; align-items: center; cursor: pointer;" (click)="dispRec()">
+        <span class="glyphicon glyphicon-star" style="display: flex;flex: 1;justify-content: flex-start;padding-left: 0px;color: #197CD3;font-weight: 700;font-size: 24px;"></span>
+        <span id="recId" style="margin-top: 5px; font-weight: 600; color: #197CD3; font-size: 16px;">Received</span>
+      </div>
+      <div style="display: flex; flex-direction: column; justify-content: center; flex: 1; align-items: center; cursor: pointer;" (click)="dispFrd()">
+        <span class="glyphicon glyphicon-user" style="display: flex;flex: 1;justify-content: flex-start;padding-left: 0px;color: #197CD3;font-weight: 700;font-size: 24px;"></span>
+        <span id="frdId" style="margin-top: 5px; font-weight: 200; color: #197CD3; font-size: 14px;">Sent</span>
+      </div>
+    </div>
+  </div>
+  <div class="tab" id="received">
+    <table class="table table-hover">
+      <thead>
+        <tr style="display: flex;">
+          <th style="display: flex; flex: 2; align-items: center; font-size: 17px;">From</th>
+          <th style="display: flex; flex: 1; align-items: center; font-size: 17px;">Category</th>
+          <th style="display: flex; flex: 1; align-items: center; font-size: 17px;">Choose Category</th>
+          <th style="display: flex; flex: 1; justify-content: center; align-items: center; font-size: 17px;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="display: flex;">
+          <td style="display: flex; flex: 2; align-items: center;">
+            <div style="display: flex;">
+              <img [src]="userImg" class="userImg" height="60" width="60">
+              <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span style="padding-left: 12px; font-size: 15px; font-weight: 600;">Vatsal</span>
+                <span style="padding-left: 12px; font-size: 14px; padding-top: 0px;">vatsal@gmail.com</span>
+              </div>
+            </div>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 15px;">Friend</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <select style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+              <option value="Friend">Friend</option>
+              <option value="Work collegue">Work collegue</option>
+              <option value="Family">Family</option>
+              <option value="School Friend">School Friend</option>
+              <option value="University Friend">University Friend</option>
+            </select>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: center;">
+                <span class="glyphicon glyphicon-ok" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-top: 3px;">Approve</span>
+              </div>
+              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: center;">
+                <span class="glyphicon glyphicon-remove" style="color: #D7263D; margin-right: 8px; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-top: 3px;">Disapprove</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr style="display: flex;">
+          <td style="display: flex; flex: 2; align-items: center;">
+            <div style="display: flex;">
+              <img [src]="userImg" class="userImg" height="60" width="60">
+              <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span style="padding-left: 12px; font-size: 15px; font-weight: 600;">Vatsal</span>
+                <span style="padding-left: 12px; font-size: 14px; padding-top: 0px;">vatsal@gmail.com</span>
+              </div>
+            </div>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 15px;">School Friend</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <select style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+              <option value="School Friend">School Friend</option>
+              <option value="Friend">Friend</option>
+              <option value="Work collegue">Work collegue</option>
+              <option value="Family">Family</option>
+              <option value="University Friend">University Friend</option>
+            </select>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: center;">
+                <span class="glyphicon glyphicon-ok" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-top: 3px;">Approve</span>
+              </div>
+              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: center;">
+                <span class="glyphicon glyphicon-remove" style="color: #D7263D; margin-right: 8px; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-top: 3px;">Disapprove</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab" id="friends" style="display: none;">
+    <table class="table table-hover">
+      <thead>
+        <tr style="display: flex;">
+          <th style="display: flex; flex: 2; align-items: center; font-size: 17px;">Name</th>
+          <th style="display: flex; flex: 1; align-items: center; font-size: 17px;">Date</th>
+          <th style="display: flex; flex: 1; align-items: center; font-size: 17px;">Category</th>
+          <th style="display: flex; flex: 1; align-items: center; font-size: 17px;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="display: flex;">
+          <td style="display: flex; flex: 2; align-items: center;">
+            <div style="display: flex;">
+              <img [src]="userImg" class="userImg" height="60" width="60">
+              <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span style="padding-left: 12px; font-size: 15px; font-weight: 600;">Vatsal</span>
+                <span style="padding-left: 12px; font-size: 14px; padding-top: 0px;">vatsal@gmail.com</span>
+              </div>
+            </div>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 15px;">22/02/2018</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 15px;">Friend</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span class="glyphicon glyphicon-ok" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #0EAD69;font-weight: 600;font-size: 14px;">Request Approved</span>
+          </td>
+        </tr>
+        <tr style="display: flex;">
+          <td style="display: flex; flex: 2; align-items: center;">
+            <div style="display: flex;">
+              <img [src]="userImg" class="userImg" height="60" width="60">
+              <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span style="padding-left: 12px; font-size: 15px; font-weight: 600;">Vatsal</span>
+                <span style="padding-left: 12px; font-size: 14px; padding-top: 0px;">vatsal@gmail.com</span>
+              </div>
+            </div>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 15px;">22/02/2018</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 15px;">School Friend</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span class="glyphicon glyphicon-check" style="color: #534D41; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #534D41;font-weight: 600;font-size: 14px;">Approval Pending</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</mat-card>

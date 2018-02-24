@@ -1,0 +1,45 @@
+<div class="sideBar">
+	<div class="active mDiv" id="" (click)="goto($event)">
+		<span class="glyphicon glyphicon-home" style="margin-right: 7px; font-size: 14px;"></span>Dashboard
+	</div>
+	<div class="mDiv" data-toggle="collapse" data-target="#demo">
+		<span class="glyphicon glyphicon-folder-close" style="margin-right: 7px; font-size: 14px;"></span>Card
+	</div>
+	<div id="demo" class="collapse">
+		<div class="dId" id="card" (click)="goto($event)"><span class="glyphicon glyphicon-credit-card glyPlace"></span>My Card</div>
+		<div class="dId" id="searchuser" (click)="goto($event)"><span class="glyphicon glyphicon-search glyPlace"></span>Search User</div>
+		<div class="dId" id="requests" (click)="goto($event)"><span class="glyphicon glyphicon-ok glyPlace"></span>View Requests</div>
+		<div class="dId" id="privacy" (click)="goto($event)"><span class="glyphicon glyphicon-cog glyPlace"></span>Privacy Settings</div>
+	</div>
+	<div class="mDiv" data-toggle="collapse" data-target="#demo2">
+		<span class="glyphicon glyphicon-search" style="margin-right: 7px; font-size: 14px;"></span>Job Seeking
+	</div>
+	<div id="demo2" class="collapse">
+		<div class="dId" id="resume" (click)="goto($event)"><span class="glyphicon glyphicon-user glyPlace"></span>Resume</div>
+		<div class="dId" (click)="goto($event)" id="appliedjobs"><span class="glyphicon glyphicon-list-alt glyPlace"></span>Applied Jobs</div>
+		<div class="dId" (click)="goto($event)" id="matchedjobs"><span class="glyphicon glyphicon-star glyPlace"></span>Matched Jobs</div>
+		<div class="dId" (click)="goto($event)" id="jobsearch"><span class="glyphicon glyphicon-search glyPlace"></span>Job Search</div>
+		<div class="dId" (click)="goto($event)" id="calendar"><span class="glyphicon glyphicon-calendar glyPlace"></span>Calendar</div>
+	</div>
+	<div class="mDiv">
+		<span class="glyphicon glyphicon-user" style="margin-right: 7px; font-size: 14px;"></span>Friends
+	</div>
+	<div class="mDiv" data-toggle="collapse" data-target="#demo3">
+		<span class="glyphicon glyphicon-credit-card" style="margin-right: 7px; font-size: 14px;"></span>Job Advertising
+	</div>
+	<div id="demo3" class="collapse">
+		<div class="dId" id="postjob"><span class="glyphicon glyphicon-edit glyPlace"></span>Post Job</div>
+		<div class="dId" id="myjobs"><span class="glyphicon glyphicon-star glyPlace"></span>My Jobs Postings</div>
+		<div class="dId" id="matches"><span class="glyphicon glyphicon-check glyPlace"></span>Candidate Matches</div>
+		<div class="dId" id="applied"><span class="glyphicon glyphicon-th-list glyPlace"></span>Candidates Applied</div>
+		<div class="dId" id="resumesrh"><span class="glyphicon glyphicon-search glyPlace"></span>Resume Search</div>
+		<div class="dId" id="interviews"><span class="glyphicon glyphicon-calendar glyPlace"></span>Interviews</div>
+	</div>
+	<div class="mDiv" data-toggle="collapse" data-target="#demo4">
+		<span class="glyphicon glyphicon-credit-card" style="margin-right: 7px; font-size: 14px;"></span>Job Referencing
+	</div>
+	<div id="demo4" class="collapse">
+		<div class="dId" id="viewrefer"><span class="glyphicon glyphicon-eye-open glyPlace"></span>View Reference</div>
+		<div class="dId" id="providerefer"><span class="glyphicon glyphicon-ok glyPlace"></span>Provide Reference</div>
+	</div>
+</div>

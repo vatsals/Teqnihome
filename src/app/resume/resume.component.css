@@ -1,0 +1,238 @@
+.myCardFst {
+  display: flex;
+  flex-direction: column;
+  width: 34%;
+  margin-left: 32%;
+  margin-top: 20px;
+  min-height: 200px;
+  background: #fbfbfb;
+  border: 1px solid #ddd;
+  /*background: #197CD3;*/
+}
+
+.myCard {
+  display: flex;
+  flex-direction: column;
+  width: 94%;
+  margin-left: 3%;
+  margin-top: 32px;
+  margin-bottom: 30px;
+  min-height: 500px;
+  background: #fbfbfb;
+  border: 1px solid #ddd;
+  /*background: #197CD3;*/
+}
+
+.myCardChart {
+	background: #fafafa;
+	margin: 15px 10px;
+}
+
+.gInfo {
+  display: flex;
+  flex: 4;
+  font-size: 19px;
+  color: #111;
+  margin: 0px;
+  font-weight: 600;
+}
+
+.mat-button-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.box-content {
+  position: relative;
+  z-index: 50;
+  margin-top: -1px;
+  padding: 10px;
+  background: #fff !important;
+}
+
+.timeline {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.timeline {
+  width: auto;
+  height: 100%;
+  margin: 20px auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin: 0 auto;
+  height: 100%;
+  width: 4px;
+  background-color: #5b5555;
+}
+
+.timeline .timeline-items {
+  list-style-type: none;
+  overflow: hidden;
+  padding-top: 100px;
+  padding-left: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0 0 10px 25px;
+}
+
+.timeline .timeline-items .timeline-item.centered:nth-of-type(2n+1) {
+  background-color: #377AB7;
+  color: white;
+}
+
+.timeline .timeline-items .timeline-item.centered {
+  position: relative;
+  text-align: justify;
+  width: 94%;
+  margin-left: 1%;
+}
+
+.timeline .timeline-items .timeline-item:nth-of-type(2n+1) a {
+  color: #fff;
+}
+
+.timeline .timeline-items .timeline-item a {
+  font-weight: 700;
+}
+
+.timeline h2 {
+  margin: 0 auto;
+  width: 130px;
+  color: white;
+  background: #5b5555;
+  text-align: center;
+  padding: 5px;
+  font-size: 17px;
+  position: relative;
+  z-index: 2;
+}
+
+.noshift li::after {
+  content: '';
+  background: #5b5555;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -15px;
+  border-radius: 100%;
+  left: calc(100% + 10.4%);
+}
+
+h2 {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.timeline .timeline-items .timeline-item:nth-of-type(2n+1) {
+  background-color: #377AB7;
+  color: white;
+}
+
+.timeline .timeline-items .timeline-item {
+  position: relative;
+  margin-bottom: 80px;
+  padding: 20px;
+  background-color: white;
+  width: 43%;
+}
+
+.isEven {
+  padding-left: 55%;
+}
+
+.timeline .timeline-items .timeline-item.centered:nth-of-type(2n+1)::before {
+  border-top: 0;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-bottom: 1em solid #377AB7;
+}
+
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.timeline .timeline-items .timeline-item.centered::before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: calc(50% - 4px);
+  top: -12px;
+}
+
+.timeline .timeline-items .timeline-item:nth-of-type(2n+1)::before {
+  border-top: 1em solid #377AB7;
+  border-right: 1em solid transparent;
+}
+
+.timeline .timeline-items .timeline-item::before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: -1em;
+  top: 0;
+}
+
+.timeline .timeline-items .timeline-item h3 {
+  font-weight: 700;
+}
+
+.timeline h3 {
+  color: inherit;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 15px;
+  line-height: 15px;
+}
+
+.shift li {
+  margin-left: 55% !important;
+}
+
+.shift li::before {
+  left: -1em !important;
+}
+
+.shift li::before {
+    border-top: 1em solid #377AB7 !important;
+    border-left: 1em solid transparent !important;
+}
+.shift li::after {
+  content: '';
+  background: #5b5555;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -15px;
+  border-radius: 100%;
+  right: calc(100% + 10.4%) !important;
+}
+
+.charJs {
+	display: flex;
+	justify-content: center;
+	width: 30%;
+}

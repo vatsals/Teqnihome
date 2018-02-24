@@ -1,0 +1,120 @@
+.myCard {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-left: 15%;
+  margin-top: 20px;
+  min-height: 508px;
+  background: #fbfbfb;
+  border: 1px solid #ddd;
+  /*background: #197CD3;*/
+}
+
+.penc {
+	padding-left: 7px; 
+	font-weight: 700; 
+	font-size: 15px;
+}
+
+.btmBtn {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  margin-left: 15%;
+  margin-top: 20px;
+}
+
+.mat-raised-button {
+  min-width: 120px;
+  line-height: 40px;
+}
+
+.fliped .mat-raised-button {
+  min-width: 100px;
+  line-height: 35px;
+}
+
+.rmv {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 4px;
+  cursor: pointer;
+}
+
+.rmvBtn {
+  background-color: #f24141;
+  border-radius: 1px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.mat-raised-button {
+  text-decoration: none;
+}
+
+.mat-button-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.fx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.userImg {
+  border-radius: 50%;
+}
+
+.headUser {
+  font-size: 18px;
+  text-shadow: none;
+  margin: 12px 0px;
+  font-family: 'Open Sans';
+  font-weight: 700;
+}
+
+.headUserChild {
+  font-size: 16px;
+  text-shadow: none;
+  margin: 10px 0px;
+  font-family: 'Open Sans';
+  font-weight: 700;
+}
+
+.leftIcon {
+  display: flex;
+  align-items: center;
+  margin: 20px 0px;
+  font-family: 'Open Sans';
+}
+
+.leftIcon p {
+  margin: 0px;
+}
+
+.main-container {
+	
+}
+
+.main-tab {
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	transition: all 0.5s ease;
+}
+
+.front {
+	width: 100%;
+	height: 100%;
+}
+
+.fliped {
+	width: 100%;
+	height: 100%;
+}

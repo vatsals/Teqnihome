@@ -1,0 +1,135 @@
+<div class="main-container">
+  <div class="main-tab" id="main-tab">
+    <div class="front animate" id="front">
+      <mat-card class="myCard" id="myCd" style="cursor: pointer;">
+        <div style="display: flex; justify-content: flex-end; margin: 0px;">
+          <span class="glyphicon glyphicon-refresh" (click)="flipEvent(flip)" style="padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 23px;"></span>
+        </div>
+        <div class="fx">
+          <div class="fx" style="flex: 3; flex-direction: column;">
+            <img [src]="userImg" class="userImg" height="150" width="150">
+            <p class="headUser" style="font-size: 17px; margin-bottom: 5px;">Mr. Vatsal Shrivastav</p>
+          </div>
+          <div class="" style="flex: 5; flex-direction: column; align-self: flex-start; margin-left: 25px;">
+            <p class="headUser">Home Address</p>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-home" style="padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 22px;"></span>
+              <p style="margin-left: 6%;">400 Thames Valley Park Drive, Thames Valley Park, Reading RG6 1PT, United Kingdom</p>
+            </div>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-phone" style="padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 24px;"></span>
+              <p style="margin-left: 6%;">+44 118 963 7400</p>
+            </div>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-envelope" style="padding-right: 7px; padding-left: 1px; color: #197CD3; font-weight: 700; font-size: 21px;"></span>
+              <p style="margin-left: 6%;">vatsal@gmail.com</p>
+            </div>
+          </div>
+        </div>
+        <hr style="width: 86%; margin-top: 25px; margin-bottom: 20px; margin-left: 8%; border: 1px solid #eee;">
+        <div class="fx">
+          <div class="fx" style="flex: 3; flex-direction: column;">
+            <p class="headUserChild">B.Tech, Computer Science</p>
+            <p class="headUserChild" style="font-size: 15px;margin-top: 30px; margin-bottom: 3px;">Software Intern</p>
+            <p class="headUserChild" style="font-size: 15px;margin-top: 5px;">Microsoft (UK) Ltd</p>
+          </div>
+          <div class="" style="flex: 5; flex-direction: column; align-self: flex-start; margin-left: 25px;">
+            <p class="headUser">Office Address</p>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-home" style="padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 22px;"></span>
+              <p style="margin-left: 6%;">Thames Valley Park, Sonning, Reading RG6 1WA, UK</p>
+            </div>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-earphone" style="padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 24px;"></span>
+              <p style="margin-left: 6%;">+44 344 800 2400</p>
+            </div>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-envelope" style="padding-right: 7px; padding-left: 1px; color: #197CD3; font-weight: 700; font-size: 21px;"></span>
+              <p style="margin-left: 6%;">vatsal@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="fliped animate" id="fliped" style="display: none;">
+      <mat-card class="myCard" id="myCd2" style="cursor: pointer;">
+        <div style="display: flex; justify-content: flex-end; margin: 0px;">
+          <span class="glyphicon glyphicon-refresh" (click)="flipEvent(flip)" style="padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 23px;"></span>
+        </div>
+        <div class="" style="margin-top: 20px; display: flex; flex-direction: row;">
+          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
+            <div class="rmv">
+              <img [src]="fbIcon" style="margin-top: 10px;" width="120" height="100">
+              <div style="display: flex; justify-content: center; margin-top: 10px;">
+                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
+              </div>
+            </div>
+          </div>
+          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
+            <div class="rmv">
+              <img [src]="fbIcon2" style="margin-top: 10px;" width="120" height="100">
+              <div style="display: flex; justify-content: center; margin-top: 10px;">
+                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
+              </div>
+            </div>
+          </div>
+          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
+            <div class="rmv">
+              <img [src]="fbIcon" style="margin-top: 10px;" width="120" height="100">
+              <div style="display: flex; justify-content: center; margin-top: 10px;">
+                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
+              </div>
+            </div>
+          </div>
+          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
+            <div class="rmv">
+              <img [src]="fbIcon2" style="margin-top: 10px;" width="120" height="100">
+              <div style="display: flex; justify-content: center; margin-top: 10px;">
+                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
+              </div>
+            </div>
+          </div>
+          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
+            <div class="rmv">
+              <img [src]="fbIcon" style="margin-top: 10px;" width="120" height="100">
+              <div style="display: flex; justify-content: center; margin-top: 10px;">
+                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="" style="display: flex; flex-direction: row; margin-top: 30px;">
+          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
+            <div class="rmv">
+              <img [src]="fbIcon2" style="margin-top: 10px;" width="120" height="100">
+              <div style="display: flex; justify-content: center; margin-top: 10px;">
+                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
+              </div>
+            </div>
+          </div>
+          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
+            <div class="rmv">
+              <img [src]="fbIcon" style="margin-top: 10px;" width="120" height="100">
+              <div style="display: flex; justify-content: center; margin-top: 10px;">
+                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="" style="display: flex; flex-direction: row; margin-top: 30px;">
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="btmBtn" id="bt1" style="margin-bottom: 6%; padding-top: 5px;">
+    <div style="display: flex; flex: 1; justify-content: flex-start; padding: 0px 4px;">
+      <a mat-raised-button style="background-color: #20B540; border-radius: 1px; color: #fff; font-size: 16px;" routerLink="editcard"><span class="glyphicon glyphicon-pencil" style="padding-right: 8px;"></span>Edit Card</a>
+    </div>
+    <div style="display: flex; flex: 1; justify-content: center; padding: 0px 4px;">
+      <a mat-raised-button style="background-color: #757575; border-radius: 1px; color: #fff; font-size: 16px;" routerLink=""><span class="glyphicon glyphicon-qrcode" style="padding-right: 8px;"></span>QR Code</a>
+    </div>
+    <div style="display: flex; flex: 1; justify-content: flex-end; padding: 0px 4px;">
+      <a mat-raised-button style="background-color: #f24141; border-radius: 1px; color: #fff; font-size: 16px;" routerLink=""><span class="glyphicon glyphicon-trash" style="padding-right: 8px;"></span>Delete Card</a>
+    </div>
+  </div>
+</div>

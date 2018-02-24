@@ -1,0 +1,126 @@
+<mat-card class="myCard" style="font-family: 'Roboto'; margin-top: 20px;">
+  <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 35px; align-items: center;">
+    <p class="gInfo" style="display: flex; flex: 3; font-size: 20px;">Applied Jobs</p>
+    <div style="display: flex; align-items: center; flex: 1; justify-content: flex-end;">
+      <input type="text" placeholder="Search.." name="search" class="mySrh" style="display:flex; justify-content: center; ">
+      <span class="glyphicon glyphicon-search" (click)="shape()" style="display: flex;flex: 1;justify-content: flex-start;padding-left: 10px;color: #197CD3;font-weight: 700;font-size: 22px;"></span>
+    </div>
+  </div>
+  <div class="tab" id="received">
+    <table class="table table-hover">
+      <thead>
+        <tr style="display: flex;">
+          <th style="display: flex; flex: 1; align-items: center; font-size: 16px;">Role</th>
+          <th style="display: flex; flex: 1; align-items: center; font-size: 16px;">Applicants</th>
+          <th style="display: flex; flex: 2; align-items: center; font-size: 16px;">Description</th>
+          <th style="display: flex; flex: 1; align-items: center; font-size: 16px;">Company</th>
+          <th style="display: flex; flex: 1; align-items: center; font-size: 16px;">Application Status</th>
+          <th style="display: flex; flex: 1; align-items: center; font-size: 16px;">Interview Date</th>
+          <th style="display: flex; flex: 1; align-items: center; font-size: 16px;">Interview Mode</th>
+          <th style="display: flex; flex: 1; justify-content: flex-start; align-items: center; font-size: 16px;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="display: flex;">
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">Software Developer</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">151</span>
+          </td>
+          <td style="display: flex; flex: 2; align-items: center;">
+            <span style="font-size: 14px;">Seeking a Software Developer for the company</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">Arm (UK) Ltd</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="padding-top: 3px;padding-left: 0px;color: #534D41;font-weight: 600;font-size: 14px;">Pending</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span class="glyphicon glyphicon-time" style="color: #0EAD69; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-left: 6px;">24/02/18</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">Online</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: flex-start;">
+                <span class="glyphicon glyphicon-eye-open" style="color: #197CD3; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-top: 3px;">View Request</span>
+              </div>
+              <div style="display: flex; flex: 1; flex-direction: column; padding-left: 10px; justify-content: center; align-items: flex-start;">
+                <span class="glyphicon glyphicon-time" style="color: #D7263D; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-top: 3px;">View Status</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr style="display: flex;">
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">Software Tester</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">42</span>
+          </td>
+          <td style="display: flex; flex: 2; align-items: center;">
+            <span style="font-size: 14px;">Seeking a Software tester for the company</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">Arm (UK) Ltd</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="padding-top: 3px;padding-left: 0px;color: #0EAD69;font-weight: 600;font-size: 14px;">Approved</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span class="glyphicon glyphicon-time" style="color: #0EAD69; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-left: 6px;">24/02/18</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">Online</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: flex-start;">
+                <span class="glyphicon glyphicon-eye-open" style="color: #197CD3; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-top: 3px;">View Request</span>
+              </div>
+              <div style="display: flex; flex: 1; flex-direction: column; padding-left: 10px; justify-content: center; align-items: flex-start;">
+                <span class="glyphicon glyphicon-time" style="color: #D7263D; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-top: 3px;">View Status</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr style="display: flex;">
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">Software Debugger</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">86</span>
+          </td>
+          <td style="display: flex; flex: 2; align-items: center;">
+            <span style="font-size: 14px;">Seeking a Software debugger for the company</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">Arm (UK) Ltd</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="padding-top: 3px;padding-left: 0px;color: #E22B43;font-weight: 600;font-size: 14px;">Rejected</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span class="glyphicon glyphicon-time" style="color: #0EAD69; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-left: 6px;">24/02/18</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">Online</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: flex-start;">
+                <span class="glyphicon glyphicon-eye-open" style="color: #197CD3; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-top: 3px;">View Request</span>
+              </div>
+              <div style="display: flex; flex: 1; flex-direction: column; padding-left: 10px; justify-content: center; align-items: flex-start;">
+                <span class="glyphicon glyphicon-time" style="color: #E22B43; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-top: 3px;">View Status</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</mat-card>
