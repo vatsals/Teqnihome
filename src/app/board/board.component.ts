@@ -14,10 +14,7 @@ export class BoardComponent implements OnInit {
   }
 
   goto(event) {
-  	var target = event.target || event.srcElement || event.currentTarget;
-    var idAttr = target.attributes.id;
-    var value = idAttr.nodeValue;
-  	// console.log(value);
-  	this.router.navigate([value]);
+  	// console.log(event);
+  	this.router.navigate([event]);
   }
 }

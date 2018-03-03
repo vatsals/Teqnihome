@@ -1,10 +1,10 @@
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+  <div class="container-fluid navResp">
     <div class="navbar-header">
       <a class="brand" style="padding-top: 13px;" href="#"><span class="navBrand" style="font-family: 'Open Sans', sans-serif;"><span class="glyphicon glyphicon-signal" style="padding-right: 10px; font-size: 24px; color: #377AB7;"></span><span>TEQNIHOME</span></span></a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li style="display: flex; flex-direction: column; align-items: center; padding-right: 20px; cursor: pointer;">
+      <li *ngIf="loggedIn" class="logNav">
         <div>
           <button class="btn btn-default btn-lg btn-link" style="font-size:20px; padding-top: 18px; padding-bottom: 0px; padding-right: 0px; color: #fff;">
             <span class="glyphicon glyphicon-comment"></span>
@@ -13,7 +13,7 @@
         </div>
         <span style="margin: 0px 0px 3px 0px; font-size: 12px; font-family: 'Open Sans'">Notifications</span>
       </li>
-      <li style="display: flex; flex-direction: column; align-items: center; padding-right: 20px; cursor: pointer;">
+      <li *ngIf="loggedIn" class="logNav">
         <div>
           <button class="btn btn-default btn-lg btn-link" style="font-size:20px; padding-top: 18px; padding-bottom: 0px; padding-right: 0px; color: #fff;">
             <span class="glyphicon glyphicon-user"></span>
@@ -22,7 +22,7 @@
         </div>
         <span style="margin: 0px 0px 3px 0px; font-size: 12px; font-family: 'Open Sans'">Friend requests</span>
       </li>
-      <li style="display: flex; flex-direction: column; align-items: center; padding-right: 20px; cursor: pointer;">
+      <li *ngIf="loggedIn" class="logNav">
         <div>
           <button class="btn btn-default btn-lg btn-link" style="font-size:20px; padding-top: 18px; padding-bottom: 0px; padding-right: 0px; color: #fff;">
             <span class="glyphicon glyphicon-star"></span>
@@ -31,14 +31,111 @@
         </div>
         <span style="margin: 0px 0px 3px 0px; font-size: 12px; font-family: 'Open Sans'">Job Matching</span>
       </li>
-      <li class="dropdown" style="padding-top: 8px; display: flex;flex-direction: column;align-items: center;margin-right: 20px;">
+      <li *ngIf="loggedIn" class="dropdown dSign" style="padding-top: 8px; display: flex;flex-direction: column;align-items: center;margin-right: 20px;">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="display: flex; align-items: center; padding-top: 11px; padding-bottom: 5px; margin-right: 0px;"><span class="glyphicon glyphicon-user" style="padding-right: 5px; font-size: 21px;"></span>
         <span class="caret"></span></a>
-        <span style="font-size: 13px; margin-top: 1px;margin-right: 10px;">Vatsal</span>
+        <div class="dId"><span style="font-size: 13px; margin-top: 1px;margin-right: 10px;">Vatsal</span></div>
         <ul class="dropdown-menu">
-          <li><a href="#"><span class="glyphicon glyphicon-off" style="padding-right: 7px;"></span>LogOut</a></li>
+          <li><a href="#" (click)="logout($event)"><span class="glyphicon glyphicon-off" style="padding-right: 7px;"></span>LogOut</a></li>
         </ul>
       </li>
+      <form class="formHead" *ngIf="!loggedIn" novalidate #f="ngForm" (ngSubmit)="onSubmit(f)" style="display: flex;">
+        <div class="forgotSign">
+          <li class="liHead">
+            <input type="email" [(ngModel)]="user.email" #userEmail="ngModel" name="email" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;border-radius: 2px;margin-top: 16px;" placeholder="Enter Email Id" email required>
+          </li>
+          <li class="liHead">
+            <input type="password" [(ngModel)]="user.password" #userpassword="ngModel" name="password" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;border-radius: 2px;margin-top: 16px;" placeholder="Enter Password" required>
+          </li>
+          <input [disabled]="!f.valid" type="submit" class="signIn" value="Sign In">
+        </div>
+        <div class="forgotSign2">
+          <li class="liHead2">
+            <div id="forgotpass" (click)="goto('forgotpass')">Forgot Password</div>
+            <span id="spIcon"><a style="color: #fff;padding-left: 7px; padding-right: 7px; font-size: 21px;display: flex;align-items: center;justify-content: center;">| </a></span>
+            <div id="login" (click)="goto('login')"><span class="glyphicon glyphicon-user glyPlace" style="padding-right: 3px; top: 0px;"></span>Sign Up</div>
+          </li>
+        </div>
+      </form>
     </ul>
+  </div>
+</nav>
+<div class="alert" style="display: none;" #alert>
+  <span style="display: flex; flex: 3; justify-content: flex-end;">Invalid Email/Password</span>
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+</div>
+<div class="alert success" style="display: none;" #alertSucc>
+  <span style="display: flex; flex: 3; justify-content: flex-end;">Successfully Logged In</span>
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+</div>
+<nav class="navbar navbar-inverse myBar" style="opacity: 1; display: none; min-height: 55px;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" style="color: #fff; font-size: 18px;" href="#"><span class="glyphicon glyphicon-signal" style="padding-right: 10px; font-size: 18px; color: #377AB7;"></span>TeqniHome</a>
+    </div>
+    <div #navRemove class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav pile">
+        <li class="active">
+          <div class="active mDiv" id="" (click)="goto('')">
+            <span class="glyphicon glyphicon-home" style="margin-right: 7px; font-size: 16px;"></span><span class="spanIcon1">Dashboard</span>
+          </div>
+        </li>
+        <li>
+          <div class="mDiv" data-toggle="collapse" data-target="#demo">
+            <span class="glyphicon glyphicon-folder-close" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon19">Card</span>
+          </div>
+          <div id="demo" class="collapse">
+            <div class="dId" id="card" (click)="goto('card')"><span class="glyphicon glyphicon-credit-card glyPlace"></span><span class="spanIcon2">My Card</span></div>
+            <div class="dId" id="searchuser" (click)="goto('searchuser')"><span class="glyphicon glyphicon-search glyPlace"></span><span class="spanIcon3">Search User</span></div>
+            <div class="dId" id="requests" (click)="goto('requests')"><span class="glyphicon glyphicon-ok glyPlace"></span><span class="spanIcon4">View Requests</span></div>
+            <div class="dId" id="privacy" (click)="goto('privacy')"><span class="glyphicon glyphicon-cog glyPlace"></span><span class="spanIcon5">Privacy Settings</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="mDiv" data-toggle="collapse" data-target="#demo2">
+            <span class="glyphicon glyphicon-search" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon20">Job Seeking</span>
+          </div>
+          <div id="demo2" class="collapse">
+            <div class="dId" id="resume" (click)="goto('resume')"><span class="glyphicon glyphicon-user glyPlace"></span><span class="spanIcon6">Resume</span></div>
+            <div class="dId" (click)="goto('appliedjobs')" id="appliedjobs"><span class="glyphicon glyphicon-list-alt glyPlace"></span><span class="spanIcon7">Applied Jobs</span></div>
+            <div class="dId" (click)="goto('matchedjobs')" id="matchedjobs"><span class="glyphicon glyphicon-star glyPlace"></span><span class="spanIcon8">Matched Jobs</span></div>
+            <div class="dId" (click)="goto('jobsearch')" id="jobsearch"><span class="glyphicon glyphicon-search glyPlace"></span><span class="spanIcon9">Job Search</span></div>
+            <div class="dId" (click)="goto('calendar')" id="calendar"><span class="glyphicon glyphicon-calendar glyPlace"></span><span class="spanIcon10">Calendar</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="mDiv">
+            <div (click)="goto('friendspage')" id="friendspage"><span class="glyphicon glyphicon-user" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon21">Friends</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="mDiv" data-toggle="collapse" data-target="#demo3">
+            <span class="glyphicon glyphicon-credit-card" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon22">Job Advertising</span>
+          </div>
+          <div id="demo3" class="collapse">
+            <div class="dId" (click)="goto('postjob')" id="postjob"><span class="glyphicon glyphicon-edit glyPlace"></span><span class="spanIcon11">Post Job</span></div>
+            <div class="dId" (click)="goto('myjobspost')" id="myjobspost"><span class="glyphicon glyphicon-star glyPlace"></span><span class="spanIcon12">My Jobs Postings</span></div>
+            <div class="dId" (click)="goto('candidatematch')" id="candidatematch"><span class="glyphicon glyphicon-check glyPlace"></span><span class="spanIcon13">Candidate Matches</span></div>
+            <div class="dId" (click)="goto('candidateapplied')" id="candidateapplied"><span class="glyphicon glyphicon-th-list glyPlace"></span><span class="spanIcon14">Candidates Applied</span></div>
+            <div class="dId" (click)="goto('resumesearch')" id="resumesearch"><span class="glyphicon glyphicon-search glyPlace"></span><span class="spanIcon15">Resume Search</span></div>
+            <div class="dId" (click)="goto('interviews')" id="interviews"><span class="glyphicon glyphicon-calendar glyPlace"></span><span class="spanIcon16">Interviews</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="mDiv" data-toggle="collapse" data-target="#demo4">
+            <span class="glyphicon glyphicon-credit-card" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon23">Job Referencing</span>
+          </div>
+          <div id="demo4" class="collapse">
+            <div class="dId" (click)="goto('viewreference')" id="viewreference"><span class="glyphicon glyphicon-eye-open glyPlace"></span><span class="spanIcon17">View Reference</span></div>
+            <div class="dId" (click)="goto('providereference')" id="providereference"><span class="glyphicon glyphicon-ok glyPlace"></span><span class="spanIcon18">Provide Reference</span></div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

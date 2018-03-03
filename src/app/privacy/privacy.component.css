@@ -73,6 +73,7 @@ input:checked+.slider:before {
 
 
 
+
 /* Rounded sliders */
 
 .slider.round {
@@ -95,21 +96,21 @@ input:checked+.slider:before {
 }
 
 input[type=text] {
-    width: 130px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 1px;
-    font-size: 16px;
-    background-color: white;
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 1px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
 }
 
 input[type=text]:focus {
-    width: 100%;
+  width: 100%;
 }
 
 .myCard input[type=text] {
@@ -135,4 +136,83 @@ input[type=text]:focus {
 
 .table>tbody {
   font-size: 15px;
+}
+
+.fl2 {
+  display: flex;
+  flex: 2;
+  align-items: center;
+  font-size: 17px;
+}
+
+.fl1 {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  font-size: 17px;
+}
+
+.nameText {
+  padding-left: 12px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.nameEmail {
+  padding-left: 12px;
+  font-size: 14px;
+  padding-top: 0px;
+}
+
+.dt {
+  font-size: 15px;
+}
+
+.fl2Td {
+  display: flex;
+  flex: 2;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .userImg {
+    display: none;
+  }
+  .gInfo {
+    flex: 1 !important;
+    font-size: 17px !important;
+  }
+  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, 
+  .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px 2px;
+  }
+  .smIcon {
+    display: none;
+  }
+  .dt {
+    font-size: 13px !important;
+  }
+  .fl2 {
+    flex: 1;
+    font-size: 14px;
+  }
+  .fl1 {
+    font-size: 14px;
+  }
+  .fl2Td {
+    flex: 1;
+  }
+  .nameText {
+    font-size: 13px !important;
+    padding-left: 2px !important;
+  }
+  .nameEmail {
+    font-size: 13px !important;
+    padding-left: 2px !important;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .nameEmail {
+    display: none;
+  }
 }

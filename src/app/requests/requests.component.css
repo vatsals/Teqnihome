@@ -73,6 +73,8 @@ input:checked+.slider:before {
 
 
 
+
+
 /* Rounded sliders */
 
 .slider.round {
@@ -95,21 +97,21 @@ input:checked+.slider:before {
 }
 
 input[type=text] {
-    width: 130px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 1px;
-    font-size: 16px;
-    background-color: white;
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 1px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
 }
 
 input[type=text]:focus {
-    width: 100%;
+  width: 100%;
 }
 
 .myCard input[type=text] {
@@ -135,4 +137,179 @@ input[type=text]:focus {
 
 .table>tbody {
   font-size: 15px;
+}
+
+.gMail {
+  padding-left: 12px;
+  font-size: 14px;
+  padding-top: 0px;
+}
+
+.gName {
+  padding-left: 12px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.tabBox {
+  display: flex;
+  height: 35px;
+  background: #fcfcfc;
+  color: #474747;
+  padding: 5px 3px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.mainAct {
+  display: flex; flex: 1; align-items: center; font-size: 17px;
+}
+
+@media only screen and (max-width: 770px) {
+  .myCard {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .gInfo {
+    flex: 1 !important;
+  }
+  .userImg {
+    display: none;
+  }
+  .smImg {
+    display: none;
+  }
+  .fromCat {
+    font-size: 15px !important;
+  }
+  .nameCat {
+    font-size: 15px !important;
+  }
+  .mainAct {
+    font-size: 15px !important;
+  }
+  .gName {
+    padding-left: 0px !important;
+    font-size: 13px !important;
+  }
+  .gMail {
+    padding-left: 0px !important;
+    font-size: 13px !important;
+  }
+  .smIcon {
+    font-size: 13px !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .fromCat {
+    flex: 1 !important;
+  }
+  .nameCat {
+    flex: 1 !important;
+  }
+  .tabBox {
+    padding: 5px 1px !important;
+    width: 60px;
+  }
+  .table[_ngcontent-c4]>tbody[_ngcontent-c4]>tr[_ngcontent-c4]>td[_ngcontent-c4] {
+    padding: 13px 2px !important;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .fromCat {
+    font-size: 13px !important;
+  }
+  .nameCat {
+    font-size: 13px !important;
+  }
+  .mainAct {
+    font-size: 13px !important;
+  }
+  .gName {
+    padding-left: 0px !important;
+    font-size: 12px !important;
+  }
+  .gMail {
+    padding-left: 0px !important;
+    font-size: 12px !important;
+  }
+}
+
+.pdLft {
+  padding-left: 12px;
+}
+
+.thHead {
+  align-items: center; 
+  font-size: 16px;
+}
+
+.fromCat {
+  flex: 2;
+}
+
+.nameCat {
+  flex: 2;
+}
+
+@media only screen and (max-width: 1020px) {
+  .tab {
+    overflow: auto;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+  .gInfo {
+    flex: 1 !important;
+    font-size: 18px !important;
+  }
+  .glyphicon-search {
+    font-size: 20px !important;
+  }
+  td .glyphicon-search {
+    font-size: 18px !important;
+  }
+  .glyphicon-time {
+    display: none !important;
+  }
+  .thHead {
+    align-items: center; 
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .pdLft {
+    font-size: 14px !important;
+    padding-left: 2px;
+  }
+  .userImg {
+    display: none;
+  }
+
+  .fl2 {
+    flex: 1;
+  }
+  .email {
+    display: none;
+  }
+  .nameCat {
+    font-size: 15px !important;
+    flex: 1 !important;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .fromCat {
+    flex: 1 !important;
+  }
+  .nameCat {
+    flex: 1 !important;
+  }
+  .gMail {
+    display: none;
+  }
 }

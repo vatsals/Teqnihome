@@ -1,0 +1,30 @@
+body {
+  overflow-x: hidden !important;
+}
+.dash {
+	width: 15%; 
+	background: #1C2B36;
+}
+
+.outlet {
+	width: 85%;
+}
+
+@media only screen and (max-width: 900px) {
+  .dash {
+    width: 6%;
+  }
+  .outlet {
+    width: 94%;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .dash {
+    display: none;
+  }
+  .outlet {
+    width: 100%;
+    min-height: 465px;
+  }
+}

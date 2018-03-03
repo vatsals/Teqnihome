@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-requests',
@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestsComponent implements OnInit {
   userImg: string;
-  
+  @ViewChild('recd') recd;
+  @ViewChild('recId') recId;
+  @ViewChild('frdId') frdId;
+  @ViewChild('frid') frid;
+
   constructor() {
   	this.userImg = '/assets/images/user.png';
   }
@@ -16,21 +20,21 @@ export class RequestsComponent implements OnInit {
   }
 
   dispRec() {
-  	document.getElementById('received').style.display = 'block';
-  	document.getElementById('recId').style.fontWeight = '600';
-  	document.getElementById('recId').style.fontSize = '15px';
-  	document.getElementById('frdId').style.fontWeight = '200';
-  	document.getElementById('frdId').style.fontSize = '14px';
-  	document.getElementById('friends').style.display = 'none';
+    this.recd.nativeElement.style.display = 'block';
+    this.recId.nativeElement.style.fontWeight = '600';
+    this.recId.nativeElement.style.fontSize = '15px';
+    this.frdId.nativeElement.style.fontWeight = '200';
+    this.frdId.nativeElement.style.fontSize = '14px';
+    this.frid.nativeElement.style.display = 'none';
   }
 
   dispFrd() {
-  	document.getElementById('friends').style.display = 'block';
-  	document.getElementById('recId').style.fontWeight = '200';
-  	document.getElementById('recId').style.fontSize = '14px';
-  	document.getElementById('frdId').style.fontWeight = '600';
-  	document.getElementById('frdId').style.fontSize = '15px';
-  	document.getElementById('received').style.display = 'none';
+    this.frid.nativeElement.style.display = 'flex';
+    this.recId.nativeElement.style.fontWeight = '200';
+    this.recId.nativeElement.style.fontSize = '14px';
+    this.frdId.nativeElement.style.fontWeight = '600';
+    this.frdId.nativeElement.style.fontSize = '15px';
+    this.recd.nativeElement.style.display = 'none';
   }
 
 }

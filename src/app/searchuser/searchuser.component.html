@@ -2,7 +2,9 @@
   <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 35px; align-items: center;">
     <p class="gInfo" style="display: flex; flex: 3; font-size: 20px;">Connections</p>
     <div style="display: flex; align-items: center; flex: 1; justify-content: flex-end;">
-      <input type="text" placeholder="Search.." name="search" class="mySrh" style="display:flex; justify-content: center; ">
+      <form id="filter">
+        <input type="text" placeholder="Search.." name="search" [(ngModel)]="term" class="mySrh" style="display:flex; justify-content: center; ">
+      </form>
       <span class="glyphicon glyphicon-search" (click)="shape()" style="display: flex;flex: 1;justify-content: flex-start;padding-left: 10px;color: #197CD3;font-weight: 700;font-size: 22px;"></span>
     </div>
   </div>
@@ -10,65 +12,63 @@
     <table class="table table-hover">
       <thead>
         <tr style="display: flex;">
-          <th style="display: flex; flex: 3; align-items: center; font-size: 18px;">User</th>
+          <th class="fl3" style="display: flex; align-items: center; font-size: 18px;">User</th>
           <th style="display: flex; flex: 1; align-items: center; font-size: 18px;">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr style="display: flex;">
-          <td style="display: flex; flex: 3; align-items: center;">
-            <!-- <label class="switch">
+        <tr *ngFor="let myArr of myArray | filter:term | paginate: { itemsPerPage: 2, currentPage: p }" style="display: flex;">
+          <td class="fl3" style="display: flex; align-items: center;">
+            <div style="display: flex;">
+              <img src={{myArr.img}} class="userImg" height="60" width="60">
+              <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span class="pdLft" style="font-size: 16px; font-weight: 600;">{{myArr.name}}</span>
+                <span class="pdLft" style="font-size: 14px; padding-top: 0px;">{{myArr.mail}}</span>
+              </div>
+            </div>
+          </td>
+          <td *ngIf="myArr.req=='Send Request'" style="display: flex; flex: 1; align-items: center;">
+            <span #sendIcon class="glyphicon glyphicon-share sendReq" style="margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span class="sendReq" #sendColor style="padding-top: 3px;padding-left: 3px;font-weight: 600;font-size: 14px;">{{myArr.req}}</span>
+          </td>
+          <td  *ngIf="myArr.req=='Request Approved'" style="display: flex; flex: 1; align-items: center;">
+            <span class="glyphicon glyphicon-ok" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #0EAD69;font-weight: 600;font-size: 14px;">{{myArr.req}}</span>
+          </td>
+           <td *ngIf="myArr.req=='Approval Pending'" style="display: flex; flex: 1; align-items: center;">
+            <span class="glyphicon glyphicon-check" style="color: #534D41; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #534D41;font-weight: 600;font-size: 14px;">{{myArr.req}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls style="display: flex; justify-content: flex-end;" (pageChange)="p =$event" previousLabel="Previous" nextLabel="Next" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"></pagination-controls>
+    <!-- <div class="panel-footer" style="padding: 20px 15px 15px 15px;">
+      <div class="row">
+        <div class="col col-xs-4" style="line-height: 34px; height: 34px;">Page 1 of 1
+        </div>
+        <div class="col col-xs-8">
+          <ul class="pagination hidden-xs pull-right" style="margin: 0;">
+            <li class="active"><a style="padding: 6px 15px;">1</a></li>
+            <li><a style="padding: 6px 15px;">2</a></li>
+            <li><a style="padding: 6px 15px;">3</a></li>
+            <li><a style="padding: 6px 15px;">4</a></li>
+            <li><a style="padding: 6px 15px;">5</a></li>
+          </ul>
+          <ul class="pagination visible-xs pull-right">
+            <li><a style="padding: 6px 15px;">«</a></li>
+            <li><a style="padding: 6px 15px;">»</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</mat-card>
+<!-- <label class="switch">
               <input type="checkbox" checked>
               <span class="slider round"></span>
             </label> -->
-            <!-- <select style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+<!-- <select style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
               <option value="Friend">Friend</option>
               <option value="Work collegue">Work collegue</option>
               <option value="Family">Family</option>
               <option value="School Friend">School Friend</option>
               <option value="University Friend">University Friend</option>
             </select> -->
-            <div style="display: flex;">
-              <img [src]="userImg" class="userImg" height="60" width="60">
-              <div style="display: flex; flex-direction: column; justify-content: center;">
-                <span style="padding-left: 12px; font-size: 16px; font-weight: 600;">Vatsal</span>
-                <span style="padding-left: 12px; font-size: 14px; padding-top: 0px;">vatsal@gmail.com</span>
-              </div>
-            </div>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span class="glyphicon glyphicon-share" style="color: #197CD3; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #197CD3;font-weight: 600;font-size: 14px;">Send Request</span>
-          </td>
-        </tr>
-        <tr style="display: flex;">
-          <td style="display: flex; flex: 3; align-items: center;">
-            <div style="display: flex;">
-              <img [src]="userImg" class="userImg" height="60" width="60">
-              <div style="display: flex; flex-direction: column; justify-content: center;">
-                <span style="padding-left: 12px; font-size: 16px; font-weight: 600;">Vatsal</span>
-                <span style="padding-left: 12px; font-size: 14px; padding-top: 0px;">vatsal@gmail.com</span>
-              </div>
-            </div>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span class="glyphicon glyphicon-ok" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #0EAD69;font-weight: 600;font-size: 14px;">Request Approved</span>
-          </td>
-        </tr>
-        <tr style="display: flex;">
-          <td style="display: flex; flex: 3; align-items: center;">
-            <div style="display: flex;">
-              <img [src]="userImg" class="userImg" height="60" width="60">
-              <div style="display: flex; flex-direction: column; justify-content: center;">
-                <span style="padding-left: 12px; font-size: 16px; font-weight: 600;">Vatsal</span>
-                <span style="padding-left: 12px; font-size: 14px; padding-top: 0px;">vatsal@gmail.com</span>
-              </div>
-            </div>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span class="glyphicon glyphicon-check" style="color: #534D41; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #534D41;font-weight: 600;font-size: 14px;">Approval Pending</span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</mat-card>

@@ -1,45 +1,45 @@
 <div class="sideBar">
-	<div class="active mDiv" id="" (click)="goto($event)">
-		<span class="glyphicon glyphicon-home" style="margin-right: 7px; font-size: 14px;"></span>Dashboard
+	<div class="active mDiv" id="" (click)="goto('')">
+		<span class="glyphicon glyphicon-home" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon1">Dashboard</span>
 	</div>
-	<div class="mDiv" data-toggle="collapse" data-target="#demo">
-		<span class="glyphicon glyphicon-folder-close" style="margin-right: 7px; font-size: 14px;"></span>Card
+	<div class="mDiv" data-toggle="collapse" data-target="#Mobdemo">
+		<span class="glyphicon glyphicon-folder-close" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon19">Card</span>
 	</div>
-	<div id="demo" class="collapse">
-		<div class="dId" id="card" (click)="goto($event)"><span class="glyphicon glyphicon-credit-card glyPlace"></span>My Card</div>
-		<div class="dId" id="searchuser" (click)="goto($event)"><span class="glyphicon glyphicon-search glyPlace"></span>Search User</div>
-		<div class="dId" id="requests" (click)="goto($event)"><span class="glyphicon glyphicon-ok glyPlace"></span>View Requests</div>
-		<div class="dId" id="privacy" (click)="goto($event)"><span class="glyphicon glyphicon-cog glyPlace"></span>Privacy Settings</div>
+	<div id="Mobdemo" class="collapse">
+		<div class="dId" id="card" (click)="goto('card')"><span class="glyphicon glyphicon-credit-card glyPlace"></span><span class="spanIcon2">My Card</span></div>
+		<div class="dId" id="searchuser" (click)="goto('searchuser')"><span class="glyphicon glyphicon-search glyPlace"></span><span class="spanIcon3">Search User</span></div>
+		<div class="dId" id="requests" (click)="goto('requests')"><span class="glyphicon glyphicon-ok glyPlace"></span><span class="spanIcon4">View Requests</span></div>
+		<div class="dId" id="privacy" (click)="goto('privacy')"><span class="glyphicon glyphicon-cog glyPlace"></span><span class="spanIcon5">Privacy Settings</span></div>
 	</div>
-	<div class="mDiv" data-toggle="collapse" data-target="#demo2">
-		<span class="glyphicon glyphicon-search" style="margin-right: 7px; font-size: 14px;"></span>Job Seeking
+	<div class="mDiv" data-toggle="collapse" data-target="#Mobdemo2">
+		<span class="glyphicon glyphicon-search" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon20">Job Seeking</span>
 	</div>
-	<div id="demo2" class="collapse">
-		<div class="dId" id="resume" (click)="goto($event)"><span class="glyphicon glyphicon-user glyPlace"></span>Resume</div>
-		<div class="dId" (click)="goto($event)" id="appliedjobs"><span class="glyphicon glyphicon-list-alt glyPlace"></span>Applied Jobs</div>
-		<div class="dId" (click)="goto($event)" id="matchedjobs"><span class="glyphicon glyphicon-star glyPlace"></span>Matched Jobs</div>
-		<div class="dId" (click)="goto($event)" id="jobsearch"><span class="glyphicon glyphicon-search glyPlace"></span>Job Search</div>
-		<div class="dId" (click)="goto($event)" id="calendar"><span class="glyphicon glyphicon-calendar glyPlace"></span>Calendar</div>
+	<div id="Mobdemo2" class="collapse">
+		<div class="dId" id="resume" (click)="goto('resume')"><span class="glyphicon glyphicon-user glyPlace"></span><span class="spanIcon6">Resume</span></div>
+		<div class="dId" (click)="goto('appliedjobs')" id="appliedjobs"><span class="glyphicon glyphicon-list-alt glyPlace"></span><span class="spanIcon7">Applied Jobs</span></div>
+		<div class="dId" (click)="goto('matchedjobs')" id="matchedjobs"><span class="glyphicon glyphicon-star glyPlace"></span><span class="spanIcon8">Matched Jobs</span></div>
+		<div class="dId" (click)="goto('jobsearch')" id="jobsearch"><span class="glyphicon glyphicon-search glyPlace"></span><span class="spanIcon9">Job Search</span></div>
+		<div class="dId" (click)="goto('calendar')" id="calendar"><span class="glyphicon glyphicon-calendar glyPlace"></span><span class="spanIcon10">Calendar</span></div>
 	</div>
 	<div class="mDiv">
-		<span class="glyphicon glyphicon-user" style="margin-right: 7px; font-size: 14px;"></span>Friends
+		<div (click)="goto('friendspage')" id="friendspage"><span class="glyphicon glyphicon-user" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon21">Friends</span></div>
 	</div>
-	<div class="mDiv" data-toggle="collapse" data-target="#demo3">
-		<span class="glyphicon glyphicon-credit-card" style="margin-right: 7px; font-size: 14px;"></span>Job Advertising
+	<div class="mDiv" data-toggle="collapse" data-target="#Mobdemo3">
+		<span class="glyphicon glyphicon-credit-card" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon22">Job Advertising</span>
 	</div>
-	<div id="demo3" class="collapse">
-		<div class="dId" id="postjob"><span class="glyphicon glyphicon-edit glyPlace"></span>Post Job</div>
-		<div class="dId" id="myjobs"><span class="glyphicon glyphicon-star glyPlace"></span>My Jobs Postings</div>
-		<div class="dId" id="matches"><span class="glyphicon glyphicon-check glyPlace"></span>Candidate Matches</div>
-		<div class="dId" id="applied"><span class="glyphicon glyphicon-th-list glyPlace"></span>Candidates Applied</div>
-		<div class="dId" id="resumesrh"><span class="glyphicon glyphicon-search glyPlace"></span>Resume Search</div>
-		<div class="dId" id="interviews"><span class="glyphicon glyphicon-calendar glyPlace"></span>Interviews</div>
+	<div id="Mobdemo3" class="collapse">
+		<div class="dId" (click)="goto('postjob')" id="postjob"><span class="glyphicon glyphicon-edit glyPlace"></span><span class="spanIcon11">Post Job</span></div>
+		<div class="dId" (click)="goto('myjobspost')" id="myjobspost"><span class="glyphicon glyphicon-star glyPlace"></span><span class="spanIcon12">My Jobs Postings</span></div>
+		<div class="dId" (click)="goto('candidatematch')" id="candidatematch"><span class="glyphicon glyphicon-check glyPlace"></span><span class="spanIcon13">Candidate Matches</span></div>
+		<div class="dId" (click)="goto('candidateapplied')" id="candidateapplied"><span class="glyphicon glyphicon-th-list glyPlace"></span><span class="spanIcon14">Candidates Applied</span></div>
+		<div class="dId" (click)="goto('resumesearch')" id="resumesearch"><span class="glyphicon glyphicon-search glyPlace"></span><span class="spanIcon15">Resume Search</span></div>
+		<div class="dId" (click)="goto('interviews')" id="interviews"><span class="glyphicon glyphicon-calendar glyPlace"></span><span class="spanIcon16">Interviews</span></div>
 	</div>
-	<div class="mDiv" data-toggle="collapse" data-target="#demo4">
-		<span class="glyphicon glyphicon-credit-card" style="margin-right: 7px; font-size: 14px;"></span>Job Referencing
+	<div class="mDiv" data-toggle="collapse" data-target="#Mobdemo4">
+		<span class="glyphicon glyphicon-credit-card" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon23">Job Referencing</span>
 	</div>
-	<div id="demo4" class="collapse">
-		<div class="dId" id="viewrefer"><span class="glyphicon glyphicon-eye-open glyPlace"></span>View Reference</div>
-		<div class="dId" id="providerefer"><span class="glyphicon glyphicon-ok glyPlace"></span>Provide Reference</div>
+	<div id="Mobdemo4" class="collapse">
+		<div class="dId" (click)="goto('viewreference')" id="viewreference"><span class="glyphicon glyphicon-eye-open glyPlace"></span><span class="spanIcon17">View Reference</span></div>
+		<div class="dId" (click)="goto('providereference')" id="providereference"><span class="glyphicon glyphicon-ok glyPlace"></span><span class="spanIcon18">Provide Reference</span></div>
 	</div>
 </div>

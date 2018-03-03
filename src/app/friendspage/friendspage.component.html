@@ -1,0 +1,102 @@
+<mat-card class="myCard" style="font-family: 'Roboto'; margin-top: 20px;">
+  <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 35px; align-items: center;">
+    <p class="gInfo" style="display: flex; flex: 3; font-size: 20px;">Connections</p>
+    <div style="display: flex; align-items: center; flex: 1; justify-content: flex-end;">
+      <input type="text" placeholder="Search.." name="search" class="mySrh" style="display:flex; justify-content: center; ">
+      <span class="glyphicon glyphicon-search" (click)="shape()" style="display: flex;flex: 1;justify-content: flex-start;padding-left: 10px;color: #197CD3;font-weight: 700;font-size: 22px;"></span>
+    </div>
+  </div>
+  <div class="tab">
+    <table class="table table-hover">
+      <thead>
+        <tr style="display: flex;">
+          <th class="thHead fl2" style="display: flex;">Name</th>
+          <th class="thHead" style="display: flex; flex: 1;">Category</th>
+          <th class="thHead" style="display: flex; flex: 1;">Action</th>
+          <th class="thHead" style="display: flex; flex: 1;">Date of Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="display: flex;">
+          <td class="fl2" style="display: flex; align-items: center;">
+            <div style="display: flex;">
+              <img [src]="userImg" class="userImg" height="60" width="60">
+              <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span class="padLft" style="font-size: 16px; font-weight: 600;">Vatsal</span>
+                <span class="padLft email" style="font-size: 14px; padding-top: 0px;">vatsal@gmail.com</span>
+              </div>
+            </div>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">School Friend</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span class="glyphicon glyphicon-share" style="color: #197CD3; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #197CD3;font-weight: 600;font-size: 14px;">Send Request</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">25/02/18</span>
+          </td>
+        </tr>
+        <tr style="display: flex;">
+          <td class="fl2" style="display: flex; align-items: center;">
+            <div style="display: flex;">
+              <img [src]="userImg" class="userImg" height="60" width="60">
+              <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span class="padLft" style="font-size: 16px; font-weight: 600;">Vatsal</span>
+                <span class="padLft email" style="font-size: 14px; padding-top: 0px;">vatsal@gmail.com</span>
+              </div>
+            </div>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">Family Friend</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span class="glyphicon glyphicon-ok" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #0EAD69;font-weight: 600;font-size: 14px;">Request Approved</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">25/02/18</span>
+          </td>
+        </tr>
+        <tr style="display: flex;">
+          <td class="fl2" style="display: flex; align-items: center;">
+            <div style="display: flex;">
+              <img [src]="userImg" class="userImg" height="60" width="60">
+              <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span class="padLft" style="font-size: 16px; font-weight: 600;">Vatsal</span>
+                <span class="padLft email" style="font-size: 14px; padding-top: 0px;">vatsal@gmail.com</span>
+              </div>
+            </div>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">Office Friend</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span class="glyphicon glyphicon-check" style="color: #534D41; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #534D41;font-weight: 600;font-size: 14px;">Approval Pending</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span style="font-size: 14px;">25/02/18</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="panel-footer" style="padding: 20px;">
+      <div class="row">
+        <div class="col col-xs-4" style="line-height: 34px; height: 34px;">Page 1 of 1
+        </div>
+        <div class="col col-xs-8">
+          <ul class="pagination hidden-xs pull-right" style="margin: 0;">
+            <li class="active"><a style="padding: 6px 15px;">1</a></li>
+            <li><a style="padding: 6px 15px;">2</a></li>
+            <li><a style="padding: 6px 15px;">3</a></li>
+            <li><a style="padding: 6px 15px;">4</a></li>
+            <li><a style="padding: 6px 15px;">5</a></li>
+          </ul>
+          <ul class="pagination visible-xs pull-right">
+            <li><a style="padding: 6px 15px;">«</a></li>
+            <li><a style="padding: 6px 15px;">»</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>

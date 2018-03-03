@@ -1,0 +1,35 @@
+<div class="main" style="width: 100%; display: flex; flex-direction: row; margin-bottom: 5%; margin-top: 5px;">
+  <div class="left" style="display: flex; flex: 1;">
+  </div>
+  <div class="mid" style="display: flex; flex: 1;">
+    <form name="myForm" novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="imgcontainer">
+        <img [src]="userImg" class="userImg" height="90" width="90">
+      </div>
+      <div class="container" style="width: 100%; padding: 24px; padding-bottom: 16px;padding-top: 10px;">
+        <label>
+          <p style="font-weight: 600; margin: 10px 0px 8px 0px;">Username</p>
+        </label>
+        <input [(ngModel)]="user.name" #userName="ngModel" name="name" type="text" placeholder="Enter Username" required>
+        <div *ngIf="userName.errors?.required && userName.touched" style="padding: 6px 10px; color: red; margin-left: 5px;">Username is Required</div>
+        <label>
+          <p style="font-weight: 600; margin: 10px 0px 8px 0px;">Email Id</p>
+        </label>
+        <input type="email" [(ngModel)]="user.email" #userEmail="ngModel" name="email" placeholder="Enter Email" required email>
+        <div style="display: flex;">
+            <div *ngIf="userEmail.errors?.email && userEmail.touched" style="padding: 6px 10px; color: red; margin-left: 5px;">Email is incorrect</div>
+            <div *ngIf="userEmail.errors?.required && userEmail.touched" style="padding: 6px 10px; color: red; margin-left: 5px;">Email is Required</div>
+        </div>
+        <label>
+          <p style="font-weight: 600; margin: 20px 0px 8px 0px;">Password</p>
+        </label>
+        <input type="password" [(ngModel)]="user.password" #userPassword="ngModel" minlength="6" name="password" placeholder="Enter Password" required>
+        <div *ngIf="userPassword.errors?.minlength && userPassword.touched" style="padding: 6px 10px; color: red; margin-left: 5px;">Password must be atleast 6 characters long</div>
+        <div *ngIf="userPassword.errors?.required && userPassword.touched" style="padding: 6px 10px; color: red; margin-left: 5px;">Password is Required</div>
+        <button type="submit" style="margin-top: 10px; background-color: #197CD3;" value="Login">Sign Up</button>
+      </div>
+    </form>
+  </div>
+  <div class="right" style="display: flex; flex: 1;">
+  </div>
+</div>

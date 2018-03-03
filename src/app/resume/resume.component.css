@@ -9,6 +9,171 @@
   border: 1px solid #ddd;
   /*background: #197CD3;*/
 }
+.det {
+  display: flex; 
+  flex: 1; 
+  font-weight: 600;
+}
+a {
+  text-decoration: none;
+}
+
+.myStyle {
+  border: 1px solid #ccc;
+  padding: 2px 0px;
+}
+
+.myResStyle {
+  border: 1px solid #ccc;
+  padding: 6px;
+}
+.mDiv {
+  display: flex;
+  align-items: center;
+  margin: 6px 0px;
+}
+.sld {
+  opacity: 0.91;
+}
+
+.sld:hover {
+  opacity: 1;
+}
+
+input[type="range"] { 
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 25px;
+    width: 95%;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; /* 1 */
+    height: 25px;
+    background: #fff;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+    border: 2px solid #999; /* 1 */
+}
+
+::-moz-range-track {
+    height: 25px;
+    background: #ccc;
+}
+
+::-moz-range-thumb {
+    background: #fff;
+    height: 25px;
+    width: 20px;
+    border: 3px solid #999;
+    border-radius: 0 !important;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+    box-sizing: border-box;
+}
+
+::-ms-fill-lower { 
+    background: dodgerblue;
+}
+
+::-ms-thumb { 
+    background: #fff;
+    border: 2px solid #999;
+    height: 25px;
+    width: 20px;
+    box-sizing: border-box;
+}
+
+::-ms-ticks-after { 
+    display: none; 
+}
+
+::-ms-ticks-before { 
+    display: none; 
+}
+
+::-ms-track { 
+    background: #ccc;
+    color: transparent;
+    height: 40px;
+    border: none;
+}
+
+::-ms-tooltip { 
+    display: none;
+}
+
+#myText {
+  display: flex;
+  flex: 2;
+  font-size: 14px;
+  border-radius: 0px;
+  margin-right: 10px;
+}
+.sClass {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  font-size: 15px;
+  font-weight: 600;
+  color: #197CD3;
+}
+
+.mClass {
+  display: flex;
+  align-items: center;
+  padding: 8px 0px;
+}
+
+#myText {
+  display: flex;
+  flex: 1;
+  font-size: 15px;
+  border-radius: 0px;
+  margin-right: 10px;
+}
+
+.os {
+  display: flex;
+  flex: 1;
+}
+.myCardChart {
+  background: #fafafa;
+  margin: 15px 10px;
+  width: 47%;
+  min-height: 200px;
+}
+
+.myCompany {
+  margin-left: 10px;
+  border-radius: 0px;
+}
+
+.gInfo {
+  display: flex;
+  flex: 4;
+  font-size: 19px;
+  color: #111;
+  margin: 0px;
+  font-weight: 600;
+}
+
+.chld {
+  display: flex; 
+  flex: 3; 
+  justify-content: center;
+}
+
+.btn {
+  border-radius: 1px;
+}
 
 .myCard {
   display: flex;
@@ -204,6 +369,8 @@ h2 {
 }
 
 h3 {
+  cursor: pointer;
+  margin-top: 10px;
   font-size: 15px;
   line-height: 15px;
 }
@@ -235,4 +402,50 @@ h3 {
 	display: flex;
 	justify-content: center;
 	width: 30%;
+}
+
+@media only screen and (max-width: 1020px) {
+  .myCardFst {
+    width: 90%;
+    margin-left: 5%;
+  }
+  .gInfo {
+    font-size: 16px !important;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .myCardFst {
+    width: 90%;
+    margin-left: 5%;
+  }
+  .timeline .timeline-items .timeline-item {
+    width: 96%;
+  }
+  .timeline .timeline-items .timeline-item.centered {
+    width: 97% !important;
+    margin-left: 0% !important;
+  }
+  .shift li {
+      margin-left: 2% !important;
+  }
+  ul {
+    margin: 0 0 10px 0px;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  .reschld {
+    font-size: 13px !important;
+  }
+  .pncl {
+    font-size: 15px !important;
+  }
+  .myCardChart {
+    width: inherit;
+  }
+  .btn-success {
+    font-size: 15px !important;
+    width: 20% !important;
+  }
 }

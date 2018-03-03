@@ -16,6 +16,11 @@ footer {
 	margin: 0px 0px 0px 0px;
     padding: 12px 20px;
 }
+@media only screen and (max-width: 770px) {
+  footer {
+  	position: relative;
+  }
+}
 
 p {
 	margin: 0px;

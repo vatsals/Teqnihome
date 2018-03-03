@@ -1,0 +1,168 @@
+.myCard {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 20px;
+  min-height: 100px;
+  background: #fbfbfb;
+  border: 1px solid #ddd;
+}
+
+.gInfo {
+  display: flex;
+  flex: 4;
+  font-size: 19px;
+  color: #111;
+  margin: 0px;
+  font-weight: 600;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 29px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 21px;
+  width: 21px;
+  left: 2px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.userImg {
+  border-radius: 50%;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+
+
+/* Rounded sliders */
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.table>tbody>tr>th {
+  padding: 13px 8px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 1px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 100%;
+}
+
+.myCard input[type=text] {
+  padding: 5px;
+  margin-top: 0px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+.table>tbody>tr>td {
+  padding: 13px 8px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.table>thead>tr>th {
+  cursor: pointer;
+}
+
+.table {
+  font-size: 16px;
+}
+
+.table>tbody {
+  font-size: 15px;
+}
+
+.thHead {
+  align-items: center; 
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 1020px) {
+  .tab {
+    overflow: auto;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+  .gInfo {
+    flex: 1 !important;
+    font-size: 18px !important;
+  }
+  .glyphicon-search {
+    font-size: 20px !important;
+  }
+  td .glyphicon-search {
+    font-size: 18px !important;
+  }
+  .glyphicon-time {
+    display: none !important;
+  }
+  .thHead {
+    align-items: center; 
+    font-size: 14px;
+  }
+}

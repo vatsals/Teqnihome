@@ -12,6 +12,29 @@
   border-bottom: 1px solid #197CD3;
 }
 
+@media only screen and (max-width: 900px) {
+  .spanIcon1, .spanIcon2, .spanIcon3, .spanIcon4, .spanIcon5, .spanIcon6, .spanIcon7, .spanIcon8, .spanIcon9, .spanIcon10, .spanIcon11, .spanIcon12, .spanIcon13, .spanIcon14, .spanIcon15, .spanIcon16, .spanIcon17, .spanIcon18, .spanIcon19, .spanIcon20, .spanIcon21, .spanIcon22, .spanIcon23  {
+    display: none;
+  }
+  .sideBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 6%;
+  }
+  .mDiv {
+    padding: 20px 10px 20px 13px !important;
+  }
+  .dId {
+    padding: 12px 10px 20px 13px !important;
+  }
+}
+
+.active:hover {
+  background: #197CD3;
+  border-bottom: 1px solid #197CD3;
+}
+
 .collapse a {
   text-decoration: none;
 }
