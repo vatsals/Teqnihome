@@ -1,42 +1,68 @@
-<div class="myButton" id="mybn" #mybn data-toggle="modal" data-target="#form" style="display: flex; justify-content: flex-start; margin: 20px; margin-left: 5%; margin-bottom: 0px;">
-  <a mat-raised-button style="background-color: #0EAD69;border-radius: 1px;color: #fff;font-size: 16px;padding: 2px 15px;"><span class="glyphicon glyphicon-pencil pncl" style="padding-right: 8px;"></span>Create Resume</a>
+<div class="myButton" (click)="changeEdit()" id="mybn" #mybn style="display: flex; justify-content: flex-start; margin: 20px; margin-left: 5%; margin-bottom: 0px;">
+  <a style="background-color: #0EAD69;border-radius: 1px;color: #fff;font-size: 16px; cursor: pointer; padding: 7px 15px;"><span class="glyphicon glyphicon-pencil pncl" style="padding-right: 8px;font-size: 14px;top: 2px;"></span>Change Field</a>
 </div>
-<div id="mainPage" #mpage style="display: none;">
+<input name="company" #myId class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: none;flex: 4;" id="company" placeholder="Enter Company">
+<input name="company" #subcat class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: none;flex: 4;" id="company" placeholder="Enter Company">
+<div id="mainPage" #mpage style="display: block;">
   <mat-card class="myCardFst">
     <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-      <p class="gInfo" style="display: flex; flex: 4;">General Information</p>
+      <p (click)="chart()" class="gInfo" style="display: flex; flex: 4;">General Information</p>
       <span class="glyphicon glyphicon-pencil pncl" (click)="makeEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 19px;"></span>
     </div>
-    <div style="display: flex; margin-top: 35px; font-size: 15px;">
+    <div style="display: flex; margin-top: 35px; font-size: 15px; color: #197CD3; align-items: center;">
       <div class="det">
         Name
       </div>
       <div class="chld">
-        Vatsal Shrivastav
+        <span name="name" #name class="" style="color: #222; text-transform: capitalize; font-size: 14px;display: flex; justify-content: center; flex: 4;" id="name"></span>
       </div>
     </div>
-    <div style="display: flex;margin-top: 18px;font-size: 15px;">
+    <div style="display: flex; margin-top: 20px; font-size: 15px; color: #197CD3; align-items: center;">
       <div class="det">
-        Designation
+        Date of Birth
       </div>
       <div class="chld">
-        Software Intern
+        <span name="dob" #dob class="" style="color: #222; text-transform: capitalize; font-size: 14px;display: flex; justify-content: center; flex: 4;" id="dob"></span>
       </div>
     </div>
-    <div style="display: flex;margin-top: 18px;font-size: 15px;">
+    <div style="display: flex; margin-top: 20px; font-size: 15px; color: #197CD3; align-items: center;">
       <div class="det">
-        Company
+        Nationaility
       </div>
       <div class="chld">
-        Microsoft (UK) Ltd
+        <span name="nation" #nation class="" style="color: #222; text-transform: capitalize; font-size: 14px;display: flex; justify-content: center; flex: 4;" id="nation"></span>
       </div>
     </div>
-    <div style="display: flex;margin-top: 18px;font-size: 15px;">
+    <div style="display: flex; margin-top: 20px; font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Experience
+      </div>
+      <div class="chld">
+        <span name="exp" #exp class="" style="color: #222; text-transform: capitalize; font-size: 14px;display: flex; justify-content: center; flex: 4;" id="exp"></span>
+      </div>
+    </div>
+    <div style="display: flex;margin-top: 20px;font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Last/Current Designation
+      </div>
+      <div class="chld">
+        <span name="desig" #desig class="" style="color: #222; text-transform: capitalize; font-size: 14px;display: flex; justify-content: center; flex: 4;" id="desig"></span>
+      </div>
+    </div>
+    <div style="display: flex;margin-top: 20px;font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Last/Current Company
+      </div>
+      <div class="chld">
+        <span name="company" #company class="" style="color: #222; text-transform: capitalize; font-size: 14px;display: flex; justify-content: center; flex: 4;" id="company"></span>
+      </div>
+    </div>
+    <div style="display: flex;margin-top: 20px;font-size: 15px; color: #197CD3; align-items: center;">
       <div class="det">
         Card
       </div>
       <div class="chld">
-        <a mat-raised-button style="background-color: #197CD3; text-decoration: none; border-radius: 1px; padding: 0px 10px; min-width: 32px; min-width: 115px; color: #fff; font-size: 14px;" routerLink=""><span class="glyphicon glyphicon-folder-close" style="padding-right: 8px; padding-bottom: 5px;"></span>View Card</a>
+        <a mat-raised-button style="background-color: #197CD3; text-decoration: none; border-radius: 1px; padding: 0px 10px; min-width: 32px; min-width: 115px; color: #fff; font-size: 14px;" routerLink="card"><span class="glyphicon glyphicon-folder-close" style="padding-right: 8px; padding-bottom: 5px;"></span>View Card</a>
       </div>
     </div>
     <div id="svBtn" #svBtn (click)="saveEdit()" style="display: none; justify-content: flex-end; margin-top: 18px;">
@@ -46,7 +72,7 @@
   <mat-card class="myCard" style="margin-bottom: 3%;">
     <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
       <p class="gInfo" style="display: flex; flex: 4;">Career Highlights</p>
-      <span (click)="makeResEdit()" class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 20px;"></span>
+      <span class="glyphicon glyphicon-pencil pncl" (click)="makeEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 20px;"></span>
     </div>
     <div class="box-content">
       <div id="career-timeline" class="timeline">
@@ -54,433 +80,296 @@
           <li class="timeline-item centered animated fadeInUp">
             <h3 align="center">Experience</h3></li>
         </ul>
-        <h2>2015<span (click)="addDiv()" class="glyphicon glyphicon-plus" #addCont data-toggle="modal" data-target="#formAdd" style="padding-left: 10px;color: #fff;font-weight: 700;font-size: 15px;"></span></h2>
-        <ul class="timeline-items noshift">
-          <li class="timeline-item animated fadeInLeft">
-            <span (click)="makeResEdit()" class="glyphicon glyphicon-pencil pncl" style="display: flex; justify-content: flex-end; padding-right: 5px; color: #fff; font-weight: 700; font-size: 18px;"></span>
-            <h3 class="reschld">Started at MicroSoft (UK) Ltd</h3>
-            <hr>
-            <p class="reschld"> Designation : Software Intern</p>
-            <hr>
-            <p class="reschld">Company Website: <a target="_blank" href="http://www.microsoft.co.uk">http://www.microsoft.co.uk</a></p>
-            <hr>
-            <p class="reschld">Achievements: Best Intern</p>
-            <hr>
-            <p class="reschld">Skills used: Python, PHP</p>
-            <hr>
-            <p class="reschld">Sun Aug 09 2015 - current</p>
-          </li>
-        </ul>
-        <h2>2014<span (click)="addDiv()" class="glyphicon glyphicon-plus" #addCont data-toggle="modal" data-target="#formAdd" style="padding-left: 10px;color: #fff;font-weight: 700;font-size: 15px;"></span></h2>
-        <ul class="timeline-items shift">
-          <li class="timeline-item animated fadeInLeft">
-            <span (click)="makeResEdit()" class="glyphicon glyphicon-pencil pncl" style="display: flex; justify-content: flex-end; padding-right: 5px; color: #fff; font-weight: 700; font-size: 18px;"></span>
-            <h3 class="reschld">Started at BT</h3>
-            <hr>
-            <p class="reschld"> Designation : Senior Software tester</p>
-            <hr>
-            <p class="reschld">Company Website: <a target="_blank" href="http://www.bt.com">http://www.bt.com</a></p>
-            <hr>
-            <p class="reschld">Achievements: Best Senior tester</p>
-            <hr>
-            <p class="reschld">Skills used: Scala, C++</p>
-            <hr>
-            <p class="reschld">Wed Apr 02 2014 - Fri Jul 10 2015</p>
-          </li>
-        </ul>
+        <div *ngFor="let number of Expnumbers; let i=index;">
+          <h2>{{ expYear[i] }}</h2>
+          <ul class="timeline-items" [id]="i%2==0 ? 'noshift' : 'shift'">
+            <li class="timeline-item animated fadeInLeft">
+              <h3 class="reschld">Started at <span [id]="'expcolName'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.companyName }}</span></h3>
+              <hr>
+              <p class="reschld">Designation: <span [id]="'expdesig'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.position }}</span></p>
+              <hr>
+              <p class="reschld">Company Website: <a [href]="number.companyWebsite" style="color: #fff; font-weight: 700;"><span [id]="'expweb'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.companyWebsite }}</span></a></p>
+              <hr>
+              <p class="reschld">Achievements: <span [id]="'expach'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.achievements }}</span></p>
+              <hr>
+              <p class="reschld">Skills used: <span [id]="'expskill'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.skillsUsed }}</span></p>
+              <hr>
+              <p class="reschld" style="display: flex; align-items: center;"><span [id]="'exptFrom'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.periodFrom }}</span> <span style="padding: 0px 5px;">-</span> <span *ngIf="number.currentJob" [id]="'exptTo'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text"></span><span *ngIf="!number.currentJob" [id]="'exptTo'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.periodTo }}</span></p>
+              <hr>
+              <p class="reschld" *ngIf="number.currentJob">Current Job</p>
+              <p class="reschld" *ngIf="!number.currentJob">Previous Job</p>
+            </li>
+          </ul>
+        </div>
         <ul class="timeline-items">
           <li class="timeline-item centered animated fadeInUp">
             <h3 align="center">Education</h3></li>
         </ul>
-        <h2>2015<span (click)="addDiv()" class="glyphicon glyphicon-plus" #addCont data-toggle="modal" data-target="#formAdd" style="padding-left: 10px;color: #fff;font-weight: 700;font-size: 15px;"></span></h2>
-        <ul class="timeline-items noshift">
-          <li class="timeline-item animated fadeInLeft">
-            <span (click)="makeResEdit()" class="glyphicon glyphicon-pencil pncl" style="display: flex; justify-content: flex-end; padding-right: 5px; color: #fff; font-weight: 700; font-size: 18px;"></span>
-            <h3 class="reschld">Started at MicroSoft (UK) Ltd</h3>
-            <hr>
-            <p class="reschld"> Designation : Software Intern</p>
-            <hr>
-            <p class="reschld">Company Website: <a target="_blank" href="http://www.microsoft.co.uk">http://www.microsoft.co.uk</a></p>
-            <hr>
-            <p class="reschld">Achievements: Best Intern</p>
-            <hr>
-            <p class="reschld">Skills used: Python, PHP</p>
-            <hr>
-            <p class="reschld">Sun Aug 09 2015 - current</p>
-          </li>
-        </ul>
-        <h2>2014<span (click)="addDiv()" class="glyphicon glyphicon-plus" #addCont data-toggle="modal" data-target="#formAdd" style="padding-left: 10px;color: #fff;font-weight: 700;font-size: 15px;"></span></h2>
-        <ul class="timeline-items shift">
-          <li class="timeline-item animated fadeInLeft">
-            <span (click)="makeResEdit()" class="glyphicon glyphicon-pencil pncl" style="display: flex; justify-content: flex-end; padding-right: 5px; color: #fff; font-weight: 700; font-size: 18px;"></span>
-            <h3 class="reschld">Started at BT</h3>
-            <hr>
-            <p class="reschld"> Designation : Senior Software tester</p>
-            <hr>
-            <p class="reschld">Company Website: <a target="_blank" href="http://www.bt.com">http://www.bt.com</a></p>
-            <hr>
-            <p class="reschld">Achievements: Best Senior tester</p>
-            <hr>
-            <p class="reschld">Skills used: Scala, C++</p>
-            <hr>
-            <p class="reschld">Wed Apr 02 2014 - Fri Jul 10 2015</p>
-          </li>
-        </ul>
-      </div>
-      <div id="svresBtn" #svresBtn (click)="saveResEdit()" style="display: none; justify-content: center; margin-top: 20px;">
-        <a mat-raised-button style="background-color: #0EAD69; text-decoration: none; border-radius: 1px; padding: 0px 10px; min-width: 32px; line-height: 30px; min-width: 115px; color: #fff; font-size: 14px;"><span class="glyphicon glyphicon-pencil pncl" style="padding-right: 8px; padding-bottom: 5px;"></span>Save</a>
+        <div *ngFor="let number of Edunumbers; let i=index;">
+          <h2>{{ eduYear[i] }}</h2>
+          <ul class="timeline-items" [id]="i%2==0 ? 'noshift' : 'shift'">
+            <li class="timeline-item animated fadeInLeft">
+              <h3 class="reschld">Studied at <span [id]="'ecolName'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.colName }}</span></h3>
+              <hr>
+              <p class="reschld">Location: <span [id]="'eloc'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.eduloc }}</span></p>
+              <hr>
+              <p class="reschld">Degree: <span [id]="'edeg'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.edudeg }}</span></p>
+              <hr>
+              <p class="reschld">Degree Level: <span [id]="'edegl'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.edudegl }}</span></p>
+              <hr>
+              <p class="reschld">Company Website: <a [href]="number.colWeb" style="color: #fff; font-weight: 700;"><span [id]="'eweb'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.colWeb }}</span></a></p>
+              <hr>
+              <p class="reschld">Achievements: <span [id]="'each'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.edudet }}</span></p>
+              <hr>
+              <p class="reschld">Subjects: <span [id]="'esub'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.edusub }}</span></p>
+              <hr>
+              <p class="reschld" style="display: flex; align-items: center;"><span [id]="'eptFrom'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.perFrom }}</span> <span style="padding: 0px 5px;">-</span> <span [id]="'eptTo'+i" class="" style="padding-left: 3px; font-size: 14px;display: flex;" id="company" placeholder="Enter Detail" name="text">{{ number.perTo }}</span></p>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </mat-card>
   <div class="chartMain" style="margin-bottom: 10%; display: flex; flex-direction: column;">
     <div id="Pgraph" #pg>
-      <div class="col-sm-12">
-      <mat-card class="myCardChart col-sm-4" style="">
-        <div>
-          <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-            <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Operating Systems</p>
-            <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
-          </div>
-          <canvas id="myCanvas1" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+      <div class="col-sm-12" style="margin-bottom: 10%;">
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[0]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[0] }}</p>
+                <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+              </div>
+              <canvas id="myCanvas1" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
         </div>
-      </mat-card>
-      <mat-card class="myCardChart col-sm-4" style="">
-        <div>
-          <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-            <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Programming Languages</p>
-            <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
-          </div>
-          <canvas id="myCanvas2" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[1]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[1] }}</p>
+                <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+              </div>
+              <canvas id="myCanvas2" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
         </div>
-      </mat-card>
-      <mat-card class="myCardChart col-sm-4" style="">
-        <div>
-          <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-            <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Languages Known</p>
-            <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
-          </div>
-          <canvas id="myCanvas3" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[2]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[2] }}</p>
+                <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+              </div>
+              <canvas id="myCanvas3" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
         </div>
-      </mat-card>
-    </div>
-    <div class="col-sm-12">
-      <mat-card class="myCardChart col-sm-4" style="">
-        <div>
-          <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-            <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">IDE</p>
-            <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
-          </div>
-          <canvas id="myCanvas4" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+      </div>
+      <div class="col-sm-12" style="margin-bottom: 10%;">
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[3]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[3] }}</p>
+                <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+              </div>
+              <canvas id="myCanvas4" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
         </div>
-      </mat-card>
-      <mat-card class="myCardChart col-sm-4" style="">
-        <div>
-          <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-            <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Hobbies</p>
-            <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
-          </div>
-          <canvas id="myCanvas5" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[4]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[4] }}</p>
+                <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+              </div>
+              <canvas id="myCanvas5" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
         </div>
-      </mat-card>
-      <mat-card class="myCardChart col-sm-4" style="">
-        <div>
-          <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-            <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Version Control</p>
-            <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
-          </div>
-          <canvas id="myCanvas6" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[5]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[5] }}</p>
+                <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+              </div>
+              <canvas id="myCanvas6" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
         </div>
-      </mat-card>
-    </div>
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[6]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[6] }}</p>
+                <span class="glyphicon glyphicon-pencil pncl" (click)="createEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+              </div>
+              <canvas id="myCanvas7" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
+        </div>
+      </div>
     </div>
     <div id="Egraph" style="display: none;" #eg>
       <div class="chartMain col-sm-12" style="margin-bottom: 0%;">
-      <mat-card class="myCardChart col-sm-6" style="">
-        <div>
-          <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-            <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Operating Systems</p>
-            <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
-          </div>
+        <mat-card class="myCardChart col-sm-6" style="">
           <div>
-            <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
-              <div *ngFor="let number of Onumbers;">
-                <div class="mDiv">
-                  <input type="text" class="form-control iText" id="myText" placeholder="Enter name" name="name">
-                  <div style="display: flex; flex: 2; align-items: center;">
-                    <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="number.id" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">0</span>
+            <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+              <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Operating Systems</p>
+              <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+            </div>
+            <div>
+              <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+                <div *ngFor="let number of Onumbers;">
+                  <div class="mDiv">
+                    <input type="text" class="form-control iText" id="myText" placeholder="Enter name" name="name">
+                    <div style="display: flex; flex: 2; align-items: center;">
+                      <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="number.id" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">0</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div style="display: flex; margin-top: 10px;">
-                <a (click)="append('4', $event)" id="os" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
-                <a (click)="remove(number, $event)" id="os" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+                <div style="display: flex; margin-top: 10px;">
+                  <a (click)="append('4', $event)" id="os" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+                  <a (click)="remove(number, $event)" id="os" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </mat-card>
-      <mat-card class="myCardChart col-sm-6" style="">
-        <div>
-          <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-            <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Programming Languages</p>
-            <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
-          </div>
+        </mat-card>
+        <mat-card class="myCardChart col-sm-6" style="">
           <div>
-            <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
-              <div *ngFor="let number of Pnumbers;">
-                <div class="mDiv">
-                  <input type="text" class="form-control iText" id="myText" placeholder="Enter name" name="name">
-                  <div style="display: flex; flex: 2; align-items: center;">
-                    <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="number.id" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">0</span>
+            <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+              <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Programming Languages</p>
+              <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+            </div>
+            <div>
+              <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+                <div *ngFor="let number of Pnumbers;">
+                  <div class="mDiv">
+                    <input type="text" class="form-control iText" id="myText" placeholder="Enter name" name="name">
+                    <div style="display: flex; flex: 2; align-items: center;">
+                      <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="number.id" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">0</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div style="display: flex; margin-top: 10px;">
-                <a (click)="append('4', $event)" id="pl" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
-                <a (click)="remove(number, $event)" id="pl" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+                <div style="display: flex; margin-top: 10px;">
+                  <a (click)="append('4', $event)" id="pl" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+                  <a (click)="remove(number, $event)" id="pl" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </mat-card>
-    </div>
-    <div class="chartMain col-sm-12" style="margin-bottom: 0%;">
-      <mat-card class="myCardChart col-sm-6" style="">
-        <div>
-          <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-            <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Languages Known</p>
-            <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
-          </div>
+        </mat-card>
+      </div>
+      <div class="chartMain col-sm-12" style="margin-bottom: 0%;">
+        <mat-card class="myCardChart col-sm-6" style="">
           <div>
-            <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
-              <div *ngFor="let number of Lnumbers;">
-                <div class="mDiv">
-                  <input type="text" class="form-control iText" id="myText" placeholder="Enter name" name="name">
-                  <div style="display: flex; flex: 2; align-items: center;">
-                    <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="number.id" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">0</span>
+            <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+              <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Languages Known</p>
+              <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+            </div>
+            <div>
+              <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+                <div *ngFor="let number of Lnumbers;">
+                  <div class="mDiv">
+                    <input type="text" class="form-control iText" id="myText" placeholder="Enter name" name="name">
+                    <div style="display: flex; flex: 2; align-items: center;">
+                      <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="number.id" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">0</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div style="display: flex; margin-top: 10px;">
-                <a (click)="append('4', $event)" id="lk" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
-                <a (click)="remove(number, $event)" id="lk" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+                <div style="display: flex; margin-top: 10px;">
+                  <a (click)="append('4', $event)" id="lk" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+                  <a (click)="remove(number, $event)" id="lk" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </mat-card>
-      <mat-card class="myCardChart col-sm-6" style="">
-        <div>
-          <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-            <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">IDE</p>
-            <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
-          </div>
+        </mat-card>
+        <mat-card class="myCardChart col-sm-6" style="">
           <div>
-            <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
-              <div *ngFor="let number of Inumbers;">
-                <div class="mDiv">
-                  <input type="text" class="form-control iText" id="myText" placeholder="Enter name" name="name">
-                  <div style="display: flex; flex: 2; align-items: center;">
-                    <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="number.id" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">0</span>
+            <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+              <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">IDE</p>
+              <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+            </div>
+            <div>
+              <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+                <div *ngFor="let number of Inumbers;">
+                  <div class="mDiv">
+                    <input type="text" class="form-control iText" id="myText" placeholder="Enter name" name="name">
+                    <div style="display: flex; flex: 2; align-items: center;">
+                      <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="number.id" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">0</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div style="display: flex; margin-top: 10px;">
-                <a (click)="append('4', $event)" id="ide" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
-                <a (click)="remove(number, $event)" id="ide" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+                <div style="display: flex; margin-top: 10px;">
+                  <a (click)="append('4', $event)" id="ide" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+                  <a (click)="remove(number, $event)" id="ide" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </mat-card>
-    </div>
-    <div class="chartMain col-sm-12" style="margin-bottom: 0%;">
-      <mat-card class="myCardChart col-sm-6" style="">
-        <div>
-          <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-            <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Hobbies</p>
-            <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
-          </div>
+        </mat-card>
+      </div>
+      <div class="chartMain col-sm-12" style="margin-bottom: 0%;">
+        <mat-card class="myCardChart col-sm-6" style="">
           <div>
-            <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
-              <div *ngFor="let number of Hnumbers;">
-                <div class="mDiv">
-                  <input type="text" class="form-control iText" id="myText" placeholder="Enter name" name="name">
-                  <div style="display: flex; flex: 2; align-items: center;">
-                    <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="number.id" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">0</span>
+            <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+              <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Hobbies</p>
+              <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+            </div>
+            <div>
+              <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+                <div *ngFor="let number of Hnumbers;">
+                  <div class="mDiv">
+                    <input type="text" class="form-control iText" id="myText" placeholder="Enter name" name="name">
+                    <div style="display: flex; flex: 2; align-items: center;">
+                      <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="number.id" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">0</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div style="display: flex; margin-top: 10px;">
-                <a (click)="append('4', $event)" id="hobb" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
-                <a (click)="remove(number, $event)" id="hobb" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+                <div style="display: flex; margin-top: 10px;">
+                  <a (click)="append('4', $event)" id="hobb" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+                  <a (click)="remove(number, $event)" id="hobb" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </mat-card>
-      <mat-card class="myCardChart col-sm-6" style="">
-        <div>
-          <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-            <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Version Control</p>
-            <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
-          </div>
+        </mat-card>
+        <mat-card class="myCardChart col-sm-6" style="">
           <div>
-            <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
-              <div *ngFor="let number of Vnumbers;">
-                <div class="mDiv">
-                  <input type="text" class="form-control iText" id="myText" placeholder="Enter name" name="name">
-                  <div style="display: flex; flex: 2; align-items: center;">
-                    <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="number.id" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">0</span>
+            <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+              <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Version Control</p>
+              <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+            </div>
+            <div>
+              <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+                <div *ngFor="let number of Vnumbers;">
+                  <div class="mDiv">
+                    <input type="text" class="form-control iText" id="myText" placeholder="Enter name" name="name">
+                    <div style="display: flex; flex: 2; align-items: center;">
+                      <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="number.id" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">0</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div style="display: flex; margin-top: 10px;">
-                <a (click)="append('4', $event)" id="vc" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
-                <a (click)="remove(number, $event)" id="vc" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+                <div style="display: flex; margin-top: 10px;">
+                  <a (click)="append('4', $event)" id="vc" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+                  <a (click)="remove(number, $event)" id="vc" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </mat-card>
-    </div>
+        </mat-card>
+      </div>
     </div>
     <div id="sVal" #sval style="display: none; margin-top: 20px; justify-content: center; align-items: center;">
       <a (click)="saveVal()" class="btn btn-success" style="display: flex; background: #0EAD69; width: 15%; font-size: 18px; justify-content: center; margin-left: 8px;">Save</a>
     </div>
   </div>
-</div>
-<div id="mainPagedemo" #mpagedemo style="display: block; margin-bottom: 10%;">
-  <mat-card class="myCardFst">
-    <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-      <p class="gInfo" style="display: flex; flex: 4;">Demo General Information</p>
-      <span class="glyphicon glyphicon-pencil pncl" (click)="makeEdit()" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 19px;"></span>
-    </div>
-    <div style="display: flex; margin-top: 35px; font-size: 15px;">
-      <div class="det">
-        Name
-      </div>
-      <div class="chld">
-        Vatsal Shrivastav
-      </div>
-    </div>
-    <div style="display: flex;margin-top: 18px;font-size: 15px;">
-      <div class="det">
-        Designation
-      </div>
-      <div class="chld">
-        Software Intern
-      </div>
-    </div>
-    <div style="display: flex;margin-top: 18px;font-size: 15px;">
-      <div class="det">
-        Company
-      </div>
-      <div class="chld">
-        Microsoft (UK) Ltd
-      </div>
-    </div>
-    <div style="display: flex;margin-top: 18px;font-size: 15px;">
-      <div class="det">
-        Card
-      </div>
-      <div class="chld">
-        <a mat-raised-button style="background-color: #197CD3; text-decoration: none; border-radius: 1px; padding: 0px 10px; min-width: 32px; min-width: 115px; color: #fff; font-size: 14px;" routerLink=""><span class="glyphicon glyphicon-folder-close" style="padding-right: 8px; padding-bottom: 5px;"></span>View Card</a>
-      </div>
-    </div>
-    <div id="svBtn" #svBtn (click)="saveEdit()" style="display: none; justify-content: flex-end; margin-top: 18px;">
-      <a mat-raised-button style="background-color: #0EAD69; text-decoration: none; border-radius: 1px; padding: 0px 10px; min-width: 32px; line-height: 30px; min-width: 115px; color: #fff; font-size: 14px;"><span class="glyphicon glyphicon-pencil pncl" style="padding-right: 8px; padding-bottom: 5px;"></span>Save</a>
-    </div>
-  </mat-card>
-  <mat-card class="myCard" style="margin-bottom: 3%;">
-    <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-      <p class="gInfo" style="display: flex; flex: 4;">Demo Career Highlights</p>
-      <span (click)="makeResEdit()" class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 20px;"></span>
-    </div>
-    <div class="box-content">
-      <div id="career-timeline" class="timeline">
-        <ul class="timeline-items">
-          <li class="timeline-item centered animated fadeInUp">
-            <h3 align="center">Experience</h3></li>
-        </ul>
-        <h2>2015<span (click)="addDiv()" class="glyphicon glyphicon-plus" #addCont data-toggle="modal" data-target="#formAdd" style="padding-left: 10px;color: #fff;font-weight: 700;font-size: 15px;"></span></h2>
-        <ul class="timeline-items noshift">
-          <li class="timeline-item animated fadeInLeft">
-            <span (click)="makeResEdit()" class="glyphicon glyphicon-pencil pncl" style="display: flex; justify-content: flex-end; padding-right: 5px; color: #fff; font-weight: 700; font-size: 18px;"></span>
-            <h3 class="reschld">Started at MicroSoft (UK) Ltd</h3>
-            <hr>
-            <p class="reschld"> Designation : Software Intern</p>
-            <hr>
-            <p class="reschld">Company Website: <a target="_blank" href="http://www.microsoft.co.uk">http://www.microsoft.co.uk</a></p>
-            <hr>
-            <p class="reschld">Achievements: Best Intern</p>
-            <hr>
-            <p class="reschld">Skills used: Python, PHP</p>
-            <hr>
-            <p class="reschld">Sun Aug 09 2015 - current</p>
-          </li>
-        </ul>
-        <h2>2014<span (click)="addDiv()" class="glyphicon glyphicon-plus" #addCont data-toggle="modal" data-target="#formAdd" style="padding-left: 10px;color: #fff;font-weight: 700;font-size: 15px;"></span></h2>
-        <ul class="timeline-items shift">
-          <li class="timeline-item animated fadeInLeft">
-            <span (click)="makeResEdit()" class="glyphicon glyphicon-pencil pncl" style="display: flex; justify-content: flex-end; padding-right: 5px; color: #fff; font-weight: 700; font-size: 18px;"></span>
-            <h3 class="reschld">Started at BT</h3>
-            <hr>
-            <p class="reschld"> Designation : Senior Software tester</p>
-            <hr>
-            <p class="reschld">Company Website: <a target="_blank" href="http://www.bt.com">http://www.bt.com</a></p>
-            <hr>
-            <p class="reschld">Achievements: Best Senior tester</p>
-            <hr>
-            <p class="reschld">Skills used: Scala, C++</p>
-            <hr>
-            <p class="reschld">Wed Apr 02 2014 - Fri Jul 10 2015</p>
-          </li>
-        </ul>
-        <ul class="timeline-items">
-          <li class="timeline-item centered animated fadeInUp">
-            <h3 align="center">Education</h3></li>
-        </ul>
-        <h2>2015<span (click)="addDiv()" class="glyphicon glyphicon-plus" #addCont data-toggle="modal" data-target="#formAdd" style="padding-left: 10px;color: #fff;font-weight: 700;font-size: 15px;"></span></h2>
-        <ul class="timeline-items noshift">
-          <li class="timeline-item animated fadeInLeft">
-            <span (click)="makeResEdit()" class="glyphicon glyphicon-pencil pncl" style="display: flex; justify-content: flex-end; padding-right: 5px; color: #fff; font-weight: 700; font-size: 18px;"></span>
-            <h3 class="reschld">Started at MicroSoft (UK) Ltd</h3>
-            <hr>
-            <p class="reschld"> Designation : Software Intern</p>
-            <hr>
-            <p class="reschld">Company Website: <a target="_blank" href="http://www.microsoft.co.uk">http://www.microsoft.co.uk</a></p>
-            <hr>
-            <p class="reschld">Achievements: Best Intern</p>
-            <hr>
-            <p class="reschld">Skills used: Python, PHP</p>
-            <hr>
-            <p class="reschld">Sun Aug 09 2015 - current</p>
-          </li>
-        </ul>
-        <h2>2014<span (click)="addDiv()" class="glyphicon glyphicon-plus" #addCont data-toggle="modal" data-target="#formAdd" style="padding-left: 10px;color: #fff;font-weight: 700;font-size: 15px;"></span></h2>
-        <ul class="timeline-items shift">
-          <li class="timeline-item animated fadeInLeft">
-            <span (click)="makeResEdit()" class="glyphicon glyphicon-pencil pncl" style="display: flex; justify-content: flex-end; padding-right: 5px; color: #fff; font-weight: 700; font-size: 18px;"></span>
-            <h3 class="reschld">Started at BT</h3>
-            <hr>
-            <p class="reschld"> Designation : Senior Software tester</p>
-            <hr>
-            <p class="reschld">Company Website: <a target="_blank" href="http://www.bt.com">http://www.bt.com</a></p>
-            <hr>
-            <p class="reschld">Achievements: Best Senior tester</p>
-            <hr>
-            <p class="reschld">Skills used: Scala, C++</p>
-            <hr>
-            <p class="reschld">Wed Apr 02 2014 - Fri Jul 10 2015</p>
-          </li>
-        </ul>
-      </div>
-      <div id="svresBtn" #svresBtn (click)="saveResEdit()" style="display: none; justify-content: center; margin-top: 20px;">
-        <a mat-raised-button style="background-color: #0EAD69; text-decoration: none; border-radius: 1px; padding: 0px 10px; min-width: 32px; line-height: 30px; min-width: 115px; color: #fff; font-size: 14px;"><span class="glyphicon glyphicon-pencil pncl" style="padding-right: 8px; padding-bottom: 5px;"></span>Save</a>
-      </div>
-    </div>
-  </mat-card>
 </div>
 <div class="modal fade" id="form" role="dialog">
   <div class="modal-dialog modal-md">
@@ -492,31 +381,29 @@
       <div class="modal-body" style="display: flex;flex-direction: column;align-items: center;min-height: 100px;justify-content: center;">
         <div id="parentF" #pF style="display: flex; width: 90%; align-items: center;">
           <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
-            Select Parent
+            Select Category
           </div>
-          <div style="display: flex; flex: 3;"><select style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
-            <option value="select">Select Job</option>
-            <option value="Friend">Friend</option>
-            <option value="Work collegue">Work collegue</option>
-            <option value="Family">Family</option>
-            <option value="School Friend">School Friend</option>
-            <option value="University Friend">University Friend</option>
-          </select>
-        </div>
-      </div>
-      <div id="parentF" #pF style="display: flex; width: 90%; align-items: center; margin-top: 15px;">
-        <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
-            Select Child
+          <div style="display: flex; flex: 3;">
+            <select (change)="selNew2($event)" #parentlinkOne style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
+              <option value="999" disabled>Select Category</option>
+              <option *ngFor="let cat of cats" [id]="'cat-'+cat.id" [value]="cat.id">
+                {{ cat.name }}
+                </option>
+            </select>
           </div>
-          <div style="display: flex; flex: 3;"><select style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
-            <option value="select">Select second Job</option>
-            <option value="Friend">Friend</option>
-            <option value="Work collegue">Work collegue</option>
-            <option value="Family">Family</option>
-            <option value="School Friend">School Friend</option>
-            <option value="University Friend">University Friend</option>
-          </select>
         </div>
+        <div id="parentF" #pF style="display: flex; width: 90%; align-items: center; margin-top: 15px;">
+          <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
+            Select SubCategory
+          </div>
+          <div style="display: flex; flex: 3;">
+            <select (change)="selNew3($event)" #parentlinkOne2 style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
+              <option value="999" disabled>Select Sub Category</option>
+            <option *ngFor="let subcat of subcats" [id]="'subcat-'+subcat.id" [value]="subcat.id">
+              {{ subcat.name }}
+              </option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="modal-footer">

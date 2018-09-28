@@ -1,0 +1,22 @@
+<mat-card class="myCard" id="myCd" #myCard style="width:  80%; margin-left: 10%; margin-bottom: 12%;">
+  <div>
+    <div class="basic">
+      <p class="gInfo" style="display: flex; align-items: center; flex: 3; font-size: 19px;"><span class="glyphicon glyphicon-plus-sign" style="margin-right: 6px;font-size: 22px;margin-bottom: 3px;color: #197CD3;"></span>Add Project</p>
+    </div>
+    <div class="tab" id="received" #recd>
+      <form novalidate #f2="ngForm" (ngSubmit)="onSubmitForm(f2)" class="form-inline" style="display: flex; flex-direction: column;">
+        <div class="form-group mClass">
+          <span class="sClass">Project Name<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <input [(ngModel)]="user.projname" #userprojname="ngModel" name="projname" type="text" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Project Name">
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Project Lead<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <input [(ngModel)]="user.projlead" #userprojlead="ngModel" name="projlead" type="text" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Project Lead Email Id">
+        </div>
+        <div class="mainButton" style="display: flex; justify-content: center; margin-top: 20px;">
+          <button type="submit" style="border: none; padding: 5px 12px; background-color: #0EAD69; border-radius: 1px; color: #fff; font-size: 16px;"><span class="glyphicon glyphicon-ok" style="padding-right: 6px;font-size: 14px;"></span>Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card>

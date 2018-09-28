@@ -1,0 +1,43 @@
+<mat-card class="myCard" id="myCd" #myCard style="width:  80%; margin-left: 10%; margin-bottom: 12%;">
+  <div>
+    <div class="basic">
+      <p class="gInfo" style="display: flex; align-items: center; flex: 3; font-size: 19px;"><span class="glyphicon glyphicon-plus-sign" style="margin-right: 6px;font-size: 22px;margin-bottom: 3px;color: #197CD3;"></span>Add Employee</p>
+    </div>
+    <div class="tab" id="received" #recd>
+      <form novalidate #f2="ngForm" (ngSubmit)="onSubmitForm(f2)" class="form-inline" style="display: flex; flex-direction: column;">
+        <div class="form-group mClass">
+          <span class="sClass">Employee Email<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <input [(ngModel)]="user.email" #useremail="ngModel" name="email" type="text" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Employee Email">
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Employee Name<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <input [(ngModel)]="user.uname" #useruname="ngModel" name="uname" type="text" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Employee Name">
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Date Of Birth<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <!-- <input type="date" class="form-control myCompany" [(ngModel)]="user.dob" #userdob="ngModel" name="dob" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company"> -->
+          <form #myForm="ngForm" novalidate style="display: flex; flex: 4;">
+            <my-date-picker #fDate name="mydate" [options]="myDatePickerOptions"[(ngModel)]="model2" required></my-date-picker>
+          </form>
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Company Id</span>
+          <input [(ngModel)]="user.compId" #usercompId="ngModel" name="compId" type="text" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Company Id">
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Employee Type<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <div style="display: flex; flex: 4;">
+            <select [(ngModel)]="user.empType" #userempType="ngModel" name="empType" class="selectClass">
+              <option value="Normal">Normal</option>
+              <option value="Admin">Admin</option>
+              <option value="ROOT">ROOT</option>
+            </select>
+          </div>
+        </div>
+        <div class="mainButton" style="display: flex; justify-content: center; margin-top: 20px;">
+          <button type="submit" style="border: none; padding: 5px 12px; background-color: #0EAD69; border-radius: 1px; color: #fff; font-size: 16px;"><span class="glyphicon glyphicon-ok" style="padding-right: 6px;font-size: 14px;"></span>Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card>

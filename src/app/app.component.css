@@ -1,9 +1,19 @@
 body {
   overflow-x: hidden !important;
 }
+
+.back {
+  background: #1C2B36;
+}
+
+.none {}
+
+.outlet {
+  /*z-index: -1;*/
+}
+
 .dash {
-	width: 15%; 
-	background: #1C2B36;
+	width: 15%;
 }
 
 .outlet {

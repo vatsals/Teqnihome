@@ -48,7 +48,7 @@
 
 .myCardChart {
 	background: #fafafa;
-	margin: 15px 10px;
+	margin: 15px 0px;
 }
 
 .gInfo {
@@ -264,5 +264,10 @@ h3 {
   .myCardFst {
     width: 90%;
     margin-left: 5%;
+  }
+  .majors {
+    color: #222;
+    justify-content: flex-end;
+    text-align: end;
   }
 }

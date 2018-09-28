@@ -1,0 +1,81 @@
+<mat-card class="myCard" id="myCd" #myCard style="width:  80%; margin-left: 10%; margin-bottom: 12%;">
+  <div>
+    <div class="basic">
+      <p class="gInfo" style="display: flex; align-items: center; flex: 3; font-size: 19px;"><span class="glyphicon glyphicon-plus-sign" style="margin-right: 6px;font-size: 22px;margin-bottom: 3px;color: #197CD3;"></span>Create Issue</p>
+    </div>
+    <div class="tab" id="received" #recd>
+      <form novalidate #f2="ngForm" (ngSubmit)="onSubmitForm(f2)" class="form-inline" style="display: flex; flex-direction: column;">
+        <div class="form-group mClass">
+          <span class="sClass">Project<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <div style="display: flex; flex: 4;">
+            <select [(ngModel)]="user.project" (change)="fetchEmp($event)" #userproject="ngModel" name="project" class="selectClass">
+              <option value="999">Select Project</option>
+              <option *ngFor="let proj of projs" [value]="proj.name">{{ proj.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Task Type<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <div style="display: flex; flex: 4;">
+            <select [(ngModel)]="user.taskType" #usertaskType="ngModel" name="taskType" class="selectClass">
+              <option value="Feature">Feature</option>
+              <option value="Bug">Bug</option>
+              <option value="Improvement">Improvement</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Task Title<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <input [(ngModel)]="user.taskTitle" #usertaskTitle="ngModel" name="taskTitle" type="text" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Task Title">
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Priority<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <div style="display: flex; flex: 4;">
+            <select [(ngModel)]="user.prior" #userprior="ngModel" name="prior" class="selectClass">
+              <option value="10">10</option>
+              <option value="9">9</option>
+              <option value="8">8</option>
+              <option value="7">7</option>
+              <option value="6">6</option>
+              <option value="5">5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Sprint</span>
+          <div style="display: flex; flex: 4;">
+            <select [(ngModel)]="user.sprint" #usersprint="ngModel" name="sprint" class="selectClass">
+              <option value="999">Select Sprint</option>
+              <option *ngFor="let sprint of sprints" [value]="sprint.sprintName">{{ sprint.sprintName }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Assignee</span>
+          <div style="display: flex; flex: 4;">
+            <select [(ngModel)]="user.assign" #userassign="ngModel" name="assign" class="selectClass">
+              <option value="999">Select Assignee</option>
+              <option *ngFor="let emp of emps" [value]="emp">{{ emp }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Estimated Time<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <input [(ngModel)]="user.time" #usertime="ngModel" name="time" type="number" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Estimated Time in hours">
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Description</span>
+          <textarea class="form-control myCompany" [(ngModel)]="user.desc" #userdesc="ngModel" name="desc" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Type your description here" rows="3"></textarea>
+        </div>
+        <div class="mainButton" style="display: flex; justify-content: center; margin-top: 20px;">
+          <button type="submit" style="border: none; padding: 5px 12px; background-color: #0EAD69; border-radius: 1px; color: #fff; font-size: 16px;"><span class="glyphicon glyphicon-ok" style="padding-right: 6px;font-size: 14px;"></span>Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card>

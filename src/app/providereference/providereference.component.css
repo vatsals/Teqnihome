@@ -18,6 +18,11 @@
   font-weight: 600;
 }
 
+.innerDt {
+  padding-right: 30px;
+  font-size: 14px;
+}
+
 .switch {
   position: relative;
   display: inline-block;

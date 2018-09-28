@@ -1,0 +1,44 @@
+<mat-card class="myCard" style="font-family: 'Roboto'; margin-top: 20px;">
+  <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 35px; align-items: center;">
+    <p class="gInfo" style="display: flex; flex: 3; font-size: 20px;">Card Requests</p>
+  </div>
+  <div class="tab">
+    <table class="table table-hover">
+      <thead>
+        <tr style="display: flex;">
+          <th class="fromCat" style="display: flex; align-items: center; font-size: 17px;">Field Requested</th>
+          <th class="mainAct">Requesting Person</th>
+          <th class="mainAct">Date</th>
+          <th style="display: flex; flex: 1; justify-content: center; align-items: center; font-size: 17px;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let myFriend of myFriends | paginate: { itemsPerPage: 10, currentPage: p }" style="display: flex;">
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span class="smIcon">{{ myFriend.fieldsRequested }}</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span class="smIcon">{{ myFriend.requestingAuthority }}</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <span class="smIcon">{{ myFriend.creationTime.month }} {{ myFriend.creationTime.dayOfMonth }}, {{ myFriend.creationTime.year }}</span>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center;">
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+              <div style="display: flex; flex: 2; flex-direction: column; justify-content: center; align-items: center;">
+                <span class="glyphicon glyphicon-ok" [id]="myFriend.id" (click)="confirm(myFriend.id)" style="color: #0EAD69; margin-right: 0px; font-weight: 700;font-size: 18px;"></span>
+              </div>
+              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: center;">
+                <span class="glyphicon glyphicon-edit" [id]="myFriend.id" (click)="edit()" style="color: #197CD3; margin-left: 0px; font-weight: 700;font-size: 18px;"></span>
+              </div>
+              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: center;">
+                <span class="glyphicon glyphicon-remove" [id]="myFriend.id" (click)="delete(myFriend.id)" style="color: #D7263D; margin-left: 0px; font-weight: 700;font-size: 18px;"></span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <pagination-controls style="display: flex; margin-top: 10px; justify-content: flex-end;" (pageChange)="p =$event" previousLabel="Previous" nextLabel="Next" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"></pagination-controls>
+    </table>
+  </div>
+</mat-card>

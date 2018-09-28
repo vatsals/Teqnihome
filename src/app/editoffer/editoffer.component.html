@@ -1,0 +1,477 @@
+<mat-card class="myCardFst">
+  <input name="company" #subcat class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: none;flex: 4;" id="company" placeholder="Enter Company">
+  <form novalidate #f2="ngForm" (ngSubmit)="onSubmitForm(f2)">
+    <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+      <p class="gInfo" style="display: flex; flex: 4;">General Information</p>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Job Id
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="jobId" #jobId class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.jobId">
+      </div>
+    </div>
+    <div class="parentDiv" style="display: none;">
+      <div class="chld">
+        Id
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="id" #id class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.id">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Designation
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="desig" #role class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.role">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Description
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <textarea class="form-control myCompany" name="desc" #desc style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Description" rows="3" [value]="myInfos.offer.description"></textarea>
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Experience
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input type="number" class="form-control myCompany" name="execpt" #execpt style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Experience" [value]="myInfos.offer.experienceDuration">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Remote
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <select [value]="myInfos.offer.isWorkRemotely" #remote name="remote" class="selectClass">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Minumum Salary
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="salFrom" #salFrom class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.salaryFrom">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Maximum Salary
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="salTo" #salTo class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.salaryTo">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Salary currency
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <select name="curr" #curr [value]="myInfos.offer.salaryCurrency" class="selectClass">
+          <option value="Dollar">Dollar</option>
+          <option value="Euro">Euro</option>
+          <option value="Indian Rupee">Indian Rupee</option>
+          <option value="Australian Dollar">Australian Dollar</option>
+        </select>
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Company
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="company" #comp class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.company">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Degree
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <select name="deg" #deg [value]="myInfos.offer.educationDegree" class="selectClass">
+          <option value="B.Tech">B.Tech</option>
+          <option value="BS">BS</option>
+          <option value="MS">MS</option>
+          <option value="BSc">BSc</option>
+        </select>
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Degree Level
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <select name="degl" #degl [value]="myInfos.offer.educationDegreeLevel" class="selectClass">
+          <option value="High School">High School</option>
+          <option value="Graduation">Graduation</option>
+          <option value="Post Graduation">Post Graduation</option>
+          <option value="Specialization">Specialization</option>
+        </select>
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Min GPA Required
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="gpa" #gpa class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.educationGPA">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Job Location
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="locatn" #locatn class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.location">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Number of Employees
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input type="number" #empno class="form-control myCompany" name="empno" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Experience" [value]="myInfos.offer.employeesAmount">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Website
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="web" #web class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.website">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Facebook
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="fb" #fb class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.facebook">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        LinkedIn
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="linked" #linked class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.linkedin">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Twitter
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="tweet" #tweet class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.twitter">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Discipline
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="disc" #disc class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.discipline">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Job Role Type
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="jobRole" #jobRoleType class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.jobRoleType">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Job Level
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="jobLevel" #jobLevel class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.jobLevel">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Reporting Person
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="report" #report class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.reportingPerson">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Status
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <select [value]="myInfos.offer.active" #status name="status" class="selectClass">
+          <option value="true">Active</option>
+          <option value="false">Inactive</option>
+        </select>
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Number of Persons to report to you
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input type="number" class="form-control myCompany" name="reportNo" #reportNo style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Experience" [value]="myInfos.offer.numberPersonReport">
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Security Clearance Required
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <select [value]="myInfos.offer.securityClearance" name="clear" #clear class="selectClass">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Foreign Travel Required
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <select [value]="myInfos.offer.foreignTravel" name="foreign" #foreign class="selectClass">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Customer Interaction Required
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <select [value]="myInfos.offer.customerInteraction" name="interact" #interact class="selectClass">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+    </div>
+    <div class="parentDiv">
+      <div class="chld">
+        Expiry Date
+      </div>
+      <div class="majors" *ngIf="myInfos">
+        <input name="expiry" type="date" #expiry class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter detail" [value]="myInfos.offer.expiryDate">
+      </div>
+    </div>
+    <div class="mainButton" style="display: flex; justify-content: center; margin-top: 20px;">
+        <button type="submit" style="border: none; padding: 5px 12px; background-color: #0EAD69; border-radius: 1px; color: #fff; font-size: 16px;"><span class="glyphicon glyphicon-pencil" style="padding-right: 8px;"></span>Save</button>
+        <a mat-button-raised (click)="cancelJob()" style="border: none; cursor: pointer; padding: 5px 12px; background-color: #E22B43; margin-left: 15px; border-radius: 1px; color: #fff; font-size: 16px;"><span class="glyphicon glyphicon-trash" style="padding-right: 8px;"></span>Cancel</a>
+      </div>
+  </form>
+</mat-card>
+<div style="margin-bottom: 10%;">
+  <div class="chartMain col-sm-12" style="margin-bottom: 0%;">
+    <mat-card *ngIf="types[0]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[0] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Onumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type0" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'os-'+i" placeholder="Enter name" name="name">
+                <datalist id="type0">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" class="sld" [id]="'osV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="os" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="os" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="types[1]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[1] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Pnumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type1" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'pl-'+i" placeholder="Enter name" name="name">
+                <datalist id="type1">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" value="0" class="sld" [id]="'plV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="pl" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="pl" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="chartMain col-sm-12" style="margin-bottom: 0%;">
+    <mat-card *ngIf="types[2]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[2] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Fnumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type2" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'frame-'+i" placeholder="Enter name" name="name">
+                <datalist id="type2">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" value="0" class="sld" [id]="'frameV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="fw" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="fw" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="types[3]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[3] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Inumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type3" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'ide-'+i" placeholder="Enter name" name="name">
+                <datalist id="type3">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" value="0" class="sld" [id]="'ideV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="ide" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="ide" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="chartMain col-sm-12" style="margin-bottom: 0%;">
+    <mat-card *ngIf="types[4]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[4] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Dnumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type4" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'db-'+i" placeholder="Enter name" name="name">
+                <datalist id="type4">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" value="0" class="sld" [id]="'dbV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="db" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="db" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="types[5]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[5] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Vnumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type5" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'vc-'+i" placeholder="Enter name" name="name">
+                <datalist id="type5">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" value="0" class="sld" [id]="'vcV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="vc" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="vc" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="types[6]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[6] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Tnumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type6" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'tframe-'+i" placeholder="Enter name" name="name">
+                <datalist id="type6">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" value="0" class="sld" [id]="'tframeV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="tf" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="tf" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div clss="chartMain col-sm-12">
+    <div class="mainButton" style="margin-top: 20px; text-align: center;">
+      <a mat-button-raised (click)="saveSkill()" style="text-decoration : none; border: none;cursor: pointer;padding: 8px 20px;background-color: #0EAD69;border-radius: 1px;color: #fff;font-size: 16px;"><span class="glyphicon glyphicon-pencil" style="padding-right: 8px; font-size: 14px;"></span>Save</a>
+      <a mat-button-raised (click)="cancelSkill()" style="text-decoration : none; border: none;cursor: pointer; margin-left: 10px; padding: 8px 20px;background-color: #E22B43;border-radius: 1px;color: #fff;font-size: 16px;"><span class="glyphicon glyphicon-trash" style="padding-right: 8px; font-size: 14px;"></span>Cancel</a>
+    </div>
+  </div>
+</div>

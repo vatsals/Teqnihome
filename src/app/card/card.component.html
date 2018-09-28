@@ -1,4 +1,4 @@
-<div class="main-container">
+<div class="main-container"  *ngIf="demoCard">
   <div class="main-tab" id="main-tab">
     <div class="front animate" id="front">
       <mat-card class="myCard" id="myCd" style="cursor: pointer;">
@@ -7,45 +7,49 @@
         </div>
         <div class="fx">
           <div class="fx" style="flex: 3; flex-direction: column;">
-            <img [src]="userImg" class="userImg" height="150" width="150">
-            <p class="headUser" style="font-size: 17px; margin-bottom: 5px;">Mr. Vatsal Shrivastav</p>
+            <img [src]="userMainImg" class="userImg" height="150" width="150">
+            <p class="headUser" style="font-size: 17px; margin-bottom: 5px;">{{ cardTitle }} {{ cardName }}</p>
           </div>
           <div class="" style="flex: 5; flex-direction: column; align-self: flex-start; margin-left: 25px;">
             <p class="headUser">Home Address</p>
             <div class="leftIcon">
               <span class="glyphicon glyphicon-home" style="padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 22px;"></span>
-              <p style="margin-left: 6%;">400 Thames Valley Park Drive, Thames Valley Park, Reading RG6 1PT, United Kingdom</p>
+              <p style="margin-left: 6%;">{{ cardhomeAdr }}</p>
             </div>
             <div class="leftIcon">
               <span class="glyphicon glyphicon-phone" style="padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 24px;"></span>
-              <p style="margin-left: 6%;">+44 118 963 7400</p>
+              <p style="margin-left: 6%;">{{ cardprivPhone }}</p>
             </div>
             <div class="leftIcon">
               <span class="glyphicon glyphicon-envelope" style="padding-right: 7px; padding-left: 1px; color: #197CD3; font-weight: 700; font-size: 21px;"></span>
-              <p style="margin-left: 6%;">vatsal@gmail.com</p>
+              <p style="margin-left: 6%;">{{ cardprivEmail }}</p>
             </div>
           </div>
         </div>
         <hr style="width: 86%; margin-top: 25px; margin-bottom: 20px; margin-left: 8%; border: 1px solid #eee;">
         <div class="fx">
           <div class="fx" style="flex: 3; flex-direction: column;">
-            <p class="headUserChild">B.Tech, Computer Science</p>
-            <p class="headUserChild" style="font-size: 15px;margin-top: 30px; margin-bottom: 3px;">Software Intern</p>
-            <p class="headUserChild" style="font-size: 15px;margin-top: 5px;">Microsoft (UK) Ltd</p>
+            <p class="headUserChild">{{ cardQualif }}, {{ cardMembers }}</p>
+            <p class="headUserChild" style="font-size: 15px;margin-top: 30px; margin-bottom: 3px;">{{ cardjobTitle }}</p>
+            <p class="headUserChild" style="font-size: 15px;margin-top: 5px;">{{ cardcompany }}</p>
           </div>
           <div class="" style="flex: 5; flex-direction: column; align-self: flex-start; margin-left: 25px;">
             <p class="headUser">Office Address</p>
             <div class="leftIcon">
               <span class="glyphicon glyphicon-home" style="padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 22px;"></span>
-              <p style="margin-left: 6%;">Thames Valley Park, Sonning, Reading RG6 1WA, UK</p>
+              <p style="margin-left: 6%;">{{ cardofficeAdr }}</p>
             </div>
             <div class="leftIcon">
               <span class="glyphicon glyphicon-earphone" style="padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 24px;"></span>
-              <p style="margin-left: 6%;">+44 344 800 2400</p>
+              <p style="margin-left: 6%;">{{ cardofficePhone }}</p>
             </div>
             <div class="leftIcon">
               <span class="glyphicon glyphicon-envelope" style="padding-right: 7px; padding-left: 1px; color: #197CD3; font-weight: 700; font-size: 21px;"></span>
-              <p style="margin-left: 6%;">vatsal@gmail.com</p>
+              <p style="margin-left: 6%;">{{ cardofficeEmail }}</p>
+            </div>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-globe" style="padding-right: 7px; padding-left: 1px; color: #197CD3; font-weight: 700; font-size: 21px;"></span>
+              <p style="margin-left: 6%; color: #197CD3;"><a [href]="cardwebsite" target="_blank">{{ cardwebsite }}</a></p>
             </div>
           </div>
         </div>
@@ -56,62 +60,12 @@
         <div style="display: flex; justify-content: flex-end; margin: 0px;">
           <span class="glyphicon glyphicon-refresh" (click)="flipEvent(flip)" style="padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 23px;"></span>
         </div>
-        <div class="" style="margin-top: 20px; display: flex; flex-direction: row;">
-          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
+        <div class="container-fluid" style="margin: 0px; padding: 0px; margin-top: 20px; display: flex; align-items: center; flex-direction: row;">
+          <div *ngFor="let allInfo of allInfos; let i=index" class="col-sm-2" style="flex-direction: column; cursor: pointer !important;">
             <div class="rmv">
-              <img [src]="fbIcon" style="margin-top: 10px;" width="120" height="100">
-              <div style="display: flex; justify-content: center; margin-top: 10px;">
-                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
-              </div>
-            </div>
-          </div>
-          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
-            <div class="rmv">
-              <img [src]="fbIcon2" style="margin-top: 10px;" width="120" height="100">
-              <div style="display: flex; justify-content: center; margin-top: 10px;">
-                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
-              </div>
-            </div>
-          </div>
-          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
-            <div class="rmv">
-              <img [src]="fbIcon" style="margin-top: 10px;" width="120" height="100">
-              <div style="display: flex; justify-content: center; margin-top: 10px;">
-                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
-              </div>
-            </div>
-          </div>
-          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
-            <div class="rmv">
-              <img [src]="fbIcon2" style="margin-top: 10px;" width="120" height="100">
-              <div style="display: flex; justify-content: center; margin-top: 10px;">
-                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
-              </div>
-            </div>
-          </div>
-          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
-            <div class="rmv">
-              <img [src]="fbIcon" style="margin-top: 10px;" width="120" height="100">
-              <div style="display: flex; justify-content: center; margin-top: 10px;">
-                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="" style="display: flex; flex-direction: row; margin-top: 30px;">
-          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
-            <div class="rmv">
-              <img [src]="fbIcon2" style="margin-top: 10px;" width="120" height="100">
-              <div style="display: flex; justify-content: center; margin-top: 10px;">
-                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
-              </div>
-            </div>
-          </div>
-          <div class="" style="flex-direction: column; width: 20%; cursor: pointer !important;">
-            <div class="rmv">
-              <img [src]="fbIcon" style="margin-top: 10px;" width="120" height="100">
-              <div style="display: flex; justify-content: center; margin-top: 10px;">
-                <span class="glyphicon glyphicon-trash" style="color: #f24141; font-weight: 700; font-size: 17px;"></span>
+              <a (click)="socialGo(allInfo.value)" target="_blank"><img [src]="icon[i]" style="margin-top: 10px;" width="120" height="100"></a>
+              <div style="display: flex; justify-content: center; margin-top: 5px;">
+                <span style="color: #197CD3; font-weight: 700; font-size: 17px;">{{ allInfo.address_info_id.name }}</span>
               </div>
             </div>
           </div>
@@ -121,15 +75,436 @@
       </mat-card>
     </div>
   </div>
-  <div class="btmBtn" id="bt1" style="margin-bottom: 6%; padding-top: 5px;">
-    <div style="display: flex; flex: 1; justify-content: flex-start; padding: 0px 4px;">
-      <a mat-raised-button style="background-color: #20B540; border-radius: 1px; color: #fff; font-size: 16px;" routerLink="editcard"><span class="glyphicon glyphicon-pencil" style="padding-right: 8px;"></span>Edit Card</a>
-    </div>
-    <div style="display: flex; flex: 1; justify-content: center; padding: 0px 4px;">
-      <a mat-raised-button style="background-color: #757575; border-radius: 1px; color: #fff; font-size: 16px;" routerLink=""><span class="glyphicon glyphicon-qrcode" style="padding-right: 8px;"></span>QR Code</a>
-    </div>
-    <div style="display: flex; flex: 1; justify-content: flex-end; padding: 0px 4px;">
-      <a mat-raised-button style="background-color: #f24141; border-radius: 1px; color: #fff; font-size: 16px;" routerLink=""><span class="glyphicon glyphicon-trash" style="padding-right: 8px;"></span>Delete Card</a>
+
+  <div class="modal fade" id="qrCard" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">QR Card</h4>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column; padding: 15px;">
+        <div style="display: flex; flex-direction: column; align-items: center; padding: 0px;">
+          <div style="display: flex;flex: 1;color: #197CD3;margin-bottom:  10px;">{{ qrCode }}</div>
+          <img [src]="demoqrImg">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
+</div>
+  <div class="btmBtn" id="bt1" style="margin-bottom: 6%; padding-top: 5px;">
+    <div style="display: flex; flex: 1; justify-content: flex-start; padding: 0px 4px;">
+      <a mat-raised-button style="background-color: #20B540;border-radius: 1px;color: #fff;display: flex;font-size: 15px;align-items: center;height: 33px;padding: 0px 13px;min-width: 56px;" routerLink="editcard"><span class="glyphicon glyphicon-pencil" style="padding-right: 8px;"></span>Edit Card</a>
+    </div>
+    <div style="display: flex; flex: 1; justify-content: center; padding: 0px 4px;">
+      <!-- <button (click)="qrShow()" mat-raised-button style="background-color: #757575; border-radius: 1px; color: #fff; font-size: 16px;"><span class="glyphicon glyphicon-qrcode" style="padding-right: 8px;"></span>QR Code</button> -->
+      <button data-toggle="modal" data-target="#qrCard" class="btn btn-default" style="border-radius: 1px; color: #fff; background: #757575;"><span class="glyphicon glyphicon-qrcode" style="padding-right: 8px;"></span>QR Code</button>
+    </div>
+    <div style="display: flex; flex: 1; justify-content: flex-end; padding: 0px 4px;" (click)="deleteCard()">
+      <button class="btn btn-danger" style="border-radius: 1px; color: #fff; background: #D7263D;"><span class="glyphicon glyphicon-trash" style="padding-right: 8px;"></span>Delete Card</button>
+    </div>
+  </div>
+</div>
+
+<div class="main-container" *ngIf="!demoCard">
+  <form class="formHead" novalidate #f="ngForm" (ngSubmit)="onSubmitForm(f)" style="display: flex; flex-direction: column;">
+  <div class="main-tab" id="main-tab">
+    <div class="front animate" id="front">
+      <mat-card class="myCard" id="myCd" style="cursor: pointer;">
+        <div style="display: flex; justify-content: flex-end; margin: 0px;">
+          <span class="glyphicon glyphicon-refresh" (click)="flipEvent(flip)" style="padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 23px;"></span>
+        </div>
+        <div class="fx">
+          <div class="fx" style="flex: 3; flex-direction: column;">
+            <img [src]="userImg" class="userImg" height="150" width="150">
+            <input type="file" (change)="fileChange($event)" id="file" name="file" style="margin-top: 10px;margin-bottom: 10px;display: flex;width: 100%;background-color: #fff;border: 1px solid #ccc;" /> 
+            <span style="margin-top: 10px; display: flex;">
+              <input id="mail1" [(ngModel)]="user.uHtml" #useruHtml="ngModel" name="uHtml" style="display: none;">
+              <input id="mail2" [(ngModel)]="user.uHtml2" #useruHtml2="ngModel" name="uHtml2" style="display: none;">
+              <input id="mail3" [(ngModel)]="user.uHtml3" #useruHtml3="ngModel" name="uHtml3" style="display: none;">
+              <input id="mail4" [(ngModel)]="user.uHtml4" #useruHtml4="ngModel" name="uHtml4" style="display: none;">
+              <input id="mail5" [(ngModel)]="user.uHtml5" #useruHtml5="ngModel" name="uHtml5" style="display: none;">
+              <input id="mail6" [(ngModel)]="user.uHtml6" #useruHtml6="ngModel" name="uHtml6" style="display: none;">
+              <input id="mail7" [(ngModel)]="user.uHtml7" #useruHtml7="ngModel" name="uHtml7" style="display: none;">
+              <input class="headUser" [(ngModel)]="user.title" #userTitle="ngModel" name="title" style="font-size: 15px; padding: 5px; margin: 0px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; width: 100%;" placeholder="Mr.">
+              <input class="headUser" id="cEdit" [(ngModel)]="user.name" #userName="ngModel" name="name" style="font-size: 15px; padding: 5px; margin: 0px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; margin-left: 7px;" placeholder="Name">
+            </span>
+          </div>
+          <div class="" style="flex: 5; flex-direction: column; align-self: flex-start; margin-left: 25px;">
+            <p class="headUser">Home Address</p>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-home" style="padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 22px;"></span>
+              <input class="headUser" [(ngModel)]="user.homeAdr" #userhomeAdr="ngModel" name="homeAdr" style="font-size: 15px; padding: 5px; margin: 0px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; margin-left: 10px;" placeholder="Home Address">
+              <span class="glyphicon glyphicon-lock" data-toggle="modal" data-target="#homeAdr" style="padding-left: 8px;color: #197CD3;font-weight: 700;font-size: 15px;display: flex;align-self: flex-end;margin-bottom: 1px;"></span>
+            </div>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-phone" style="padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 24px;"></span>
+              <input class="headUser" [(ngModel)]="user.homeCall" #userhomeCall="ngModel" name="homeCall" style="font-size: 15px; padding: 5px; margin: 0px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; margin-left: 10px;" placeholder="Personal contact">
+              <span class="glyphicon glyphicon-lock" data-toggle="modal" data-target="#homeCall" style="padding-left: 8px;color: #197CD3;font-weight: 700;font-size: 15px;display: flex;align-self: flex-end;margin-bottom: 1px;"></span>
+            </div>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-envelope" style="padding-right: 7px; padding-left: 1px; color: #197CD3; font-weight: 700; font-size: 21px;"></span>
+              <input class="headUser" [(ngModel)]="user.homeMail" #userhomeMail="ngModel" name="homeMail" style="font-size: 15px; padding: 5px; margin: 0px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; margin-left: 10px; text-transform: lowercase;" placeholder="Personal Email">
+              <span class="glyphicon glyphicon-lock" data-toggle="modal" data-target="#homeMail" style="padding-left: 8px;color: #197CD3;font-weight: 700;font-size: 15px;display: flex;align-self: flex-end;margin-bottom: 1px;"></span>
+            </div>
+          </div>
+        </div>
+        <hr style="width: 86%; margin-top: 25px; margin-bottom: 20px; margin-left: 8%; border: 1px solid #eee;">
+        <div class="fx">
+          <div class="fx" style="flex: 3; flex-direction: column;">
+            <input class="headUser" [(ngModel)]="user.degree" #userdegree="ngModel" name="degree" style="font-size: 15px; padding: 5px; margin: 0px; margin-bottom: 10px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; width: 100%;" placeholder="B.Tech">
+            <input class="headUser" [(ngModel)]="user.memberships" #usermemberships="ngModel" name="memberships" style="font-size: 15px; padding: 5px; margin: 0px; margin-bottom: 10px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; width: 100%;" placeholder="Computer Science">
+            <input class="headUser" [(ngModel)]="user.position" #userposition="ngModel" name="position" style="font-size: 15px; padding: 5px; margin: 0px; margin-bottom: 10px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; width: 100%;" placeholder="Software Intern">
+            <input class="headUser" [(ngModel)]="user.company" #usercompany="ngModel" name="company" style="font-size: 15px; padding: 5px; margin: 0px; margin-bottom: 10px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; width: 100%;" placeholder="Microsoft (UK) Ltd">
+          </div>
+          <div class="" style="flex: 5; flex-direction: column; align-self: flex-start; margin-left: 25px;">
+            <p class="headUser">Office Address</p>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-home" style="padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 22px;"></span>
+              <input class="headUser" [(ngModel)]="user.officeAdr" #userofficeAdr="ngModel" name="officeAdr" style="font-size: 15px; padding: 5px; margin: 0px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; margin-left: 10px;" placeholder="Office Address">
+              <span class="glyphicon glyphicon-lock" data-toggle="modal" data-target="#officeAdr" style="padding-left: 8px;color: #197CD3;font-weight: 700;font-size: 15px;display: flex;align-self: flex-end;margin-bottom: 1px;"></span>
+            </div>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-earphone" style="padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 24px;"></span>
+              <input class="headUser" [(ngModel)]="user.officeCall" #userofficeCall="ngModel" name="officeCall" style="font-size: 15px; padding: 5px; margin: 0px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; margin-left: 10px;" placeholder="Office Contact">
+              <span class="glyphicon glyphicon-lock" data-toggle="modal" data-target="#officeCall" style="padding-left: 8px;color: #197CD3;font-weight: 700;font-size: 15px;display: flex;align-self: flex-end;margin-bottom: 1px;"></span>
+            </div>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-envelope" style="padding-right: 7px; padding-left: 1px; color: #197CD3; font-weight: 700; font-size: 21px;"></span>
+              <input class="headUser" [(ngModel)]="user.officeMail" #userofficeMail="ngModel" name="officeMail" style="font-size: 15px; padding: 5px;text-transform: lowercase; margin: 0px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; margin-left: 10px;" placeholder="Office Email">
+              <span class="glyphicon glyphicon-lock" data-toggle="modal" data-target="#officeMail" style="padding-left: 8px;color: #197CD3;font-weight: 700;font-size: 15px;display: flex;align-self: flex-end;margin-bottom: 1px;"></span>
+            </div>
+            <div class="leftIcon">
+              <span class="glyphicon glyphicon-globe" style="padding-right: 7px; text-transform: lowercase; padding-left: 1px; color: #197CD3; font-weight: 700; font-size: 21px;"></span>
+              <input class="headUser" [(ngModel)]="user.website" #userwebsite="ngModel" name="website" style="font-size: 15px; padding: 5px; margin: 0px; color: #222; display: flex; flex: 1; border: 1px solid #ccc; font-weight: 200; margin-left: 10px;" placeholder="Website">
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="fliped animate" id="fliped" style="display: none;">
+      <mat-card class="myCard" id="myCd2" style="cursor: pointer;">
+        <div style="display: flex; justify-content: flex-end; margin: 0px;">
+          <span class="glyphicon glyphicon-refresh" (click)="flipEvent(flip)" style="padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 23px;"></span>
+        </div>
+        <div class="container-fluid" style="margin: 0px; padding: 0px; margin-top: 20px; display: flex; align-items: center; flex-direction: row;">
+          <div *ngFor="let allInfo of allInfos; let i=index" class="col-sm-2" style="flex-direction: column; cursor: pointer !important;">
+            <div class="rmv">
+              <a (click)="socialGo(allInfo.value)" target="_blank"><img [src]="icon[i]" style="margin-top: 10px;" width="120" height="100"></a>
+              <div style="display: flex; justify-content: center; margin-top: 5px;">
+                <span (click)="socialRemove(allInfo.id)" class="glyphicon glyphicon-trash" style="color: #D7263D; font-weight: 700; font-size: 17px;"></span>
+              </div>
+            </div>
+          </div>
+          <span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#links" style="color: #fff;font-weight: 700;font-size: 18px;background-color: #197CD3;display: flex;align-items: center;padding: 8px;height: 35px;margin-left: 20px;border-radius: 50%;"></span>
+        </div>
+        <div class="" style="display: flex; flex-direction: row; margin-top: 30px;">
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="btmBtn" id="bt1" style="margin-bottom: 6%; padding-top: 5px;">
+    <div style="display: flex; flex: 1; justify-content: center; padding: 0px 4px;">
+      <button type="submit" class="btn btn-success" mat-raised-button style="background-color: #20B540; border-radius: 1px; color: #fff; font-size: 16px;"><span class="glyphicon glyphicon-pencil" style="padding-right: 8px;"></span>Save Card</button>
+    </div>
+  </div>
+  <div class="modal fade" id="homeAdr" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Home Address Privacy</h4>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column;">
+        <div style="display: flex; flex-direction: row; align-items: center; padding: 20px 20px 30px 25px;">
+          <div style="display: flex; flex: 1;">Choose Privacy</div>
+          <select (change)="onChange($event.target.value, 'choosePrivateHome')" id="idHAP" #idHAP [(ngModel)]="user.homeAdrPriv" #userhomeAdrPriv="ngModel" name="homeAdrPriv" style="display: flex; flex: 3; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+            <option value="My friends">My friends</option>
+            <option value="My Work collegues">My Work collegues</option>
+            <option value="My family">My family</option>
+            <option value="School friends">School friends</option>
+            <option value="University friends">University friends</option>
+            <option value="Everyone">Everyone</option>
+            <option value="Individual User">Individual User</option>
+          </select>
+        </div>
+        <div id="choosePrivateHome" style="display: none; align-items: center; padding: 0px 0px 10px 10px;">
+          <div style="display: flex; flex: 1;">Individual User Email</div>
+          <form (ngSubmit)="onSubmit($event)" class="form-inline" style="display: flex; flex: 3;">
+            <div class="form-group">
+              <input type="email" style="border-radius: 0px; text-transform: lowercase; margin-right: 10px;" class="form-control" id="privHomeEmail" placeholder="Enter email" name="email">
+            </div>
+            <a (click)="append2('privHomeEmail')" class="btn btn-success" style="margin-right: 8px;">Add User</a>
+            <a class="btn btn-primary">Show Users</a>
+          </form>
+        </div>
+        <div [innerHTML]="myHtml2" ngDefaultControl class="envp" style="display: flex;flex-direction: column;padding-bottom: 15px;justify-content: center;margin-left: 28%; padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 14px;">
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="homeCall" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Private Phone Privacy</h4>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column;">
+        <div style="display: flex; flex-direction: row; align-items: center; padding: 20px 20px 30px 25px;">
+          <div style="display: flex; flex: 1;">Choose Privacy</div>
+          <select (change)="onChange($event.target.value, 'choosePrivatePhone')" id="idHPP" #idHPP [(ngModel)]="user.homePhonePriv" #userhomePhonePriv="ngModel" name="homePhonePriv" style="display: flex; flex: 3; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+            <option value="My friends">My friends</option>
+            <option value="My Work collegues">My Work collegues</option>
+            <option value="My family">My family</option>
+            <option value="School friends">School friends</option>
+            <option value="University friends">University friends</option>
+            <option value="Everyone">Everyone</option>
+            <option value="Individual User">Individual User</option>
+          </select>
+        </div>
+        <div id="choosePrivatePhone" style="display: none; align-items: center; padding: 0px 0px 10px 10px;">
+          <div style="display: flex; flex: 1;">Individual User Email</div>
+          <form (ngSubmit)="onSubmit($event)" class="form-inline" style="display: flex; flex: 3;">
+            <div class="form-group">
+              <input type="email" style="border-radius: 0px; margin-right: 10px;" class="form-control" id="privPhoneEmail" placeholder="Enter email" name="email">
+            </div>
+            <a (click)="append('privPhoneEmail')" class="btn btn-success" style="margin-right: 8px;">Add User</a>
+            <a class="btn btn-primary">Show Users</a>
+          </form>
+        </div>
+        <div [innerHTML]="myHtml" ngDefaultControl class="envp" style="display: flex;flex-direction: column;padding-bottom: 15px;justify-content: center;margin-left: 28%; padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 14px;">
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="homeMail" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Home Email Privacy</h4>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column;">
+        <div style="display: flex; flex-direction: row; align-items: center; padding: 20px 20px 30px 25px;">
+          <div style="display: flex; flex: 1;">Choose Privacy</div>
+          <select (change)="onChange($event.target.value, 'choosePrivateEmail')" id="idHEP" #idHEP [(ngModel)]="user.homeEmailPriv" #userhomeEmailPriv="ngModel" name="homeEmailPriv" style="display: flex; flex: 3; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+            <option value="My friends">My friends</option>
+            <option value="My Work collegues">My Work collegues</option>
+            <option value="My family">My family</option>
+            <option value="School friends">School friends</option>
+            <option value="University friends">University friends</option>
+            <option value="Everyone">Everyone</option>
+            <option value="Individual User">Individual User</option>
+          </select>
+        </div>
+        <div id="choosePrivateEmail" style="display: none; align-items: center; padding: 0px 0px 10px 10px;">
+          <div style="display: flex; flex: 1;">Individual User Email</div>
+          <form (ngSubmit)="onSubmit($event)" class="form-inline" style="display: flex; flex: 3;">
+            <div class="form-group">
+              <input type="email" style="border-radius: 0px; margin-right: 10px;" class="form-control" id="privEmailEmail" placeholder="Enter email" name="email">
+            </div>
+            <a (click)="append3('privEmailEmail')" class="btn btn-success" style="margin-right: 8px;">Add User</a>
+            <a class="btn btn-primary">Show Users</a>
+          </form>
+        </div>
+        <div [innerHTML]="myHtml3" ngDefaultControl class="envp" style="display: flex;flex-direction: column;padding-bottom: 15px;justify-content: center;margin-left: 28%; padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 14px;">
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="officeAdr" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Office Address Privacy</h4>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column;">
+        <div style="display: flex; flex-direction: row; align-items: center; padding: 20px 20px 30px 25px;">
+          <div style="display: flex; flex: 1;">Choose Privacy</div>
+          <select (change)="onChange($event.target.value, 'chooseOfficeHome')" id="idOAP" #idOAP [(ngModel)]="user.officeAdrPriv" #userofficeAdrPriv="ngModel" name="officeAdrPriv" style="display: flex; flex: 3; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+            <option value="My friends">My friends</option>
+            <option value="My Work collegues">My Work collegues</option>
+            <option value="My family">My family</option>
+            <option value="School friends">School friends</option>
+            <option value="University friends">University friends</option>
+            <option value="Everyone">Everyone</option>
+            <option value="Individual User">Individual User</option>
+          </select>
+        </div>
+        <div id="chooseOfficeHome" style="display: none; align-items: center; padding: 0px 0px 10px 10px;">
+          <div style="display: flex; flex: 1;">Individual User Email</div>
+          <form (ngSubmit)="onSubmit($event)" class="form-inline" style="display: flex; flex: 3;">
+            <div class="form-group">
+              <input type="email" style="border-radius: 0px; margin-right: 10px;" class="form-control" id="officeAddrEmail" placeholder="Enter email" name="email">
+            </div>
+            <a (click)="append4('officeAddrEmail')" class="btn btn-success" style="margin-right: 8px;">Add User</a>
+            <a class="btn btn-primary">Show Users</a>
+          </form>
+        </div>
+        <div [innerHTML]="myHtml4" ngDefaultControl class="envp" style="display: flex;flex-direction: column;padding-bottom: 15px;justify-content: center;margin-left: 28%; padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 14px;">
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="officeCall" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Office Phone Privacy</h4>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column;">
+        <div style="display: flex; flex-direction: row; align-items: center; padding: 20px 20px 30px 25px;">
+          <div style="display: flex; flex: 1;">Choose Privacy</div>
+          <select (change)="onChange($event.target.value, 'chooseOfficePhone')" id="idOPP" #idOPP [(ngModel)]="user.officePhonePriv" #userofficePhonePriv="ngModel" name="officePhonePriv" style="display: flex; flex: 3; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+            <option value="My friends">My friends</option>
+            <option value="My Work collegues">My Work collegues</option>
+            <option value="My family">My family</option>
+            <option value="School friends">School friends</option>
+            <option value="University friends">University friends</option>
+            <option value="Everyone">Everyone</option>
+            <option value="Individual User">Individual User</option>
+          </select>
+        </div>
+        <div id="chooseOfficePhone" style="display: none; align-items: center; padding: 0px 0px 10px 10px;">
+          <div style="display: flex; flex: 1;">Individual User Email</div>
+          <form (ngSubmit)="onSubmit($event)" class="form-inline" style="display: flex; flex: 3;">
+            <div class="form-group">
+              <input type="email" style="border-radius: 0px; margin-right: 10px;" class="form-control" id="officePhoneEmail" placeholder="Enter email" name="email">
+            </div>
+            <a (click)="append5('officePhoneEmail')" class="btn btn-success" style="margin-right: 8px;">Add User</a>
+            <a class="btn btn-primary">Show Users</a>
+          </form>
+        </div>
+        <div [innerHTML]="myHtml5" ngDefaultControl class="envp" style="display: flex;flex-direction: column;padding-bottom: 15px;justify-content: center;margin-left: 28%; padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 14px;">
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="links" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Link</h4>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column;">
+        <div class="form-group mClass" style="display: flex; margin-bottom: 10px;">
+          <span style="display: flex; flex: 1;">Link</span>
+          <div style="display: flex; flex: 3;">
+            <input type="text" #linkVal class="form-control myCompany" style="padding: 8px; border-radius: 1px; font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="myLink" placeholder="Enter link" name="text">
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: row; align-items: center; padding: 10px 0px;">
+          <div style="display: flex; flex: 1;">Address Type</div>
+          <select (change)="onLinkChange($event.target.value)" #linkOne name="linkOne" style="display: flex; flex: 3; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+            <option *ngFor="let selOne of selOnes" [value]="selOne.id">
+              {{selOne.name}}
+              </option>
+          </select>
+        </div>
+        <div style="display: flex; flex-direction: row; align-items: center; padding: 10px 0px;">
+          <div style="display: flex; flex: 1;">Address Info</div>
+          <select name="linkTwo" #linkTwo style="display: flex; flex: 3; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+            <option *ngFor="let selTwo of selTwos" [value]="selTwo">
+              {{selTwo}}
+              </option>
+          </select>
+        </div>
+        <div style="display: flex; flex-direction: row; align-items: center; padding: 10px 0px;">
+          <div style="display: flex; flex: 1;">Link Privacy</div>
+          <select name="linkThree" #linkThree style="display: flex; flex: 3; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+            <option value="My friends">My friends</option>
+            <option value="My Work collegues">My Work collegues</option>
+            <option value="My family">My family</option>
+            <option value="School friends">School friends</option>
+            <option value="University friends">University friends</option>
+            <option value="Everyone">Everyone</option>
+            <option value="Individual User">Individual User</option>
+          </select>
+        </div>
+        <div class="form-group mClass" style="display: flex; margin-bottom: 10px; margin-top: 10px;">
+          <span style="display: flex; flex: 1;">Link Priority</span>
+          <div style="display: flex; flex: 3;">
+            <input type="text" #linkPrior class="form-control myCompany" style="padding: 8px; border-radius: 1px; font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="linkNo" placeholder="Enter link priority" name="text">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="saves()" class="btn btn-default" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="officeMail" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Office Email Privacy</h4>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column;">
+        <div style="display: flex; flex-direction: row; align-items: center; padding: 20px 20px 30px 25px;">
+          <div style="display: flex; flex: 1;">Choose Privacy</div>
+          <select (change)="onChange($event.target.value, 'chooseOfficeEmail')" id="idOEP" #idOEP [(ngModel)]="user.officeEmailPriv" #userofficeEmailPriv="ngModel" name="officeEmailPriv" style="display: flex; flex: 3; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+            <option value="My friends">My friends</option>
+            <option value="My Work collegues">My Work collegues</option>
+            <option value="My family">My family</option>
+            <option value="School friends">School friends</option>
+            <option value="University friends">University friends</option>
+            <option value="Everyone">Everyone</option>
+            <option value="Individual User">Individual User</option>
+          </select>
+        </div>
+        <div id="chooseOfficeEmail" style="display: none; align-items: center; padding: 0px 0px 10px 10px;">
+          <div style="display: flex; flex: 1;">Individual User Email</div>
+          <form (ngSubmit)="onSubmit($event)" class="form-inline" style="display: flex; flex: 3;">
+            <div class="form-group">
+              <input type="email" style="border-radius: 0px; margin-right: 10px;" class="form-control" id="officeEmailEmail" placeholder="Enter email" name="email">
+            </div>
+            <a (click)="append6('officeEmailEmail')" class="btn btn-success" style="margin-right: 8px;">Add User</a>
+            <a class="btn btn-primary">Show Users</a>
+          </form>
+        </div>
+        <div [innerHTML]="myHtml6" ngDefaultControl class="envp" style="display: flex;flex-direction: column;padding-bottom: 15px;justify-content: center;margin-left: 28%; padding-right: 7px; color: #197CD3; font-weight: 700; font-size: 14px;">
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
 </div>

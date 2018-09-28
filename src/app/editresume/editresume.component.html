@@ -1,0 +1,543 @@
+<div class="myButton" id="mybn" #mybn data-toggle="modal" data-target="#form" style="display: block; justify-content: flex-start; margin: 20px; margin-left: 5%; margin-bottom: 0px;">
+  <a style="background-color: #0EAD69;border-radius: 1px;color: #fff;font-size: 16px; cursor: pointer; padding: 7px 15px;"><span class="glyphicon glyphicon-pencil pncl" style="padding-right: 8px;font-size: 14px;top: 2px;"></span>Change Field</a>
+</div>
+<input name="company" #myId class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: none;flex: 4;" id="company" placeholder="Enter Company">
+<input name="company" #subcat class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: none;flex: 4;" id="company" placeholder="Enter Company">
+<div id="mainPagedemo" #mpagedemo style="display: block; margin-bottom: 4%;">
+  <mat-card class="myCardFst" style="width: 91%; margin-left: 5%;">
+    <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+      <p class="gInfo" style="display: flex; flex: 4;">General Information</p>
+      <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 19px;"></span>
+    </div>
+    <div style="display: flex; margin-top: 35px; font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Name
+      </div>
+      <div class="chld">
+        <input name="name" #name class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="name" placeholder="Enter name">
+      </div>
+    </div>
+    <div style="display: flex; margin-top: 20px; font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Date of Birth
+      </div>
+      <div class="chld">
+        <input name="dob" #dob class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="dob" placeholder="Enter Date of Birth (MM/DD/YYYY)">
+      </div>
+    </div>
+    <div style="display: flex; margin-top: 20px; font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Nationaility
+      </div>
+      <div class="chld">
+        <input name="nation" #nation class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="nation" placeholder="Enter Nationality">
+      </div>
+    </div>
+    <div style="display: flex; margin-top: 20px; font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Experience
+      </div>
+      <div class="chld">
+        <input name="exp" #exp class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="exp" placeholder="Enter Experience">
+      </div>
+    </div>
+    <div style="display: flex;margin-top: 20px;font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Last/Current Designation
+      </div>
+      <div class="chld">
+        <input name="desig" #desig class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="desig" placeholder="Enter Designation">
+      </div>
+    </div>
+    <div style="display: flex;margin-top: 20px;font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Last/Current Company
+      </div>
+      <div class="chld">
+        <input name="company" #company class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Company">
+      </div>
+    </div>
+    <div class="chartMain col-sm-12" style="display: flex;margin-bottom: 0%;padding: 0px;padding-top: 20px;">
+    <mat-card class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Languages Known</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Lnumbers; let i=index;">
+              <div class="mDiv">
+                <input type="text" style="display: flex; flex: 2; margin-right: 10px; padding: 5px;" class="form-control iText" [id]="'langk-'+i" placeholder="Enter detail" [value]="number.name" name="name">
+                <div style="display: flex; flex: 3; align-items: center;">
+                  <input type="range" (change)="setVal($event)" value="number.val" class="sld" [id]="'langkV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="langk" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="langk" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Hobbies</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Hnumbers; let i=index;">
+              <div class="mDiv">
+                <input type="text" style="display: flex; flex: 2; margin-right: 10px; padding: 5px;" class="form-control iText" [id]="'hob-'+i" placeholder="Enter detail" [value]="number.name" name="name">
+                <div style="display: flex; flex: 3; align-items: center;">
+                  <input type="range" (change)="setVal($event)" value="number.val" class="sld" [id]="'hobV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="hob" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="hob" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+    <div id="svBtn" #svBtn (click)="saveGeneral()" style="display: flex; justify-content: center; margin-top: 20px;">
+      <a mat-raised-button style="background-color: #0EAD69; text-decoration: none; border-radius: 1px; padding: 0px 10px; min-width: 32px; line-height: 30px; min-width: 115px; color: #fff; font-size: 14px;"><span class="glyphicon glyphicon-pencil pncl" style="padding-right: 8px; padding-bottom: 5px;"></span>Save</a>
+    </div>
+  </mat-card>
+  <mat-card class="myCard" style="margin-bottom: 3%;">
+    <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+      <p class="gInfo" style="display: flex; flex: 4;">Career Highlights</p>
+      <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 20px;"></span>
+    </div>
+    <div class="box-content">
+      <div id="career-timeline" class="timeline">
+        <ul class="timeline-items">
+          <li class="timeline-item centered animated fadeInUp">
+            <h3 align="center">Experience<span class="glyphicon glyphicon-plus" #addCont data-toggle="modal" data-target="#expAdd" style="padding: 5px;color: #197CD3;font-weight: 700;font-size: 15px;background: #fff;margin-left: 7px;border-radius: 50%;"></span></h3></li>
+        </ul>
+        <div *ngFor="let number of Expnumbers; let i=index;">
+          <h2>{{ expYear[i] }}</h2>
+          <ul class="timeline-items" [id]="i%2==0 ? 'noshift' : 'shift'">
+            <li class="timeline-item animated fadeInLeft">
+              <span class="glyphicon glyphicon-remove pncl" (click)="blockRemExp(number, $event)" style="display: flex; justify-content: flex-end; padding-right: 5px; color: #fff; font-weight: 700; font-size: 17px; opacity: 0.9;"></span>
+              <h3 class="reschld">Started at <input type="text" [id]="'expcolName'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.companyName"></h3>
+              <hr>
+              <p class="reschld">Designation: <input type="text" [id]="'expdesig'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.position"></p>
+              <hr>
+              <p class="reschld">Company Website: <input type="text" [id]="'expweb'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.companyWebsite"></p>
+              <hr>
+              <p class="reschld">Achievements: <input type="text" [id]="'expach'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.achievements"></p>
+              <hr>
+              <p class="reschld">Skills used: <input type="text" [id]="'expskill'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.skillsUsed"></p>
+              <hr>
+              <p class="reschld" style="display: flex; align-items: center;"><input type="text" [id]="'exptFrom'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.periodFrom"> <span style="padding: 0px 5px;">-</span> <input type="text" [id]="'exptTo'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.periodTo"></p>
+              <hr>
+              <p class="reschld" style="display: flex; flex-direction: column;">Current Job: 
+                <select [id]="'expcurr'+i" [value]="number.currentJob" style="display: flex;flex: 4;height: 35px;background: #377AB7;;color: #474747; margin-top: 5px; padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);width: 100%;color: #fff;">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div id="saveExp" #saveExp (click)="saveDataExp()" style="display: flex; justify-content: center; margin-top: 20px;">
+        <a mat-raised-button style="background-color: #0EAD69; text-decoration: none; border-radius: 1px; padding: 0px 10px; min-width: 32px; line-height: 30px; min-width: 115px; color: #fff; font-size: 14px;"><span class="glyphicon glyphicon-pencil pncl" style="padding-right: 8px; padding-bottom: 5px;"></span>Save</a>
+      </div>
+        <ul class="timeline-items">
+          <li class="timeline-item centered animated fadeInUp">
+            <h3 align="center">Education<span class="glyphicon glyphicon-plus" #addCont data-toggle="modal" data-target="#eduAdd" style="padding: 5px;color: #197CD3;font-weight: 700;font-size: 15px;background: #fff;margin-left: 7px;border-radius: 50%;"></span></h3></li>
+        </ul>
+        <div *ngFor="let number of Edunumbers; let i=index;">
+          <h2>{{ eduYear[i] }}</h2>
+          <ul class="timeline-items" [id]="i%2==0 ? 'noshift' : 'shift'">
+            <li class="timeline-item animated fadeInLeft">
+              <span class="glyphicon glyphicon-remove pncl" (click)="blockRem(number, $event)" style="display: flex; justify-content: flex-end; padding-right: 5px; color: #fff; font-weight: 700; font-size: 17px; opacity: 0.9;"></span>
+              <h3 class="reschld">Studied at <input type="text" [id]="'ecolName'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.colName"></h3>
+              <hr>
+              <p class="reschld">Location: <input type="text" [id]="'eloc'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.eduloc"></p>
+              <hr>
+              <p class="reschld">Degree: <input type="text" [id]="'edeg'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.edudeg"></p>
+              <hr>
+              <p class="reschld">Degree Level: <input type="text" [id]="'edegl'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.edudegl"></p>
+              <hr>
+              <p class="reschld">Company Website: <input type="text" [id]="'eweb'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.colWeb"></p>
+              <hr>
+              <p class="reschld">Achievements: <input type="text" [id]="'each'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.edudet"></p>
+              <hr>
+              <p class="reschld">Subjects: <input type="text" [id]="'esub'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.edusub"></p>
+              <hr>
+              <p class="reschld" style="display: flex; align-items: center;"><input type="text" [id]="'eptFrom'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.perFrom"> <span style="padding: 0px 5px;">-</span> <input type="text" [id]="'eptTo'+i" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Detail" name="text" [value]="number.perTo"></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="saveEdu" #saveEdu (click)="saveData()" style="display: flex; justify-content: center; margin-top: 20px;">
+        <a mat-raised-button style="background-color: #0EAD69; text-decoration: none; border-radius: 1px; padding: 0px 10px; min-width: 32px; line-height: 30px; min-width: 115px; color: #fff; font-size: 14px;"><span class="glyphicon glyphicon-pencil pncl" style="padding-right: 8px; padding-bottom: 5px;"></span>Save</a>
+      </div>
+    </div>
+  </mat-card>
+</div>
+<div class="modal fade" id="form" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select Fields</h4>
+      </div>
+      <div class="modal-body" style="display: flex;flex-direction: column;align-items: center;min-height: 100px;justify-content: center;">
+        <div id="parentF" #pF style="display: flex; width: 90%; align-items: center;">
+          <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
+            Select Category
+          </div>
+          <div style="display: flex; flex: 3;">
+            <select (change)="selNew2($event)" #parentlinkOne style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
+              <option value="999" disabled>Select Category</option>
+              <option *ngFor="let cat of cats" [id]="'cat-'+cat.id" [value]="cat.id">
+                {{ cat.name }}
+                </option>
+            </select>
+          </div>
+        </div>
+        <div id="parentF" #pF style="display: flex; width: 90%; align-items: center; margin-top: 15px;">
+          <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
+            Select SubCategory
+          </div>
+          <div style="display: flex; flex: 3;">
+            <select (change)="selNew3($event)" #parentlinkOne2 style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
+              <option value="999" disabled>Select Sub Category</option>
+            <option *ngFor="let subcat of subcats" [id]="'subcat-'+subcat.id" [value]="subcat.id">
+              {{ subcat.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a #backBtn class="btn btn-default" data-dismiss="modal">Close</a>
+        <a (click)="save()" id="saveBtn" #saveBtn class="btn btn-success" data-dismiss="modal">Save</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="expAdd" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Fill Details</h4>
+      </div>
+      <div class="modal-body" style="display: flex;flex-direction: column;align-items: center;min-height: 100px;justify-content: center;">
+        <div id="parentF" style="display: flex; width: 95%; align-items: center;">
+          <form (ngSubmit)="onSubmit($event)" class="form-inline" style="display: flex; flex-direction: column; width: 100%;">
+            <div class="form-group mClass">
+              <span class="sClass">Comapny Name</span>
+              <input type="text" #expOrg class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Name" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">Position</span>
+              <input type="text" #expPos class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Position" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">Website</span>
+              <input type="text" #expWeb class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Website" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">Achievements</span>
+              <input type="text" #expAch class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Achievements" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">Skills Used</span>
+              <input type="text" #expSub class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Skills" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">From</span>
+              <input type="date" #expFrom class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">To</span>
+              <input type="date" #expTo class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">Current Job?</span>
+              <select #expJob style="display: flex; flex: 4; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a id="closeBtn" #closeBtn class="btn btn-default" data-dismiss="modal">Close</a>
+        <a (click)="saveDataExp()" id="saveBtn" #saveBtn class="btn btn-success" data-dismiss="modal">Save</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="eduAdd" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Fill Details</h4>
+      </div>
+      <div class="modal-body" style="display: flex;flex-direction: column;align-items: center;min-height: 100px;justify-content: center;">
+        <div id="parentF" style="display: flex; width: 95%; align-items: center;">
+          <form (ngSubmit)="onSubmit($event)" class="form-inline" style="display: flex; flex-direction: column; width: 100%;">
+            <div class="form-group mClass">
+              <span class="sClass">Institution Name</span>
+              <input type="text" #eduOrg class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Name" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">Location</span>
+              <input type="text" #eduLoc class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Location" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">Degree</span>
+              <input type="text" #eduDeg class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Degree" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">Degree Level</span>
+              <input type="text" #eduDegl class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Degree Level" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">Subjects/Majors</span>
+              <input type="text" #eduSub class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Subjects/Majors" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">Website</span>
+              <input type="text" #eduWeb class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Website" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">From</span>
+              <input type="date" #eduFrom class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">To</span>
+              <input type="date" #eduTo class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" name="text">
+            </div>
+            <div class="form-group mClass">
+              <span class="sClass">Achievements</span>
+              <input type="text" #eduAch class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Achievements" name="text">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a id="closeBtn" #closeBtn class="btn btn-default" data-dismiss="modal">Close</a>
+        <a (click)="saveData()" id="saveBtn" #saveBtn class="btn btn-success" data-dismiss="modal">Save</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="margin-bottom: 10%;">
+  <div class="chartMain col-sm-12" style="margin-bottom: 0%;">
+    <mat-card *ngIf="types[0]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[0] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Onumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type0" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'os-'+i" placeholder="Enter name" name="name">
+                <datalist id="type0">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" class="sld" [id]="'osV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="os" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="os" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="types[1]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[1] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Pnumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type1" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'pl-'+i" placeholder="Enter name" name="name">
+                <datalist id="type1">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" value="0" class="sld" [id]="'plV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="pl" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="pl" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="chartMain col-sm-12" style="margin-bottom: 0%;">
+    <mat-card *ngIf="types[2]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[2] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Fnumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type2" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'frame-'+i" placeholder="Enter name" name="name">
+                <datalist id="type2">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" value="0" class="sld" [id]="'frameV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="fw" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="fw" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="types[3]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[3] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Inumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type3" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'ide-'+i" placeholder="Enter name" name="name">
+                <datalist id="type3">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" value="0" class="sld" [id]="'ideV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="ide" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="ide" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="chartMain col-sm-12" style="margin-bottom: 0%;">
+    <mat-card *ngIf="types[4]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[4] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Dnumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type4" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'db-'+i" placeholder="Enter name" name="name">
+                <datalist id="type4">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" value="0" class="sld" [id]="'dbV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="db" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="db" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="types[5]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[5] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Vnumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type5" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'vc-'+i" placeholder="Enter name" name="name">
+                <datalist id="type5">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" value="0" class="sld" [id]="'vcV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="vc" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="vc" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="types[6]" class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[6] }}</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Tnumbers; let i=index;">
+              <div class="mDiv">
+                <input list="type6" type="text" [value]="number.name" class="form-control iText" style="display: flex; flex: 2;" [id]="'tframe-'+i" placeholder="Enter name" name="name">
+                <datalist id="type6">
+                  <option *ngFor="let sOpt of sOpts" [value]="sOpt">
+                </datalist>
+                <div style="display: flex; flex: 3; margin-left: 10px; align-items: center;">
+                  <input type="range" (change)="setVal($event)" [value]="number.val" value="0" class="sld" [id]="'tframeV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="tf" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="tf" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div clss="chartMain col-sm-12">
+    <div class="mainButton" style="margin-top: 20px; text-align: center;">
+      <a mat-button-raised (click)="saveSkill()" style="text-decoration : none; border: none;cursor: pointer;padding: 8px 20px;background-color: #0EAD69;border-radius: 1px;color: #fff;font-size: 16px;"><span class="glyphicon glyphicon-pencil" style="padding-right: 8px; font-size: 14px;"></span>Save</a>
+      <a mat-button-raised (click)="cancelSkill()" style="text-decoration : none; border: none;cursor: pointer; margin-left: 10px; padding: 8px 20px;background-color: #E22B43;border-radius: 1px;color: #fff;font-size: 16px;"><span class="glyphicon glyphicon-trash" style="padding-right: 8px; font-size: 14px;"></span>Cancel</a>
+    </div>
+  </div>
+</div>

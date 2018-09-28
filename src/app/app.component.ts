@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor() {
+  	localStorage.setItem('sign', JSON.stringify({ sig: true}));
+  }
+
+  currentUser() {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
+  signUp() {
+    return JSON.parse(localStorage.getItem('sign'));
+  }
 }

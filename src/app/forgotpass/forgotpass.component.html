@@ -1,7 +1,7 @@
 <div class="main" style="width: 100%; display: flex; flex-direction: row; margin-bottom: 5%; margin-top: 5px;">
-  <div class="left" style="display: flex; flex: 1;">
+  <div class="left" style="display: flex; flex: 3;">
   </div>
-  <div class="mid" style="display: flex; flex: 1;">
+  <div class="mid" style="display: flex; flex: 4;">
     <form name="myForm" novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="imgcontainer">
         <img [src]="userImg" class="userImg" height="90" width="90">
@@ -17,9 +17,10 @@
         </div>
         <button type="submit" style="margin-top: 10px; background-color: #197CD3;" value="Login">Reset Password</button>
         <div *ngIf="sent" style="padding: 6px 10px; color: red; margin-left: 5px;">A verification link has been sent your email address</div>
+        <div *ngIf="inval" style="padding: 6px 10px; color: red; margin-left: 5px;">No user has been registered with this email address</div>
       </div>
     </form>
   </div>
-  <div class="right" style="display: flex; flex: 1;">
+  <div class="right" style="display: flex; flex: 4;">
   </div>
 </div>

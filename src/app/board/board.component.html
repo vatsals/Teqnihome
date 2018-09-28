@@ -9,16 +9,20 @@
 		<div class="dId" id="card" (click)="goto('card')"><span class="glyphicon glyphicon-credit-card glyPlace"></span><span class="spanIcon2">My Card</span></div>
 		<div class="dId" id="searchuser" (click)="goto('searchuser')"><span class="glyphicon glyphicon-search glyPlace"></span><span class="spanIcon3">Search User</span></div>
 		<div class="dId" id="requests" (click)="goto('requests')"><span class="glyphicon glyphicon-ok glyPlace"></span><span class="spanIcon4">View Requests</span></div>
+		<div class="dId" id="cardreq" (click)="goto('cardreq')"><span class="glyphicon glyphicon-wrench glyPlace"></span><span class="spanIcon4">Card Requests</span></div>
 		<div class="dId" id="privacy" (click)="goto('privacy')"><span class="glyphicon glyphicon-cog glyPlace"></span><span class="spanIcon5">Privacy Settings</span></div>
+		<div class="dId" id="avail" (click)="goto('avail')"><span class="glyphicon glyphicon-search glyPlace"></span><span class="spanIcon3">Availability</span></div>
 	</div>
 	<div class="mDiv" data-toggle="collapse" data-target="#Mobdemo2">
 		<span class="glyphicon glyphicon-search" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon20">Job Seeking</span>
 	</div>
 	<div id="Mobdemo2" class="collapse">
+		<!-- <div class="dId" id="createresume" (click)="goto('createresume')"><span class="glyphicon glyphicon-user glyPlace"></span><span class="spanIcon6">Create Resume</span></div> -->
 		<div class="dId" id="resume" (click)="goto('resume')"><span class="glyphicon glyphicon-user glyPlace"></span><span class="spanIcon6">Resume</span></div>
 		<div class="dId" (click)="goto('appliedjobs')" id="appliedjobs"><span class="glyphicon glyphicon-list-alt glyPlace"></span><span class="spanIcon7">Applied Jobs</span></div>
 		<div class="dId" (click)="goto('matchedjobs')" id="matchedjobs"><span class="glyphicon glyphicon-star glyPlace"></span><span class="spanIcon8">Matched Jobs</span></div>
 		<div class="dId" (click)="goto('jobsearch')" id="jobsearch"><span class="glyphicon glyphicon-search glyPlace"></span><span class="spanIcon9">Job Search</span></div>
+		<div class="dId" (click)="goto('listtestuser')" id="listtestuser"><span class="glyphicon glyphicon-list-alt glyPlace"></span><span class="spanIcon16">List Tests</span></div>
 		<div class="dId" (click)="goto('calendar')" id="calendar"><span class="glyphicon glyphicon-calendar glyPlace"></span><span class="spanIcon10">Calendar</span></div>
 	</div>
 	<div class="mDiv">
@@ -32,6 +36,9 @@
 		<div class="dId" (click)="goto('myjobspost')" id="myjobspost"><span class="glyphicon glyphicon-star glyPlace"></span><span class="spanIcon12">My Jobs Postings</span></div>
 		<div class="dId" (click)="goto('candidatematch')" id="candidatematch"><span class="glyphicon glyphicon-check glyPlace"></span><span class="spanIcon13">Candidate Matches</span></div>
 		<div class="dId" (click)="goto('candidateapplied')" id="candidateapplied"><span class="glyphicon glyphicon-th-list glyPlace"></span><span class="spanIcon14">Candidates Applied</span></div>
+		<div class="dId" (click)="goto('createtest')" id="createtest"><span class="glyphicon glyphicon-plus-sign glyPlace"></span><span class="spanIcon16">Create Test</span></div>
+		<div class="dId" (click)="goto('listtest')" id="listtest"><span class="glyphicon glyphicon-list-alt glyPlace"></span><span class="spanIcon16">List Tests</span></div>
+		<div class="dId" (click)="goto('assignments')" id="assignments"><span class="glyphicon glyphicon-list-alt glyPlace"></span><span class="spanIcon16">List Assignments</span></div>
 		<div class="dId" (click)="goto('resumesearch')" id="resumesearch"><span class="glyphicon glyphicon-search glyPlace"></span><span class="spanIcon15">Resume Search</span></div>
 		<div class="dId" (click)="goto('interviews')" id="interviews"><span class="glyphicon glyphicon-calendar glyPlace"></span><span class="spanIcon16">Interviews</span></div>
 	</div>
@@ -42,4 +49,71 @@
 		<div class="dId" (click)="goto('viewreference')" id="viewreference"><span class="glyphicon glyphicon-eye-open glyPlace"></span><span class="spanIcon17">View Reference</span></div>
 		<div class="dId" (click)="goto('providereference')" id="providereference"><span class="glyphicon glyphicon-ok glyPlace"></span><span class="spanIcon18">Provide Reference</span></div>
 	</div>
+	<!-- <div id="Mobdemo6" class="collapse" style="margin-left: 2%;">
+		<div class="mDiv" id="projdashboard" (click)="goto('projdashboard')">
+			<span class="glyphicon glyphicon-home" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon1">Dashboard</span>
+		</div>
+		<div class="mDiv">
+			<div (click)="goto('addemployee')" id="addemployee" style="display: flex;align-items: center;"><span class="glyphicon glyphicon-plus-sign" style="margin-right: 7px; font-size: 18px;"></span><span class="spanIcon21">Add Employee</span></div>
+		</div>
+		<div class="mDiv" data-toggle="collapse" data-target="#Mobdemo7">
+			<div style="display: flex;align-items: center;"><span class="glyphicon glyphicon-folder-open" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon23">Project</span></div>
+		</div>
+		<div id="Mobdemo7" class="collapse">
+			<div class="dId" (click)="goto('createproject')" id="createproject" style="display: flex;align-items: center;"><span class="glyphicon glyphicon-edit glyPlace"></span><span class="spanIcon17">Create Project</span></div>
+			<div class="dId" (click)="goto('pompombuild')" id="pompombuild" style="display: flex;align-items: center;"><span class="glyphicon glyphicon-modal-window glyPlace"></span><span class="spanIcon18">PomPom Building</span></div>
+		</div>
+		<div class="mDiv" data-toggle="collapse" data-target="#Mobdemo8">
+			<span class="glyphicon glyphicon-credit-card" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon23">Boards</span>
+		</div>
+		<div id="Mobdemo8" class="collapse">
+			<div class="dId" (click)="goto('pompombuildboard')" id="pompombuildboard" style="display: flex;align-items: center;"><span class="glyphicon glyphicon-modal-window glyPlace"></span><span class="spanIcon17">PomPom Building</span></div>
+		</div>
+		<div class="mDiv">
+			<div (click)="goto('createissue')" id="createissue" style="display: flex;align-items: center;"><span class="glyphicon glyphicon-check" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon21">Create Task</span></div>
+		</div>
+		<div class="mDiv">
+			<div (click)="goto('burndown')" id="burndown" style="display: flex;align-items: center;"><span class="glyphicon glyphicon-stats" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon21">BurnDown Chart</span></div>
+		</div>
+	</div> -->
+	<div class="mDiv" data-toggle="collapse" data-target="#Mobdemo9">
+		<span class="glyphicon glyphicon-folder-open" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon20">Project Management</span>
+	</div>
+	<div id="Mobdemo9" class="collapse" style="margin-left: 3%;">
+		<div class="mDiv" id="projdashboard" (click)="goto('projdashboard')">
+			<span class="glyphicon glyphicon-home" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon1">Dashboard</span>
+		</div>
+		<div class="mDiv">
+			<div (click)="goto('addemployee')" id="addemployee" style="display: flex;align-items: center;"><span class="glyphicon glyphicon-plus-sign" style="margin-right: 7px; font-size: 18px;"></span><span class="spanIcon21">Add Employee</span></div>
+		</div>
+		<div class="mDiv" data-toggle="collapse" data-target="#Mobdemo10">
+			<div style="display: flex;align-items: center;"><span class="glyphicon glyphicon-folder-open" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon23">Project</span></div>
+		</div>
+		<div id="Mobdemo10" class="collapse">
+			<div class="dId" (click)="goto('createproject')" id="createproject" style="display: flex;align-items: center;"><span class="glyphicon glyphicon-edit glyPlace"></span><span class="spanIcon17">Create Project</span></div>
+			<div class="dId" *ngFor="let proj of projs" (click)="gotoProj(proj.name, proj.id)" style="display: flex;align-items: center;"><span class="glyphicon glyphicon-modal-window glyPlace"></span><span class="spanIcon18">{{proj.name}}</span></div>
+		</div>
+		<div class="mDiv" data-toggle="collapse" data-target="#Mobdemo11">
+			<span class="glyphicon glyphicon-credit-card" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon23">Boards</span>
+		</div>
+		<div id="Mobdemo11" class="collapse">
+			<div class="dId" *ngFor="let proj of projs" (click)="gotoProj2(proj.name, proj.id)" style="display: flex;align-items: center;"><span class="glyphicon glyphicon-modal-window glyPlace"></span><span class="spanIcon17">{{proj.name}}</span></div>
+		</div>
+		<div class="mDiv">
+			<div (click)="goto('createissue')" id="createissue" style="display: flex;align-items: center;"><span class="glyphicon glyphicon-check" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon21">Create Task</span></div>
+		</div>
+		<div class="mDiv">
+			<div (click)="goto('burndown')" id="burndown" style="display: flex;align-items: center;"><span class="glyphicon glyphicon-stats" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon21">BurnDown Chart</span></div>
+		</div>
+	</div>
+	<!-- <div class="mDiv" data-toggle="collapse" data-target="#Mobdemo13">
+		<span class="glyphicon glyphicon-list-alt" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon23">Chart</span>
+	</div>
+	<div id="Mobdemo13" class="collapse">
+		<a href="/chart" style="color: #fff; text-decoration: none;"><div class="dId" (click)="goto('chart')" id="chart"><span class="glyphicon glyphicon-edit glyphicon" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon21">Create Chart</span></div></a>
+		<a href="/chart" style="color: #fff; text-decoration: none;"><div class="dId" (click)="goto('chart')" id="chart"><span class="glyphicon glyphicon-eye-open glyphicon" style="margin-right: 7px; font-size: 14px;"></span><span class="spanIcon21">View Chart</span></div></a>
+	</div> -->
+	<!-- <div class="mDiv">
+		<div (click)="goto('price')" id="price" style="display: flex;align-items: center;"><i class="fa fa-dollar" style="margin-right: 7px; font-size: 17px;"></i><span class="spanIcon21">Pricing</span></div>
+	</div> -->
 </div>

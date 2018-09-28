@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+// import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { DragulaService } from 'ng2-dragula/ng2-dragula';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DataService } from '../data.service';
+import { Http, Response, Headers } from '@angular/http';
 import {
   FormBuilder,
   FormControl,
@@ -6,6 +11,50 @@ import {
   Validators
 } from '@angular/forms';
 import * as moment from 'moment';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  OnInit,
+  ViewEncapsulation,
+  ViewChild,
+  TemplateRef
+} from '@angular/core';
+import {
+  startOfDay,
+  endOfDay,
+  subDays,
+  addDays,
+  endOfMonth,
+  isSameDay,
+  isSameMonth,
+  addHours
+} from 'date-fns';
+import { Subject } from 'rxjs/Subject';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CalendarModule } from 'angular-calendar';
+import {
+  CalendarEvent,
+  CalendarEventAction,
+  CalendarEventTimesChangedEvent
+} from 'angular-calendar';
+const colors: any = {
+  red: {
+    primary: '#ad2121',
+    secondary: '#FAE3E3'
+  },
+  blue: {
+    primary: '#1e90ff',
+    secondary: '#D1E8FF'
+  },
+  yellow: {
+    primary: '#e3bc08',
+    secondary: '#FDF1BA'
+  },
+  def: {
+    primary: '#197CD3',
+    secondary: '#e3bc08'
+  }
+};
 
 @Component({
   selector: 'app-interviews',
@@ -23,177 +72,120 @@ export class InterviewsComponent implements OnInit {
   @ViewChild('month') month;
   @ViewChild('days') days;
   @ViewChild('currDate') currDate;
+  @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
-  constructor(private fb: FormBuilder) {
-    this.initDateRange();
+  view: string = 'month';
+
+  viewDate: Date = new Date();
+
+  modalData: {
+    action: string;
+    event: CalendarEvent;
+  };
+
+  actions: CalendarEventAction[] = [
+    {
+      label: '<i class=""></i>',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.handleEvent('Edited', event);
+      }
+    },
+    {
+      label: '<i class=""></i>',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.events = this.events.filter(iEvent => iEvent !== event);
+        this.handleEvent('Deleted', event);
+      }
+    }
+  ];
+
+  refresh: Subject<any> = new Subject();
+
+  constructor(private modal: NgbModal, private router:Router, private dataService:DataService) {
+    this.viewDate = startOfDay(new Date());
   }
 
-   public initDateRange() {
-    return (this.dateForm = this.fb.group({
-      dateFrom: [null, Validators.required],
-      dateTo: [null, Validators.required]
-    }));
-  }
+  events: CalendarEvent[] = [];
 
   ngOnInit() {
-    this.daysArr = this.createCalendar(this.date);
+    this.events.push({
+      start: startOfDay(new Date()),
+      title: 'No interviews on this day',
+      color: colors.yellow,
+      actions: this.actions
+    });
+    this.dataService.interDate()
+      .subscribe(
+            data => {
+              // console.log(data);
+              this.viewDate = startOfDay(new Date());
+              for(var i=0;i<data.length;i++) {
+                var sdt = new Date(data[i].jobApplication.interviewTime);
+                var edt = new Date(data[i].jobApplication.interviewTime);
+                var tH = sdt.getHours(); var tM = sdt.getMinutes();
+                var ttl = 'Interview with ' + data[i].resume.name + '. Mode: ' + data[i].jobApplication.interviewMode + '. Details: ' + data[i].jobApplication.interviewModeDetail + '. Time: ' + tH + ' : ' + tM;
+                  this.events.push( {
+                    start: sdt,
+                    title: ttl,
+                    color: colors.def,
+                    actions: this.actions
+                  });
+                }
+                // console.log(this.events);
+              }
+        );
   }
 
-  public createCalendar(month) {
-    let firstDay = moment(month).startOf('M');
-    let days = Array.apply(null, { length: month.daysInMonth() })
-      .map(Number.call, Number)
-      .map(n => {
-        return moment(firstDay).add(n, 'd');
-      });
+  activeDayIsOpen: boolean = false;
 
-    for (let n = 0; n < firstDay.weekday(); n++) {
-      days.unshift(null);
-    }
-    return days;
-  }
-
-  public nextMonth() {
-    this.date.add(1, 'M');
-    this.daysArr = this.createCalendar(this.date);
-  }
-
-  public previousMonth() {
-    this.date.subtract(1, 'M');
-    this.daysArr = this.createCalendar(this.date);
-  }
-
-  public todayCheck(day) {
-    if (!day) {
-      return false;
-    }
-    return moment().format('L') === day.format('L');
-  }
-
-  public reserve() {
-    if (!this.dateForm.valid) {
-      return;
-    }
-    let dateFromMoment = this.dateForm.value.dateFrom;
-    let dateToMoment = this.dateForm.value.dateTo;
-    this.isReserved = `Reserved from ${dateFromMoment} to ${dateToMoment}`;
-  }
-
-  public isSelected(day) {
-    if (!day) {
-      return false;
-    }
-    let dateFromMoment = moment(this.dateForm.value.dateFrom, 'MM/DD/YYYY');
-    let dateToMoment = moment(this.dateForm.value.dateTo, 'MM/DD/YYYY');
-    if (this.dateForm.valid) {
-      return (
-        dateFromMoment.isSameOrBefore(day) && dateToMoment.isSameOrAfter(day)
-      );
-    }
-    if (this.dateForm.get('dateFrom').valid) {
-      return dateFromMoment.isSame(day);
+  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    if (isSameMonth(date, this.viewDate)) {
+      if (
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      ) {
+        this.activeDayIsOpen = false;
+      } else {
+        this.activeDayIsOpen = true;
+        this.viewDate = date;
+      }
     }
   }
 
-  public selectedDate(day) {
-    let dayFormatted = day.format('MM/DD/YYYY');
-    if (this.dateForm.valid) {
-      this.dateForm.setValue({ dateFrom: null, dateTo: null });
-      return;
-    }
-    if (!this.dateForm.get('dateFrom').value) {
-      this.dateForm.get('dateFrom').patchValue(dayFormatted);
-    } else {
-      this.dateForm.get('dateTo').patchValue(dayFormatted);
-    }
+  eventTimesChanged({
+    event,
+    newStart,
+    newEnd
+  }: CalendarEventTimesChangedEvent): void {
+    event.start = newStart;
+    event.end = newEnd;
+    this.handleEvent('Dropped or resized', event);
+    this.refresh.next();
   }
 
-  public createCalendarDay(day) {
-    let firstDay = moment(day).startOf('D');
-    let days = Array.apply(null, { length: 24 })
-      .map(Number.call, Number)
-      .map(n => {
-        return moment(firstDay).add(n, 'h');
-      });
-
-    return days;
+  handleEvent(action: string, event: CalendarEvent): void {
+    // document.getElementById('mCont').style.display = 'flex';
+    // this.modalData = { event, action };
+    // this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-  public nextDay() {
-    this.date.add(1, 'd');
-    this.daysArr = this.createCalendarDay(this.date);
+  close() {
+    document.getElementById('mCont').style.display = 'none';
   }
 
-  public previousDay() {
-    this.date.subtract(1, 'd');
-    this.daysArr = this.createCalendarDay(this.date);
-  }
-
-  public todayCheckDay(day) {
-    if (!day) {
-      return false;
-    }
-    return moment().format('L') === day.format('L');
-  }
-
-  public reserveDay() {
-    if (!this.dateForm.valid) {
-      return;
-    }
-    let dateFromMoment = this.dateForm.value.dateFrom;
-    let dateToMoment = this.dateForm.value.dateTo;
-    let myDate = this.currDate.nativeElement.innerHTML;
-    this.isReservedDay = `Reserved from ${dateFromMoment} to ${dateToMoment} on ${myDate}`;
-  }
-
-  public isSelectedDay(day) {
-    if (!day) {
-      return false;
-    }
-    let dateFromMoment = moment(this.dateForm.value.dateFrom, 'hA');
-    let dateToMoment = moment(this.dateForm.value.dateTo, 'hA');
-    console.log(dateFromMoment + ' : ' + dateToMoment);
-    if (this.dateForm.valid) {
-      return (
-        dateFromMoment.isSameOrBefore(day) && dateToMoment.isSameOrAfter(day)
-      );
-    }
-    if (this.dateForm.get('dateFrom').valid) {
-      return dateFromMoment.isSame(day);
-    }
-  }
-
-  public selectedDay(day) {
-    let dayFormatted = day.format('hA');
-    if (this.dateForm.valid) {
-      this.dateForm.setValue({ dateFrom: null, dateTo: null });
-      return;
-    }
-    if (!this.dateForm.get('dateFrom').value) {
-      this.dateForm.get('dateFrom').patchValue(dayFormatted);
-    } else {
-      this.dateForm.get('dateTo').patchValue(dayFormatted);
-    }
-  }
-
-  dispRec() {
-    this.daysArr = this.createCalendar(this.date);
-    this.month.nativeElement.style.display = 'block';
-    this.recId.nativeElement.style.fontWeight = '600';
-    this.recId.nativeElement.style.fontSize = '17px';
-    this.frdId.nativeElement.style.fontWeight = '200';
-    this.frdId.nativeElement.style.fontSize = '16px';
-    this.days.nativeElement.style.display = 'none';
-  }
-
-  dispFrd() {
-    this.daysArr = this.createCalendarDay(this.date);
-    this.days.nativeElement.style.display = 'flex';
-    this.recId.nativeElement.style.fontWeight = '200';
-    this.recId.nativeElement.style.fontSize = '16px';
-    this.frdId.nativeElement.style.fontWeight = '600';
-    this.frdId.nativeElement.style.fontSize = '17px';
-    this.month.nativeElement.style.display = 'none';
+  addEvent(): void {
+    this.events.push({
+      title: 'New event',
+      start: startOfDay(new Date()),
+      end: endOfDay(new Date()),
+      color: colors.red,
+      draggable: true,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true
+      }
+    });
+    this.refresh.next();
   }
 
 }

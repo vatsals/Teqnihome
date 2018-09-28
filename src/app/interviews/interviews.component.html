@@ -1,5 +1,197 @@
-<mat-card class="myCard" style="font-family: 'Roboto'; margin-top: 20px; margin-bottom: 10%;">
-	<div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 35px; align-items: center;">
+<!-- <ng-template #modalContent let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">Event action occurred</h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      Action:
+      <pre>{{ modalData?.action }}</pre>
+    </div>
+    <div>
+      Event:
+      <pre>{{ modalData?.event | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
+  </div>
+</ng-template> -->
+
+<div class="row text-center topRow" style="margin-top: 3%; margin-bottom: 1%;">
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="activeDayIsOpen = false">
+        Previous
+      </div>
+      <div
+        class="btn btn-outline-secondary"
+        mwlCalendarToday
+        [(viewDate)]="viewDate">
+        Today
+      </div>
+      <div
+        class="btn btn-primary"
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="activeDayIsOpen = false">
+        Next
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+  </div>
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        (click)="view = 'month'"
+        [class.active]="view === 'month'">
+        Month
+      </div>
+      <div
+        class="btn btn-primary"
+        (click)="view = 'week'"
+        [class.active]="view === 'week'">
+        Week
+      </div>
+      <div
+        class="btn btn-primary"
+        (click)="view = 'day'"
+        [class.active]="view === 'day'">
+        Day
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div [ngSwitch]="view" style="width: 90%; margin-left: 5%; margin-bottom: 13%;">
+  <mwl-calendar-month-view class="myCal"
+    *ngSwitchCase="'month'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [activeDayIsOpen]="activeDayIsOpen"
+    (dayClicked)="dayClicked($event.day)"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view
+    *ngSwitchCase="'week'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngSwitchCase="'day'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-day-view>
+  <div #modalContent id="mCont" style="display: none; flex-direction: column; justify-content: center; margin-top: 20px; border: 1px solid rgb(221, 221, 221); padding: 12px; color: #fff; background: #197CD3;">
+     <div class="modal-header" style="display: flex;">
+      <h5 class="modal-title" style="display: flex; flex: 1;">Event action occurred</h5>
+      <button type="button" class="close" style="font-weight: 700;font-size: 25px;" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div>
+        Event:
+        <pre style="margin-top: 10px; padding: 6px 10px; border-radius: 1px; background: #fff;">Title: {{ modalData?.event.title }}</pre>
+        <pre style="padding: 6px 10px; border-radius: 1px; background: #fff;">Start: {{ modalData?.event.start }}</pre>
+      </div>
+    </div>
+      <div class="modal-footer" style="padding: 10px; padding-bottom: 0px;">
+        <button type="button" class="btn btn-default" style="padding: 5px 10px; font-size: 12px; border: 1px solid #ccc; border-radius: 1px;" (click)="close()" data-dismiss="modal">Close</button>
+      </div>
+</div>
+</div>
+
+<!-- <h3>
+  Edit events
+  <button
+    class="btn btn-primary pull-right"
+    (click)="addEvent()">
+    Add new
+  </button>
+  <div class="clearfix"></div>
+</h3> -->
+
+<!-- <table class="table table-bordered">
+
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Primary color</th>
+      <th>Secondary color</th>
+      <th>Starts at</th>
+      <th>Ends at</th>
+      <th>Remove</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let event of events; let index = index">
+      <td>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="event.title"
+          (keyup)="refresh.next()">
+      </td>
+      <td>
+        <input
+          type="color"
+          [(ngModel)]="event.color.primary"
+          (change)="refresh.next()">
+      </td>
+      <td>
+        <input
+          type="color"
+          [(ngModel)]="event.color.secondary"
+          (change)="refresh.next()">
+      </td>
+      <td>
+        <mwl-demo-utils-date-time-picker
+          [(ngModel)]="event.start"
+          (ngModelChange)="refresh.next()"
+          placeholder="Not set">
+        </mwl-demo-utils-date-time-picker>
+      </td>
+      <td>
+        <mwl-demo-utils-date-time-picker
+          [(ngModel)]="event.end"
+          (ngModelChange)="refresh.next()"
+          placeholder="Not set">
+        </mwl-demo-utils-date-time-picker>
+      </td>
+      <td>
+        <button
+          class="btn btn-danger"
+          (click)="events.splice(index, 1); refresh.next()">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+
+</table> -->
+<!-- <mat-card class="myCard" style="font-family: 'Roboto'; margin-top: 20px; margin-bottom: 10%;">
+  <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 35px; align-items: center;">
     <p class="gInfo" style="display: flex; flex: 3; font-size: 20px;">Calendar</p>
     <div style="display: flex; align-items: center; flex: 1; justify-content: flex-end;">
       <div style="display: flex; flex-direction: column; justify-content: center; flex: 1; align-items: center; cursor: pointer;" (click)="dispRec()">
@@ -12,69 +204,70 @@
       </div>
     </div>
   </div>
-	<div id="month" #month style="display: flex; justify-content: center;">
-	  <div id='calendar-container'>
-	    <div style="margin-bottom: 20px;">
-	      <form [formGroup]='dateForm' style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-	        <input style="padding: 5px;font-size: 14px;border: 1px solid #ccc;" type="text" name='dateFrom' formControlName='dateFrom' placeholder='From Date'>
-	        <div style="margin: 0px 7px;"></div>
-	        <input style="padding: 5px;font-size: 14px;border: 1px solid #ccc;" type="text" placeholder='To Date' name='dateTo' formControlName='dateTo'>
-	        <div style="margin: 0px 7px;"></div>
-	        <button class="btn btn-primary" (click)='reserve()'>Reserve</button>
-	      </form>
-	    </div>
-	    <div *ngIf='isReserved' class='reserved' style="display: flex; margin-bottom: 20px; justify-content: center;">
-	            {{isReserved}}
-	        </div>
-	    <div style="display: flex; justify-content: center; align-items: center;">
-	      <span class="glyphicon glyphicon-triangle-left" style="margin-right: 20px; font-weight: 600;" (click)='previousMonth() '></span>
-	      <div>{{date.format('MMMM ')}} {{date.format('YYYY ')}}</div>
-	      <span class="glyphicon glyphicon-triangle-right" style="margin-left: 20px; font-weight: 600;" (click)='nextMonth() '></span>
-	    </div>
-	    <div style="display: flex; justify-content: flex-start; align-items: center; margin-top: 20px;">
-	      <div class='calendar-head'>Sun</div>
-	      <div class='calendar-head'>Mon</div>
-	      <div class='calendar-head'>Tue</div>
-	      <div class='calendar-head'>Wed</div>
-	      <div class='calendar-head'>Thu</div>
-	      <div class='calendar-head'>Fri</div>
-	      <div class='calendar-head'>Sat</div>
-	    </div>
-	    <div style="display: flex; flex-wrap: wrap; justify-content: flex-start;">
-	      <div *ngFor="let day of daysArr" class="dateDiv">
-	        <div class='calendar-days' (click)='selectedDate(day)' [ngClass]="{'inactive ': !day, 'selected': isSelected(day), 'today': todayCheck(day)}">{{day?.date()}}</div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<div id="days" #days style="display: none; justify-content: center;">
-	  <div id='calendar-container'>
-	    <div style="margin-bottom: 20px;">
-	      <form [formGroup]='dateForm' style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-	        <input style="padding: 5px;font-size: 14px;border: 1px solid #ccc;" type="text" name='dateFrom' formControlName='dateFrom' placeholder='From Date'>
-	        <div style="margin: 0px 7px;"></div>
-	        <input style="padding: 5px;font-size: 14px;border: 1px solid #ccc;" type="text" placeholder='To Date' name='dateTo' formControlName='dateTo'>
-	        <div style="margin: 0px 7px;"></div>
-	        <button class="btn btn-primary" (click)='reserveDay()'>Reserve</button>
-	      </form>
-	    </div>
-	    <div *ngIf='isReservedDay' class='reserved' style="display: flex; margin-bottom: 20px; justify-content: center;">
-	            {{isReservedDay}}
-	        </div>
-	    <div style="display: flex; justify-content: center; align-items: center;">
-	      <span class="glyphicon glyphicon-triangle-left" style="margin-right: 20px; font-weight: 600;" (click)='previousDay() '></span>
-	      <div>{{date.format('MMMM Do YYYY')}}</div>
-	      <span class="glyphicon glyphicon-triangle-right" style="margin-left: 20px; font-weight: 600;" (click)='nextDay() '></span>
-	    </div>
-	    <div style="display: flex; justify-content: flex-start; align-items: center; margin-top: 20px;">
-	      <div class='calendar-head' style="width: 97.5%;">{{date.format('LLLL')}}</div>
-	      <div class='calendar-head' style="display: none; width: 97.5%;" #currDate>{{date.format('LL')}}</div>
-	    </div>
-	    <div style="display: flex; flex-wrap: wrap; justify-content: flex-start;">
-	      <div *ngFor="let day of daysArr" class="dateDiv">
-	        <div class='calendar-days' (click)='selectedDay(day)' [ngClass]="{'inactive ': !day, 'selected': isSelectedDay(day), 'todayHour': todayCheckDay(day)}">{{day?.format('LT')}}</div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+  <div id="month" #month style="display: flex; justify-content: center;">
+    <div id='calendar-container'>
+      <div style="margin-bottom: 20px;">
+        <form [formGroup]='dateForm' style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+          <input style="padding: 5px;font-size: 14px;border: 1px solid #ccc;" type="text" name='dateFrom' formControlName='dateFrom' placeholder='From Date'>
+          <div style="margin: 0px 7px;"></div>
+          <input style="padding: 5px;font-size: 14px;border: 1px solid #ccc;" type="text" placeholder='To Date' name='dateTo' formControlName='dateTo'>
+          <div style="margin: 0px 7px;"></div>
+          <button class="btn btn-primary" (click)='reserve()'>Reserve</button>
+        </form>
+      </div>
+      <div *ngIf='isReserved' class='reserved' style="display: flex; margin-bottom: 20px; justify-content: center;">
+              {{isReserved}}
+          </div>
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <span class="glyphicon glyphicon-triangle-left" style="margin-right: 20px; font-weight: 600;" (click)='previousMonth() '></span>
+        <div>{{date.format('MMMM ')}} {{date.format('YYYY ')}}</div>
+        <span class="glyphicon glyphicon-triangle-right" style="margin-left: 20px; font-weight: 600;" (click)='nextMonth() '></span>
+      </div>
+      <div style="display: flex; justify-content: flex-start; align-items: center; margin-top: 20px;">
+        <div class='calendar-head'>Sun</div>
+        <div class='calendar-head'>Mon</div>
+        <div class='calendar-head'>Tue</div>
+        <div class='calendar-head'>Wed</div>
+        <div class='calendar-head'>Thu</div>
+        <div class='calendar-head'>Fri</div>
+        <div class='calendar-head'>Sat</div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: flex-start;">
+        <div *ngFor="let day of daysArr" class="dateDiv">
+          <div class='calendar-days' (click)='selectedDate(day)' [ngClass]="{'inactive ': !day, 'selected': isSelected(day), 'today': todayCheck(day)}">{{day?.date()}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="days" #days style="display: none; justify-content: center;">
+    <div id='calendar-container'>
+      <div style="margin-bottom: 20px;">
+        <form [formGroup]='dateForm' style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+          <input style="padding: 5px;font-size: 14px;border: 1px solid #ccc;" type="text" name='dateFrom' formControlName='dateFrom' placeholder='From Date'>
+          <div style="margin: 0px 7px;"></div>
+          <input style="padding: 5px;font-size: 14px;border: 1px solid #ccc;" type="text" placeholder='To Date' name='dateTo' formControlName='dateTo'>
+          <div style="margin: 0px 7px;"></div>
+          <button class="btn btn-primary" (click)='reserveDay()'>Reserve</button>
+        </form>
+      </div>
+      <div *ngIf='isReservedDay' class='reserved' style="display: flex; margin-bottom: 20px; justify-content: center;">
+              {{isReservedDay}}
+          </div>
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <span class="glyphicon glyphicon-triangle-left" style="margin-right: 20px; font-weight: 600;" (click)='previousDay() '></span>
+        <div>{{date.format('MMMM Do YYYY')}}</div>
+        <span class="glyphicon glyphicon-triangle-right" style="margin-left: 20px; font-weight: 600;" (click)='nextDay() '></span>
+      </div>
+      <div style="display: flex; justify-content: flex-start; align-items: center; margin-top: 20px;">
+        <div class='calendar-head' style="width: 97.5%;">{{date.format('LLLL')}}</div>
+        <div class='calendar-head' style="display: none; width: 97.5%;" #currDate>{{date.format('LL')}}</div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: flex-start;">
+        <div *ngFor="let day of daysArr" class="dateDiv">
+          <div class='calendar-days' (click)='selectedDay(day)' [ngClass]="{'inactive ': !day, 'selected': isSelectedDay(day), 'todayHour': todayCheckDay(day)}">{{day?.format('LT')}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </mat-card>
+ -->

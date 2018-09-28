@@ -1,9 +1,12 @@
+<div class="myButton" id="myBn" #myBn data-toggle="modal" data-target="#form" style="display: none; justify-content: flex-start; margin: 20px; margin-left: 5%; margin-bottom: 0px;">
+  <a mat-raised-button style="background-color: #0EAD69;border-radius: 1px;color: #fff;font-size: 16px;padding: 2px 15px;"><span class="glyphicon glyphicon-pencil" style="padding-right: 8px;"></span>Create a Job</a>
+</div>
 <mat-card class="myCard" style="font-family: 'Roboto'; margin-top: 20px;">
   <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 35px; align-items: center;">
     <p class="gInfo" style="display: flex; flex: 3; font-size: 20px;">Provide Reference</p>
     <div style="display: flex; align-items: center; flex: 1; justify-content: flex-end;">
       <input type="text" placeholder="Search.." name="search" class="mySrh" style="display:flex; justify-content: center; ">
-      <span class="glyphicon glyphicon-search" (click)="shape()" style="display: flex;flex: 1;justify-content: flex-start;padding-left: 10px;color: #197CD3;font-weight: 700;font-size: 23px;"></span>
+      <span class="glyphicon glyphicon-search" style="display: flex;flex: 1;justify-content: flex-start;padding-left: 10px;color: #197CD3;font-weight: 700;font-size: 23px;"></span>
     </div>
   </div>
   <div class="tab" id="received">
@@ -11,86 +14,92 @@
       <thead>
         <tr style="display: flex;">
           <th class="thHead fl2" style="display: flex;">Name</th>
-          <th class="thHead" style="display: flex; flex: 1;">Designation</th>
-          <th class="thHead" style="display: flex; flex: 1;">Experience</th>
+          <th class="thHead" style="display: flex; flex: 1;">Company</th>
+          <th class="thHead" style="display: flex; flex: 1;">Status</th>
           <th class="thHead" style="display: flex; flex: 1; justify-content: flex-start;">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr style="display: flex;">
+        <tr *ngFor="let myRefer of myRefers | paginate: { itemsPerPage: 10, currentPage: p }" style="display: flex;">
           <td class="fl2" style="display: flex; align-items: center;">
             <div style="display: flex;">
-              <img [src]="userImg" class="userImg" height="60" width="60">
+              <!-- <img [src]="userImg" class="userImg" height="60" width="60"> -->
               <div style="display: flex; flex-direction: column; justify-content: center;">
-                <span class="pdLft" style="font-size: 15px; font-weight: 600;">Vatsal</span>
-                <span class="pdLft email" style="font-size: 14px; padding-top: 0px;">vatsal@gmail.com</span>
+                <span class="pdLft" style="font-size: 15px;font-weight: 600;text-transform: capitalize;padding-left: 0px;">{{ myRefer.resume.userId }}</span>
+                <!-- <span class="pdLft email" style="font-size: 14px; padding-top: 0px;">{{ myRefer.resume.name }}</span> -->
               </div>
             </div>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">Software Tester</span>
+            <span style="font-size: 14px;">{{ myRefer.resume.company }}</span>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">3 years</span>
+            <span *ngIf="myRefer.status!='REFERENCED' && myRefer.status!='REJECTED'" style="font-size: 14px;">{{ myRefer.status }}</span>
+            <span *ngIf="myRefer.status=='REFERENCED'" style="font-size: 14px; color: #0EAD69;">{{ myRefer.status }}</span>
+            <span *ngIf="myRefer.status=='REJECTED'" style="font-size: 14px; color: #D7263D;">{{ myRefer.status }}</span>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
             <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+              <div *ngIf="myRefer.status!='REFERENCED' && myRefer.status!='REJECTED'" style="display: flex; flex: 1; padding-right: 0px; flex-direction: column; justify-content: center; align-items: flex-start;">
+                <span class="glyphicon glyphicon-check" (click)="saveRef(myRefer.id)" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 18px;"></span>
+              </div>
+              <div *ngIf="myRefer.status!='REFERENCED' && myRefer.status!='REJECTED'" style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: flex-start;">
+                <span class="glyphicon glyphicon-remove" (click)="removeRef(myRefer.id)" style="color: #D7263D; margin-right: 8px; font-weight: 700;font-size: 18px;"></span>
+              </div>
               <div style="display: flex; flex: 1; padding-right: 10px; flex-direction: column; justify-content: center; align-items: flex-start;">
-                <span class="glyphicon glyphicon-ok" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 18px;"></span>
-              </div>
-              <div style="display: flex; flex: 2; flex-direction: column; justify-content: center; align-items: flex-start;">
-                <span class="glyphicon glyphicon-remove" style="color: #D7263D; margin-right: 8px; font-weight: 700;font-size: 18px;"></span>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr style="display: flex;">
-          <td class="fl2" style="display: flex; align-items: center;">
-            <div style="display: flex;">
-              <img [src]="userImg" class="userImg" height="60" width="60">
-              <div style="display: flex; flex-direction: column; justify-content: center;">
-                <span class="pdLft" style="font-size: 15px; font-weight: 600;">Vatsal</span>
-                <span class="pdLft email" style="font-size: 14px; padding-top: 0px;">vatsal@gmail.com</span>
-              </div>
-            </div>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">Software Tester</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">3 years</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-              <div style="display: flex; flex: 1; padding-right: 10px; flex-direction: column; justify-content: center; align-items: flex-start;">
-                <span class="glyphicon glyphicon-ok" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 18px;"></span>
-              </div>
-              <div style="display: flex; flex: 2; flex-direction: column; justify-content: center; align-items: flex-start;">
-                <span class="glyphicon glyphicon-remove" style="color: #D7263D; margin-right: 8px; font-weight: 700;font-size: 18px;"></span>
+                <span class="glyphicon glyphicon-user" (click)="myUser()" style="color: #197CD3; margin-right: 8px; font-weight: 700;font-size: 18px;"></span>
               </div>
             </div>
           </td>
         </tr>
       </tbody>
+      <pagination-controls style="display: flex; margin-top: 10px; justify-content: flex-end;" (pageChange)="p =$event" previousLabel="Previous" nextLabel="Next" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"></pagination-controls>
     </table>
-    <div class="panel-footer" style="padding: 17px;">
-      <div class="row">
-        <div class="col col-xs-4" style="line-height: 34px; height: 34px;">Page 1 of 1
-        </div>
-        <div class="col col-xs-8">
-          <ul class="pagination hidden-xs pull-right" style="margin: 0;">
-            <li class="active"><a style="padding: 6px 15px;">1</a></li>
-            <li><a style="padding: 6px 15px;">2</a></li>
-            <li><a style="padding: 6px 15px;">3</a></li>
-            <li><a style="padding: 6px 15px;">4</a></li>
-            <li><a style="padding: 6px 15px;">5</a></li>
-          </ul>
-          <ul class="pagination visible-xs pull-right">
-            <li><a style="padding: 6px 15px;">«</a></li>
-            <li><a style="padding: 6px 15px;">»</a></li>
-          </ul>
-        </div>
+  </div>
+</mat-card>
+<div class="modal fade" id="form" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Reference</h4>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column;">
+        <form (ngSubmit)="onSubmit($event)" id="myF" class="form-inline" style="display: flex; flex-direction: column;">
+            <div class="form-group" style="display: none; align-items: center; padding: 10px 0px;">
+              <span style="flex: 1;font-size: 15px;font-weight: 600;color: #197CD3;">Id</span>
+              <input type="text" class="form-control myCompany" style="padding: 8px;font-size: 14px; flex: 4; border: 1px solid #ccc;" id="company" #mid name="text" placeholder="Enter Detail">
+            </div>
+            <div class="form-group" style="display: flex; align-items: center; padding: 10px 0px;">
+              <span style="flex: 1;font-size: 15px;font-weight: 600;color: #197CD3;">Reference</span>
+              <textarea class="form-control myCompany" #ref name="desc" style="padding: 8px;font-size: 14px;border: 1px solid #ccc; flex: 4;" id="company" placeholder="Enter Reference" rows="3"></textarea>
+            </div>
+            <div class="form-group" style="display: flex; align-items: center; padding: 10px 0px;">
+              <span style="flex: 1;font-size: 15px;font-weight: 600;color: #197CD3;">Start Date</span>
+              <!-- <input type="date" #empS class="form-control myCompany" name="start" style="padding: 8px;font-size: 14px;border: 1px solid #ccc; flex: 4;" id="company"> -->
+              <div style="flex: 4; font-size: 10px; justify-content: flex-start;"><p-calendar #empS class="iText innerDt" dateFormat="dd/mm/yy" id="myText" [(ngModel)]="date7" name="datetime" [monthNavigator]="true" [yearNavigator]="true" [showIcon]="true"  yearRange="1900:2019"></p-calendar> {{date7}} </div>
+            </div>
+            <div class="form-group" style="display: flex; align-items: center; padding: 10px 0px;">
+              <span style="flex: 1;font-size: 15px;font-weight: 600;color: #197CD3;">End Date</span>
+              <!-- <input type="date" #empE class="form-control myCompany" name="end" style="padding: 8px;font-size: 14px;border: 1px solid #ccc; flex: 4;" id="company"> -->
+              <div style="flex: 4; font-size: 10px; justify-content: flex-start;"><p-calendar #empE class="iText innerDt" dateFormat="dd/mm/yy" id="myText2" [(ngModel)]="date8" name="datetime2" [monthNavigator]="true" [yearNavigator]="true" [showIcon]="true"  yearRange="1900:2019"></p-calendar> {{date8}} </div>
+            </div>
+            <div class="form-group" style="display: flex; align-items: center; padding: 10px 0px;">
+              <span style="flex: 1;font-size: 15px;font-weight: 600;color: #197CD3;">Recommended?</span>
+              <select  #rec style="display: flex; height: 30px; margin-left: 5px; background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+            <div class="form-group" style="display: flex; align-items: center; padding: 10px 0px;">
+              <span style="flex: 1;font-size: 15px;font-weight: 600;color: #197CD3;">Reason for Leaving</span>
+              <input type="text" #reason class="form-control myCompany" name="reason" style="padding: 8px;font-size: 14px;border: 1px solid #ccc; flex: 4;" id="company">
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="provideRef()" class="btn btn-default" data-dismiss="modal">Save</button>
       </div>
     </div>
   </div>
-</mat-card>
+</div>

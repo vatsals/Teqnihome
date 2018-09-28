@@ -1,0 +1,154 @@
+<div class="myButton" id="mybn" #mybn data-toggle="modal" data-target="#form" style="display: flex; justify-content: flex-start; margin: 20px; margin-left: 5%; margin-bottom: 0px;">
+  <!-- <a style="background-color: #0EAD69;border-radius: 1px;color: #fff;font-size: 16px; cursor: pointer; padding: 7px 15px;"><span class="glyphicon glyphicon-pencil pncl" style="padding-right: 8px;font-size: 14px;top: 2px;"></span>Choose Field</a> -->
+</div>
+<div id="mainPagedemo" #mpagedemo style="display: block; margin-bottom: 10%;">
+  <mat-card class="myCardFst" style="width: 91%; margin-left: 5%;">
+    <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+      <p class="gInfo" style="display: flex; flex: 4;">Demo General Information</p>
+      <span class="glyphicon glyphicon-pencil pncl" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 19px;"></span>
+    </div>
+    <div style="display: flex; margin-top: 35px; font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Name
+      </div>
+      <div class="chld">
+        <input name="name" #name class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="name" placeholder="Enter name">
+      </div>
+    </div>
+    <div style="display: flex; margin-top: 20px; font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Date of Birth
+      </div>
+      <div class="chld">
+        <input name="dob" #dob class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="dob" placeholder="Enter Date of Birth (MM/DD/YYYY)">
+      </div>
+    </div>
+    <div style="display: flex; margin-top: 20px; font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Nationaility
+      </div>
+      <div class="chld">
+        <input name="nation" #nation class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="nation" placeholder="Enter Nationality">
+      </div>
+    </div>
+    <div style="display: flex; margin-top: 20px; font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Experience
+      </div>
+      <div class="chld">
+        <input name="exp" type="number" #exp class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="exp" placeholder="Enter Experience in years">
+      </div>
+    </div>
+    <div style="display: flex;margin-top: 20px;font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Last/Current Designation
+      </div>
+      <div class="chld">
+        <input name="desig" #desig class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="desig" placeholder="Enter Designation">
+      </div>
+    </div>
+    <div style="display: flex;margin-top: 20px;font-size: 15px; color: #197CD3; align-items: center;">
+      <div class="det">
+        Last/Current Company
+      </div>
+      <div class="chld">
+        <input name="company" #company class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Company">
+      </div>
+    </div>
+    <div class="chartMain col-sm-12" style="display: flex;margin-bottom: 0%;padding: 0px;padding-top: 20px;">
+    <mat-card class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Languages Known</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Lnumbers; let i=index;">
+              <div class="mDiv">
+                <input type="text" style="display: flex; flex: 2; margin-right: 10px; padding: 5px;" class="form-control iText" [id]="'langk-'+i" placeholder="Enter detail" name="name">
+                <div style="display: flex; flex: 3; align-items: center;">
+                  <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="'langkV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="langk" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="langk" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="myCardChart col-sm-6" style="">
+      <div>
+        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Hobbies</p>
+          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        </div>
+        <div>
+          <div id="chooseIcon" style="display: flex; flex-direction: column; justify-content: center; padding: 0px 0px 10px 10px;">
+            <div *ngFor="let number of Hnumbers; let i=index;">
+              <div class="mDiv">
+                <input type="text" style="display: flex; flex: 2; margin-right: 10px; padding: 5px;" class="form-control iText" [id]="'hob-'+i" placeholder="Enter detail" name="name">
+                <div style="display: flex; flex: 3; align-items: center;">
+                  <input type="range" (change)="setVal($event)" value="0" class="sld" [id]="'hobV-'+i" #sld><span #sldVal style="margin-left: 8px; font-weight: 600;">{{ number.val }}</span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; margin-top: 10px;">
+              <a (click)="append('4', $event)" id="hob" class="btn btn-success" style="display: flex; background: #0EAD69; flex: 1; justify-content: center; margin-right: 8px;">Add Row</a>
+              <a (click)="remove(number, $event)" id="hob" class="btn btn-danger" style="display: flex; background: #E22B43; flex: 1; justify-content: center;">Remove Row</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+    <div id="svBtn" #svBtn (click)="saveGeneral()" style="display: flex; justify-content: center; margin-top: 20px;">
+      <a mat-raised-button style="background-color: #0EAD69; text-decoration: none; border-radius: 1px; padding: 0px 10px; min-width: 32px; line-height: 30px; min-width: 115px; color: #fff; font-size: 14px;"><span class="glyphicon glyphicon-pencil pncl" style="padding-right: 8px; padding-bottom: 5px;"></span>Save</a>
+    </div>
+  </mat-card>
+</div>
+<div class="modal fade" id="form" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select Fields</h4>
+      </div>
+      <div class="modal-body" style="display: flex;flex-direction: column;align-items: center;min-height: 100px;justify-content: center;">
+        <div id="parentF" #pF style="display: flex; width: 90%; align-items: center;">
+          <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
+            Select Category
+          </div>
+          <div style="display: flex; flex: 3;">
+            <select (change)="selNew2($event)" #parentlinkOne style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
+              <option value="999" disabled>Select Category</option>
+              <option *ngFor="let cat of cats" [id]="'cat-'+cat.id" [value]="cat.id">
+                {{ cat.name }}
+                </option>
+            </select>
+          </div>
+        </div>
+        <div id="parentF" #pF style="display: flex; width: 90%; align-items: center; margin-top: 15px;">
+          <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
+            Select SubCategory
+          </div>
+          <div style="display: flex; flex: 3;">
+            <select (change)="selNew3($event)" #parentlinkOne2 style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
+              <option value="999" disabled>Select Sub Category</option>
+            <option *ngFor="let subcat of subcats" [id]="'subcat-'+subcat.id" [value]="subcat.id">
+              {{ subcat.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a #backBtn class="btn btn-default" data-dismiss="modal">Close</a>
+        <a (click)="save()" id="saveBtn" #saveBtn class="btn btn-success" data-dismiss="modal">Save</a>
+      </div>
+    </div>
+  </div>
+</div>

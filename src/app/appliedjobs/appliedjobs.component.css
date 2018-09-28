@@ -9,6 +9,11 @@
   border: 1px solid #ddd;
 }
 
+.innerDt {
+    font-size: 14px;
+    color: #555;
+}
+
 .myCompany {
   display: flex;
   border-radius: 0px;
@@ -17,6 +22,10 @@
   padding: 8px;
   font-size: 14px;
   border: 1px solid #ccc;
+}
+
+.innerDt {
+  padding-right: 40px;
 }
 
 .gInfo {

@@ -1,218 +1,229 @@
 <mat-card class="myCardFst">
+  <input name="company" #subcat class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: none;flex: 4;" id="company" placeholder="Enter Company">
   <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
     <p class="gInfo" style="display: flex; flex: 4;">General Information</p>
-    <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 19px;"></span>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Designation
     </div>
-    <div class="majors">
-      Software Intern
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.role }}
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Description
     </div>
-    <div class="majors">
-      Seeking a software intern position
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.description }}
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Experience
     </div>
-    <div class="majors">
-      3 years
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.experienceDuration }} years
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Minumum Salary
     </div>
-    <div class="majors">
-      10k
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.salaryFrom }}
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Maximum Salary
     </div>
-    <div class="majors">
-      25k
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.salaryTo }}
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
-      Maximum Salary
+      Salary currency
     </div>
-    <div class="majors">
-      True
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.salaryCurrency }}
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Company
     </div>
-    <div class="majors">
-      Arm (UK) Ltd
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.company }}
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Degree
     </div>
-    <div class="majors">
-      B.Tech
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.educationDegree }}
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Degree Level
     </div>
-    <div class="majors">
-      High School
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.educationDegreeLevel }}
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Min GPA Required
     </div>
-    <div class="majors">
-      3.43
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.educationGPA }}
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Job Location
     </div>
-    <div class="majors">
-      1210 Parkview, Arlington Business Park, Theale, Reading RG7 4TY, United Kingdom
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.location }}
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Website
     </div>
-    <div class="majors">
-      <a href="#">http://www.arm.co.uk</a>
+    <div class="majors" *ngIf="myInfos">
+      <a [href]="myInfos.offer.website">{{ myInfos.offer.website }}</a>
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Facebook
     </div>
-    <div class="majors">
-      <a href="#">http://www.facebook.com/arm</a>
+    <div class="majors" *ngIf="myInfos">
+      <a [href]="myInfos.offer.facebook">{{ myInfos.offer.facebook }}</a>
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       LinkedIn
     </div>
-    <div class="majors">
-      <a href="#">http://www.LinkedIn.com/arm</a>
+    <div class="majors" *ngIf="myInfos">
+      <a [href]="myInfos.offer.linkedin">{{ myInfos.offer.linkedin }}</a>
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Twitter
     </div>
-    <div class="majors">
-      #arm
-    </div>
-  </div>
-  <div class="parentDiv">
-    <div class="chld">
-      Degree
-    </div>
-    <div class="majors">
-      B.Tech
+    <div class="majors" *ngIf="myInfos">
+      <a [href]="myInfos.offer.twitter">{{ myInfos.offer.twitter }}</a>
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Status
     </div>
-    <div class="majors">
-      True
+    <div class="majors" *ngIf="myInfos">
+      <span *ngIf="myInfos.offer.active" style="color: #0EAD69; font-weight: 600;">Active</span>
+      <span *ngIf="!myInfos.offer.active" style="color: #D7263D; font-weight: 600;">Inactive</span>
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Date Posted
     </div>
-    <div class="majors">
-      Wed Feb 07 2018
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.created }}
     </div>
   </div>
   <div class="parentDiv">
     <div class="chld">
       Expiry Date
     </div>
-    <div class="majors">
-      Sat Mar 03 2018
+    <div class="majors" *ngIf="myInfos">
+      {{ myInfos.offer.expiryDate }}
     </div>
   </div>
 </mat-card>
 <div style="margin-bottom: 10%;">
-  <div class="chartMain col-sm-12">
-    <mat-card class="myCardChart col-sm-4">
-      <div>
-        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Operating Systems</p>
-          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+  <div id="Pgraph" #pg>
+      <div class="col-sm-12">
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[0]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[0] }}</p>
+              </div>
+              <canvas id="myCanvas1" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
         </div>
-        <canvas id="myCanvas1" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
-      </div>
-    </mat-card>
-    <mat-card class="myCardChart col-sm-4">
-      <div>
-        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Programming Languages</p>
-          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[1]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[1] }}</p>
+              </div>
+              <canvas id="myCanvas2" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
         </div>
-        <canvas id="myCanvas2" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
-      </div>
-    </mat-card>
-    <mat-card class="myCardChart col-sm-4">
-      <div>
-        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Languages Known</p>
-          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[2]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[2] }}</p>
+              </div>
+              <canvas id="myCanvas3" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
         </div>
-        <canvas id="myCanvas3" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
       </div>
-    </mat-card>
-  </div>
-  <div class="chartMain col-sm-12">
-    <mat-card class="myCardChart col-sm-4">
-      <div>
-        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">IDE</p>
-          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+      <div class="col-sm-12">
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[3]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[3] }}</p>
+              </div>
+              <canvas id="myCanvas4" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
         </div>
-        <canvas id="myCanvas4" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
-      </div>
-    </mat-card>
-    <mat-card class="myCardChart col-sm-4">
-      <div>
-        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Hobbies</p>
-          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[4]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[4] }}</p>
+              </div>
+              <canvas id="myCanvas5" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
         </div>
-        <canvas id="myCanvas5" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
-      </div>
-    </mat-card>
-    <mat-card class="myCardChart col-sm-4">
-      <div>
-        <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
-          <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">Version Control</p>
-          <span class="glyphicon glyphicon-pencil" style="display: flex; flex: 1; justify-content: flex-end; padding-right: 4px; color: #197CD3; font-weight: 700; font-size: 18px;"></span>
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[5]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[5] }}</p>
+              </div>
+              <canvas id="myCanvas6" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
         </div>
-        <canvas id="myCanvas6" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+        <div class="col-sm-4">
+          <mat-card *ngIf="types[6]" class="myCardChart" style="">
+            <div>
+              <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 25px;">
+                <p class="gInfo" style="display: flex; flex: 4; font-size: 19px;">{{ types[6] }}</p>
+              </div>
+              <canvas id="myCanvas7" width="300px" height="300px" style="width: 300px; height: 300px;"></canvas>
+            </div>
+          </mat-card>
+        </div>
       </div>
-    </mat-card>
-  </div>
+    </div>
 </div>

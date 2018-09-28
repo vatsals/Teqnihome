@@ -1,11 +1,13 @@
 <div class="page">
   <app-header></app-header>
   <div style="display: flex;">
-    <div class="dash">
-      <app-board></app-board>
+    <div class="dash" [ngClass]="(currentUser()!=null)?'back':'none'">
+      <div *ngIf="currentUser()" style="background: #1C2B36;">
+        <app-board></app-board>
+      </div>
     </div>
     <div class="outlet">
-      <router-outlet></router-outlet>
+      <router-outlet *ngIf="(currentUser()!=null) || (signUp()==null)"></router-outlet>
     </div>
   </div>
   <app-footer></app-footer>

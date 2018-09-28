@@ -1,8 +1,8 @@
 .navbar-inverse {
   margin-bottom: 0px;
   min-height: 60px;
-  background: #161616;
-  opacity: 0.98;
+  background: #1f1818;
+  opacity: 1;
   filter: none;
   border: none;
   color: #fcfcfc;
@@ -173,6 +173,26 @@
   }
   .logNav {
     padding-right: 10px;
+  }
+  .cardSp {
+    padding-right: 5px;
+    font-size: 12px !important;
+  }
+  .logIcon {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .logNav {
+    padding-right: 2px;
+  }
+  .spn {
+    font-size: 10px !important;
+  }
+  .cardSp {
+    padding-right: 2px !important;
+    font-size: 10px !important;
   }
 }
 

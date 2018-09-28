@@ -23,126 +23,71 @@
         </tr>
       </thead>
       <tbody>
-        <tr style="display: flex;">
+        <tr *ngFor="let myFriend of myFriends | paginate: { itemsPerPage: 10, currentPage: p }" style="display: flex;">
           <td class="nameCat" style="display: flex; align-items: center;">
             <div style="display: flex;">
-              <img [src]="userImg" class="userImg" height="60" width="60">
+              <!-- <img [src]="userImg" class="userImg" height="60" width="60"> -->
               <div style="display: flex; flex-direction: column; justify-content: center;">
-                <span class="gName">Vatsal</span>
-                <span class="gMail">vatsal@gmail.com</span>
+                <span class="gName" style="text-transform: capitalize; padding-left: 0px;">{{ myFriend.user.username }}</span>
+                <span class="gMail" style="padding-left: 0px;">{{ myFriend.user.email }}</span>
               </div>
             </div>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
-            <span class="smIcon">Friend</span>
+            <span class="smIcon">{{ myFriend.friendType }}</span>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
-            <select class="tabBox">
-              <option value="Friend">Friend</option>
-              <option value="Work collegue">Work collegue</option>
-              <option value="Family">Family</option>
-              <option value="School Friend">School Friend</option>
-              <option value="University Friend">University Friend</option>
+            <select class="tabBox" [(ngModel)]="myFriend.friendType" #friendType="ngModel" name="friendType" [id]="myFriend.id">
+              <option value="My friends">My friends</option>
+              <option value="My Work collegues">My Work collegues</option>
+              <option value="My family">My family</option>
+              <option value="School friends">School friends</option>
+              <option value="University friends">University friends</option>
             </select>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
             <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
               <div style="display: flex; flex: 2; flex-direction: column; justify-content: center; align-items: center;">
-                <span class="glyphicon glyphicon-ok" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 18px;"></span>
+                <span class="glyphicon glyphicon-ok" [id]="myFriend.user.username" (click)="confirm($event, myFriend.id)" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 18px;"></span>
               </div>
               <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: flex-start;">
-                <span class="glyphicon glyphicon-remove" style="color: #D7263D; margin-right: 8px; font-weight: 700;font-size: 18px;"></span>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr style="display: flex;">
-          <td class="nameCat" style="display: flex; align-items: center;">
-            <div style="display: flex;">
-              <img [src]="userImg" class="userImg" height="60" width="60">
-              <div style="display: flex; flex-direction: column; justify-content: center;">
-                <span class="gName">Vatsal</span>
-                <span class="gMail">vatsal@gmail.com</span>
-              </div>
-            </div>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span class="smIcon">School Friend</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <select class="tabBox">
-              <option value="School Friend">School Friend</option>
-              <option value="Friend">Friend</option>
-              <option value="Work collegue">Work collegue</option>
-              <option value="Family">Family</option>
-              <option value="University Friend">University Friend</option>
-            </select>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-              <div style="display: flex; flex: 2; flex-direction: column; justify-content: center; align-items: center;">
-                <span class="glyphicon glyphicon-ok" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 18px;"></span>
-              </div>
-              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: flex-start;">
-                <span class="glyphicon glyphicon-remove" style="color: #D7263D; margin-right: 8px; font-weight: 700;font-size: 18px;"></span>
+                <span class="glyphicon glyphicon-remove" [id]="myFriend.user.username" (click)="deleteFriend($event)" style="color: #D7263D; margin-left: 8px; font-weight: 700;font-size: 18px;"></span>
               </div>
             </div>
           </td>
         </tr>
       </tbody>
+      <pagination-controls style="display: flex; margin-top: 10px; justify-content: flex-end;" (pageChange)="p =$event" previousLabel="Previous" nextLabel="Next" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"></pagination-controls>
     </table>
-    <div class="panel-footer" style="padding: 20px 15px 15px 15px;">
-      <div class="row">
-        <div class="col col-xs-4" style="line-height: 34px; height: 34px;">Page 1 of 1
-        </div>
-        <div class="col col-xs-8">
-          <ul class="pagination hidden-xs pull-right" style="margin: 0;">
-            <li class="active"><a style="padding: 6px 15px;">1</a></li>
-            <li><a style="padding: 6px 15px;">2</a></li>
-            <li><a style="padding: 6px 15px;">3</a></li>
-            <li><a style="padding: 6px 15px;">4</a></li>
-            <li><a style="padding: 6px 15px;">5</a></li>
-          </ul>
-          <ul class="pagination visible-xs pull-right">
-            <li><a style="padding: 6px 15px;">«</a></li>
-            <li><a style="padding: 6px 15px;">»</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
   </div>
   <div class="tab" id="friends" #frid style="display: none; flex-direction: column;">
     <table class="table table-hover">
       <thead>
         <tr style="display: flex;">
           <th class="fromCat" style="display: flex; align-items: center; font-size: 17px;">Name</th>
-          <th class="mainAct">Date</th>
           <th class="mainAct">Category</th>
           <th class="mainAct">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr style="display: flex;">
+        <tr *ngFor="let myFriend of myFriends2 | paginate: { itemsPerPage: 10, currentPage: p }" style="display: flex;">
           <td class="nameCat" style="display: flex; align-items: center;">
             <div style="display: flex;">
-              <img [src]="userImg" class="userImg" height="60" width="60">
+              <!-- <img [src]="userImg" class="userImg" height="60" width="60"> -->
               <div style="display: flex; flex-direction: column; justify-content: center;">
-                <span class="gName">Vatsal</span>
-                <span class="gMail">vatsal@gmail.com</span>
+                <span class="gName">{{ myFriend.user.username }}</span>
+                <span class="gMail">{{ myFriend.user.email }}</span>
               </div>
             </div>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
-            <span class="smIcon">22/02/2018</span>
+            <span class="smIcon">{{ myFriend.friendType }}</span>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
-            <span class="smIcon">Friend</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span class="glyphicon glyphicon-ok smImg" style="color: #0EAD69; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #0EAD69;font-weight: 600;font-size: 14px;">Request Approved</span>
+            <span class="glyphicon glyphicon-check smImg" style="color: #534D41; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #534D41;font-weight: 600;font-size: 14px;">Approval Pending</span>
           </td>
         </tr>
-        <tr style="display: flex;">
+        <!-- <tr style="display: flex;">
           <td class="nameCat" style="display: flex; align-items: center;">
             <div style="display: flex;">
               <img [src]="userImg" class="userImg" height="60" width="60">
@@ -161,27 +106,9 @@
           <td style="display: flex; flex: 1; align-items: center;">
             <span class="glyphicon glyphicon-check smImg" style="color: #534D41; margin-right: 8px; font-weight: 700;font-size: 20px;"></span><span style="padding-top: 3px;padding-left: 3px;color: #534D41;font-weight: 600;font-size: 14px;">Approval Pending</span>
           </td>
-        </tr>
+        </tr> -->
       </tbody>
+      <pagination-controls style="display: flex; margin-top: 10px; justify-content: flex-end;" (pageChange)="p =$event" previousLabel="Previous" nextLabel="Next" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"></pagination-controls>
     </table>
-    <div class="panel-footer" style="padding: 20px 15px 15px 15px;">
-      <div class="row">
-        <div class="col col-xs-4" style="line-height: 34px; height: 34px;">Page 1 of 1
-        </div>
-        <div class="col col-xs-8">
-          <ul class="pagination hidden-xs pull-right" style="margin: 0;">
-            <li class="active"><a style="padding: 6px 15px;">1</a></li>
-            <li><a style="padding: 6px 15px;">2</a></li>
-            <li><a style="padding: 6px 15px;">3</a></li>
-            <li><a style="padding: 6px 15px;">4</a></li>
-            <li><a style="padding: 6px 15px;">5</a></li>
-          </ul>
-          <ul class="pagination visible-xs pull-right">
-            <li><a style="padding: 6px 15px;">«</a></li>
-            <li><a style="padding: 6px 15px;">»</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
   </div>
 </mat-card>

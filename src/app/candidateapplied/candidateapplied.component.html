@@ -1,14 +1,17 @@
+<div class="myButton" id="myBn" #myBn data-toggle="modal" data-target="#callinter" style="display: none; justify-content: flex-start; margin: 20px; margin-left: 5%; margin-bottom: 0px;">
+  <a mat-raised-button style="background-color: #0EAD69;border-radius: 1px;color: #fff;font-size: 16px;padding: 2px 15px;"><span class="glyphicon glyphicon-pencil" style="padding-right: 8px;"></span>Create a Job</a>
+</div>
+<div class="myButton" id="myBn2" #myBn2 data-toggle="modal" data-target="#callinter2" style="display: none; justify-content: flex-start; margin: 20px; margin-left: 5%; margin-bottom: 0px;">
+  <a mat-raised-button style="background-color: #0EAD69;border-radius: 1px;color: #fff;font-size: 16px;padding: 2px 15px;"><span class="glyphicon glyphicon-pencil" style="padding-right: 8px;"></span>Create a Job</a>
+</div>
 <mat-card class="myCard" style="font-family: 'Roboto'; margin-top: 20px;">
   <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 35px; align-items: center;">
     <p class="gInfo" style="display: flex; flex: 3; font-size: 20px;">Job Applications</p>
     <div style="display: flex; align-items: center; flex: 1; justify-content: flex-end;">
-      <select style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
-        <option value="select">Select Job</option>
-        <option value="Friend">Friend</option>
-        <option value="Work collegue">Work collegue</option>
-        <option value="Family">Family</option>
-        <option value="School Friend">School Friend</option>
-        <option value="University Friend">University Friend</option>
+      <select (change)="onLinkChange($event.target.value)" #linkOne name="linkOne" style="display: flex; flex: 3; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);">
+          <option *ngFor="let myJob of myJobs" [value]="myJob.id">
+              {{ myJob.role }} ({{ myJob.totalApplication }})
+              </option>
       </select>
     </div>
   </div>
@@ -22,130 +25,173 @@
           <th class="thHead" style="display: flex; flex: 1;">Status</th>
           <th class="thHead" style="display: flex; flex: 1;">Interview Date</th>
           <th class="thHead" style="display: flex; flex: 1;">Interview Mode</th>
-          <th class="thHead" style="display: flex; flex: 1;">Candidate Detail</th>
-          <th class="thHead" style="display: flex; flex: 1; justify-content: flex-start;">Action</th>
+          <th class="thHead" style="display: flex; flex: 2;">Candidate Detail</th>
+          <th class="thHead" style="display: flex; flex: 2; justify-content: flex-start;">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr style="display: flex;">
+        <tr *ngFor="let myCand of myCands | paginate: { itemsPerPage: 10, currentPage: p }; let i=index" style="display: flex;">
           <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">Vatsal Shrivastav</span>
+            <span style="font-size: 13px;">{{ myCand.resume.name }}</span>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">3 years</span>
+            <span style="font-size: 13px;">{{ myCand.resume.yearsOfExperience }} years</span>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">24/02/18</span>
+            <span style="font-size: 13px;">{{ offerDate[i] }}</span>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
-            <span style="padding-top: 3px;padding-left: 0px;color: #534D41;font-weight: 600;font-size: 14px;">Pending</span>
+            <span *ngIf="myCand.jobApplication.status!='CANDIDATE_ASKED_FOR_REFERENCE' && myCand.jobApplication.status!='EMPLOYER_REFERENCED' && myCand.jobApplication.status!='REFERENCE_DETAILS_RECEIVED' && myCand.jobApplication.status!='OFFER_ACCEPTED'" style="padding-top: 3px;padding-left: 0px;color: #0EAD69;font-weight: 600;font-size: 13px;">{{ myCand.jobApplication.status }}</span>
+            <span *ngIf="myCand.jobApplication.status=='EMPLOYER_REFERENCED'" style="padding-top: 3px;padding-left: 0px;color: #0EAD69;font-weight: 600;font-size: 13px;">EMPLOYER REFERENCED</span>
+            <span *ngIf="myCand.jobApplication.status=='OFFER_ACCEPTED'" style="padding-top: 3px;padding-left: 0px;color: #0EAD69;font-weight: 600;font-size: 13px;">OFFER ACCEPTED</span>
+            <span *ngIf="myCand.jobApplication.status=='REFERENCE_DETAILS_RECEIVED'" style="padding-top: 3px;padding-left: 0px;color: #0EAD69;font-weight: 600;font-size: 13px;">REFERENCE DETAILS RECEIVED</span>
+            <span *ngIf="myCand.jobApplication.status=='CANDIDATE_ASKED_FOR_REFERENCE'" style="padding-top: 3px;padding-left: 0px;color: #0EAD69;font-weight: 600;font-size: 13px;">CANDIDATE ASKED FOR REFERENCE</span>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
-            <span class="glyphicon glyphicon-time" style="color: #0EAD69; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-left: 6px;">24/02/18</span>
+            <span *ngIf="interviewDate[i]=='Thu, 01 Jan 1970 00:00:00 GMT'" style="font-size: 12px; padding-left: 6px;">Not Scheduled</span>
+            <span *ngIf="interviewDate[i]!='Thu, 01 Jan 1970 00:00:00 GMT'" style="font-size: 12px; padding-left: 6px;">{{ interviewDate[i] }}</span>
           </td>
           <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">Online</span>
+            <span style="font-size: 13px;">{{ myCand.jobApplication.interviewMode }}</span>
           </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">I am the best Software Developer for the company</span>
+          <td style="display: flex; flex: 2; align-items: center;">
+            <span style="font-size: 13px;">{{ myCand.resume.designation }}, {{ myCand.resume.company }}</span>
           </td>
-          <td style="display: flex; flex: 1; align-items: center;">
+          <td style="display: flex; flex: 2; align-items: center;">
             <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-              <div style="display: flex; flex: 1; padding-right: 10px; flex-direction: column; justify-content: center; align-items: flex-start;">
-                <span class="glyphicon glyphicon-ok" style="color: #0EAD69; font-weight: 700;font-size: 18px;"></span>
+              <div style="display: flex; flex: 1; padding-right: 0px; flex-direction: column; justify-content: center; align-items: flex-start;">
+                <span class="glyphicon glyphicon-eye-open" (click)="goRes(myCand.resume.id)" style="color: #197CD3; font-weight: 700;font-size: 18px;"></span>
               </div>
-              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: flex-start;">
-                <span class="glyphicon glyphicon-remove" style="color: #D7263D; font-weight: 700;font-size: 18px;"></span>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr style="display: flex;">
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">Vatsal Shrivastav</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">3 years</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">24/02/18</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="padding-top: 3px;padding-left: 0px;color: #0EAD69;font-weight: 600;font-size: 14px;">Approved</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span class="glyphicon glyphicon-time" style="color: #0EAD69; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-left: 6px;">24/02/18</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">Online</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">I am the best Software Developer for the company</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-              <div style="display: flex; flex: 1; padding-right: 10px; flex-direction: column; justify-content: center; align-items: flex-start;">
-                <span class="glyphicon glyphicon-ok" style="color: #0EAD69; font-weight: 700;font-size: 18px;"></span>
-              </div>
-              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: flex-start;">
-                <span class="glyphicon glyphicon-remove" style="color: #D7263D; font-weight: 700;font-size: 18px;"></span>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr style="display: flex;">
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">Vatsal Shrivastav</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">3 years</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">24/02/18</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="padding-top: 3px;padding-left: 0px;color: #E22B43;font-weight: 600;font-size: 14px;">Rejected</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span class="glyphicon glyphicon-time" style="color: #0EAD69; font-weight: 700;font-size: 18px;"></span><span style="font-size: 14px; padding-left: 6px;">24/02/18</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">Online</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <span style="font-size: 14px;">I am the best Software Developer for the company</span>
-          </td>
-          <td style="display: flex; flex: 1; align-items: center;">
-            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-              <div style="display: flex; flex: 1; padding-right: 10px; flex-direction: column; justify-content: center; align-items: flex-start;">
-                <span class="glyphicon glyphicon-ok" style="color: #0EAD69; font-weight: 700;font-size: 18px;"></span>
-              </div>
-              <div style="display: flex; flex: 1; flex-direction: column; justify-content: center; align-items: flex-start;">
-                <span class="glyphicon glyphicon-remove" style="color: #D7263D; font-weight: 700;font-size: 18px;"></span>
-              </div>
+              <select *ngIf="myCand.jobApplication.status=='APPLIED'" (change)="shortlist(myCand.resume.id, myCand.jobApplication.jobOffer.id)" [value]="" style="display: flex;flex: 4;margin-left: 8px;font-size: 13px;height: 30px;background: #377AB7;color: #474747;ma;margin-top: 0px;dding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);width: 100%;color: #fff;">
+                <option value="action" disabled>Select Action</option>
+                <option value="shortlist">Shortlist</option>
+              </select>
+              <select (change)="onSecondChange($event.target.value, myCand.jobApplication.id, myCand.resume.id, myCand.jobApplication.jobOffer.id, myCand.resume.userId)" [class]="myCand.resume.id" [id]="myCand.jobApplication.jobOffer.id" #linkTwo name="linkTwo" *ngIf="myCand.jobApplication.status!='APPLIED'" style="display: flex;flex: 4;margin-left: 8px;font-size: 13px;height: 30px;background: #377AB7;color: #474747;margin-top: 0px;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2);width: 100%;color: #fff;">
+                <option value="action" disabled>Select Action</option>
+                <option value="assigntest">Assign Test</option>
+                <option value="reschedule">Confirm Reschedule</option>
+                <option value="call">Call for Interview</option>
+                <option value="selres">Select Resume</option>
+                <option value="cancel">Cancel Interview</option>
+                <option value="offer">Offer Job</option>
+                <option value="refer">Ask candidate for reference</option>
+                <option value="checkrefer">Check reference status</option>
+                <option value="refemp">Reference Employer</option>
+                <option value="welcome">Welcome Employee</option>
+              </select>
             </div>
           </td>
         </tr>
       </tbody>
+      <pagination-controls style="display: flex; margin-top: 10px; justify-content: flex-end;" (pageChange)="p =$event" previousLabel="Previous" nextLabel="Next" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"></pagination-controls>
     </table>
-    <div class="panel-footer" style="padding: 17px;">
-      <div class="row">
-        <div class="col col-xs-4" style="line-height: 34px; height: 34px;">Page 1 of 1
+  </div>
+</mat-card>
+<div class="modal fade" id="callinter" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select Interview date and time</h4>
+      </div>
+      <div class="modal-body" style="display: flex;flex-direction: column;align-items: center;min-height: 100px;justify-content: center;">
+        <div id="parentF" #pF style="display: flex; width: 90%; align-items: center;">
+          <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
+            Select Date
+          </div>
+          <div style="display: flex; flex: 3; align-items: center;">
+            <!-- <p-calendar #dateinterDate class="iText innerDt" dateFormat="dd-mm-yy" id="myText" [(ngModel)]="date7" name="datetime" [showIcon]="true" [timeOnly]="true"></p-calendar> {{date7}} -->
+            <!-- <input type="text" #interDate class="form-control iText" id="myText" style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc;" placeholder="Format DD-MM-YYYY HH:MM" name="name"> -->
+            <form #myForm="ngForm" novalidate style="display: flex; flex: 4;">
+              <my-date-picker #fDate name="mydate" [options]="myDatePickerOptions"[(ngModel)]="model3" (dateChanged)="onDateChanged($event)" required></my-date-picker>
+            </form>
+          </div>
         </div>
-        <div class="col col-xs-8">
-          <ul class="pagination hidden-xs pull-right" style="margin: 0;">
-            <li class="active"><a style="padding: 6px 15px;">1</a></li>
-            <li><a style="padding: 6px 15px;">2</a></li>
-            <li><a style="padding: 6px 15px;">3</a></li>
-            <li><a style="padding: 6px 15px;">4</a></li>
-            <li><a style="padding: 6px 15px;">5</a></li>
-          </ul>
-          <ul class="pagination visible-xs pull-right">
-            <li><a style="padding: 6px 15px;">«</a></li>
-            <li><a style="padding: 6px 15px;">»</a></li>
-          </ul>
+        <div #detJob2 style="display: none; width: 100%;font-size: 11px;margin-top: 10px;flex-direction: column;">
+          <p style="display: flex;"><span style="color: #197CD3;flex: 1;display: flex;justify-content: center;">Candidate Available Time:</span><span style="display: flex; flex: 3; padding-left: 15px; justify-content: flex-start;">{{ stTime }} to {{ endTime }}</span></p>
+          <p style="display: none;" #detJob>
+            <span style="color: #197CD3;flex: 1;display: flex;justify-content: center;">Candidate Busy Time:</span>
+            <span style="display: flex; flex: 3; padding-left: 0px; justify-content: flex-start;">
+              <ul style="padding-left: 25px; margin-bottom: 0px;">
+                <li *ngFor="let val of str">{{ val }}</li>
+              </ul>
+            </span>
+          </p>
         </div>
+        <div id="parentF2" style="display: flex;width: 90%;align-items: center;margin-top: 5px;">
+          <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
+            Time
+          </div>
+          <div style="display: flex; flex: 3; align-items: center; font-size: 10px;">
+            <p-calendar #dateinterDate class="iText innerDt" dateFormat="dd-mm-yy" id="myText" [(ngModel)]="date7" name="datetime" [showIcon]="true" [timeOnly]="true"></p-calendar> {{date7}}
+            <!-- <input #start name="start" type="time" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Start Time"> -->
+            <!-- <input type="time" (click)="open()" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;margin-left: 0px;font-size: 14px;height: 32px;margin: 5px 0px -4px 0px;border-radius: 3px;color: #555;" value="{{selectedTime}}"> -->
+          </div>
+        </div>
+        <div id="parentF" style="display: flex; width: 90%; align-items: center; margin-top: 15px;">
+          <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
+            Interview Slots(15 min each)
+          </div>
+          <div style="display: flex; flex: 3;">
+            <input type="number" #interVal class="form-control iText" id="myText" style="width: 100%; padding: 5px; font-size: 13px; border: 1px solid #ccc;" placeholder="Number of Slots required" name="name">
+          </div>
+        </div>
+        <input type="text" #linkRes class="form-control iText" id="myText" style="display: none; width: 100%;padding: 5px;height: 30px;font-size: 13px;border: 1px solid #ccc;" placeholder="Res Id" name="name">
+        <div id="parentF" #pF style="display: flex; width: 90%; align-items: center; margin-top: 15px;">
+          <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
+            Select Mode
+          </div>
+          <div style="display: flex; flex: 3;">
+            <select #interMode (change)="onModeChange($event.target.value)" style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
+              <option value="mode" disabled>Select Mode</option>
+              <option value="FACE2FACE">Face 2 Face (F2F) Interview</option>
+              <option value="PHONE">Telephonic Interview</option>
+              <option value="SKYPE">Skype Interview</option>
+            </select>
+          </div>
+        </div>
+        <input type="text" #appId class="form-control iText" id="myText" style="display: none; width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc;" placeholder="Id" name="name">
+        <div id="parentF" #modeF style="display: none; width: 90%; align-items: center; margin-top: 15px;">
+          <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
+            Address for F2F
+          </div>
+          <div style="display: flex; flex: 3;">
+            <input type="text" #interVenue class="form-control iText" id="myText" style="width: 100%; padding: 5px; font-size: 13px; border: 1px solid #ccc;" placeholder="Address for F2F interview" name="name">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a #backBtn class="btn btn-default" data-dismiss="modal">Close</a>
+        <a (click)="saveInter()" id="saveBtn" #saveBtn class="btn btn-success" data-dismiss="modal">Save</a>
       </div>
     </div>
   </div>
-</mat-card>
+</div>
+<div class="modal fade" id="callinter2" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select Test</h4>
+      </div>
+      <div class="modal-body" style="display: flex;flex-direction: column;align-items: center;min-height: 100px;justify-content: center; padding-top: 0px;">
+        <input type="text" #linkRes2 class="form-control iText" id="myText" style="display: none; width: 100%;padding: 5px;height: 30px;font-size: 13px;border: 1px solid #ccc;" placeholder="Res Id" name="name">
+        <div id="parentF" #pF style="display: flex; width: 90%; align-items: center; margin-top: 15px;">
+          <div style="display: flex;flex: 1;font-weight: bold;font-size: 15px;color: #197CD3;">
+            Select Test
+          </div>
+          <div style="display: flex; flex: 3;">
+            <select #interMode2 style="display: flex; height: 35px;background: #fcfcfc;color: #474747;padding: 5px 3px;border: 1px solid #ccc;box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 0px 0 rgba(0, 0, 0, 0.12), 0 2px 1px -2px rgba(0, 0, 0, 0.2); width: 100%;">
+              <option value="-999" disabled>Select Test</option>
+              <option *ngFor="let val of myListsMain" [value]="val.id" style="text-transform:capitalize;">{{ val.name }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a #backBtn class="btn btn-default" data-dismiss="modal">Close</a>
+        <a (click)="saveInter2()" id="saveBtn2" #saveBtn2 class="btn btn-success" data-dismiss="modal">Save</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<mat-card class="myCard" style="font-family: 'Roboto'; margin-top: 20px; width: 94%; margin-left: 3%;">
+  <div style="display: flex; justify-content: flex-end; margin: 0px; margin-bottom: 35px; align-items: center;">
+    <p class="gInfo" style="display: flex; align-items: center; flex: 3; font-size: 19px;"><span class="glyphicon glyphicon-edit" style="margin-right: 6px;font-size: 20px;margin-bottom: 3px;color: #197CD3;"></span>Create Test</p>
+  </div>
+  <div class="tab" id="received" #recd>
+      <form novalidate #f2="ngForm" (ngSubmit)="onSubmitForm(f2)" class="form-inline" style="display: flex; flex-direction: column;">
+        <div class="form-group mClass" style="display: none;">
+          <span class="sClass">Id<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <input #myId name="myId" type="text" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;margin-left: 5px;height: 33px;" id="company" placeholder="Enter Id">
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Test Name<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <input #testname name="testname" type="text" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;margin-left: 5px;height: 33px;" id="company" placeholder="Enter Test Name">
+        </div>
+        <div class="form-group mClass" style="padding: 0px;">
+          <span class="sClass">Test Type<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <div class="form-group mClass" style="display: flex; flex: 4;">
+            <span class="sClass">
+              <label class="container2" style="color: #47525d;">Objective
+                <input (change)="fetchYes()" type="radio" #school name="radio2">
+                <span class="checkmark2"></span>
+              </label>
+              <label class="container2" style="color: #47525d;">Subjective
+                <input (change)="fetchNo()" type="radio" #grade name="radio2">
+                <span class="checkmark2"></span>
+              </label>
+              </span>
+          </div>
+        </div>
+        <div class="mainButton" style="display: flex; justify-content: center; margin-top: 10px; margin-bottom: 10px; flex-direction: column; align-items: center;">
+          <button type="submit" style="border: none; padding: 5px 12px; background-color: #0EAD69; border-radius: 1px; color: #fff; font-size: 16px;"><span class="glyphicon glyphicon-ok" style="padding-right: 6px;font-size: 14px;"></span>Create</button>
+        </div>
+      </form>
+    </div>
+</mat-card>

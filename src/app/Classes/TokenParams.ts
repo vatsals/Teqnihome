@@ -1,4 +1,4 @@
 export class TokenParams {
-	token: string;
+	access_token: string;
 	refrehToken: string;
 }

@@ -1,0 +1,115 @@
+<mat-card class="myCard" style="font-family: 'Roboto'; margin-top: 20px;">
+  <div class="schCard" style="margin-bottom: 20px;">
+    <p class="gInfo" style="display: flex; align-items: center; flex: 3; font-size: 19px;"><span class="glyphicon glyphicon-list-alt" style="margin-right: 6px;font-size: 20px;margin-bottom: 3px;color: #197CD3;"></span>List Of Tests</p>
+  </div>
+  <div class="tab" id="tab">
+    <table class="table table-hover">
+      <thead>
+        <tr style="display: flex;">
+          <th class="thHead fl2" style="display: flex;">Test Name</th>
+          <th class="thHead fl2" style="display: flex;">Test Type</th>
+          <th class="thHead" style="display: flex; flex: 1; justify-content: center;">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let myList of myListsMain | paginate: { itemsPerPage: 10, currentPage: p }" style="display: flex;">
+          <td class="fl2" style="display: flex; align-items: center;">
+            <div style="display: flex;">
+              <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span class="padLft" [id]="'name-' + myList.id" style="font-size: 13px;font-weight: 200;text-transform: capitalize;padding-left: 0px;">{{ myList.name }}</span>
+              </div>
+            </div>
+          </td>
+          <td class="fl2" style="display: flex; align-items: center;">
+            <div style="display: flex;">
+              <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span class="padLft" [id]="'type-' + myList.id" style="font-size: 13px;font-weight: 200;text-transform: capitalize;padding-left: 0px;">{{ myList.type }}</span>
+              </div>
+            </div>
+          </td>
+          <td style="display: flex; flex: 1; align-items: center; justify-content: center;">
+            <span class="glyphicon glyphicon-plus-sign" [id]="myList.id" (click)="addQues($event)" style="color: #0EAD69; margin-left: 8px; font-weight: 700;font-size: 18px;"></span>
+            <span class="glyphicon glyphicon-remove" [id]="myList.id" (click)="removeInst($event)" style="color: #F12345; opacity: 0.8; margin-left: 12px; font-weight: 700;font-size: 18px;"></span>
+          </td>
+        </tr>
+      </tbody>
+      <pagination-controls style="display: flex; margin-top: 10px; justify-content: flex-end;" (pageChange)="p =$event" previousLabel="Previous" nextLabel="Next" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"></pagination-controls>
+    </table>
+  </div>
+  <div class="tab" id="received" #recd style="display: none;">
+      <form novalidate #f2="ngForm" (ngSubmit)="onSubmitForm(f2)" class="form-inline" style="display: flex; flex-direction: column;">
+        <div class="form-group mClass" style="display: none;">
+          <span class="sClass">ID<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <input #myId name="myId" type="text" class="form-control myCompany" style="padding: 8px;font-size: 13px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Enter Year Id">
+        </div>
+        <!-- <div class="form-group mClass" style="padding: 0px;">
+          <span class="sClass">Test Type<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <div class="form-group mClass" style="display: flex; flex: 4;">
+            <span class="sClass">
+              <label class="container2" style="color: #47525d;">Objective
+                <input (change)="fetchYes($event)" type="radio" #school name="radio2">
+                <span class="checkmark2"></span>
+              </label>
+              <label class="container2" style="color: #47525d;">Subjective
+                <input (change)="fetchNo($event)" type="radio" #grade name="radio2">
+                <span class="checkmark2"></span>
+              </label>
+              </span>
+          </div>
+        </div> -->
+        <div *ngIf="sVis">
+        	<div style="display: flex;justify-content: flex-end;margin: 10px 0px 10px 0px;">
+	        	<button (click)="addRowMain()" style="border: none;margin-left: 5px;padding: 5px 12px;background-color: #197CD3;border-radius: 1px;color: #fff;font-size: 14px;">Add<span class="glyphicon glyphicon-plus" style="padding-left: 5px;font-size: 13px;"></span></button>
+	        </div>
+	        <div *ngFor="let myList of myLists; let i=index" style="display: flex; margin: 10px 0px;">
+             <input #myId2 name="myId2" [value]="myList.id" type="text" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display:none;flex: 4;" id="company" placeholder="Enter Year Id">
+	        	<div style="display: flex; flex-direction: row; flex: 3; justify-content: center; align-items: center;">
+	        		<textarea #desc class="form-control myCompany" [id]="'ques-' + myList.id" [value]="myList.question" name="desc" placeholder="Enter Question" rows="2" style="padding: 6px;font-size: 13px;border: 1px solid #ccc;display: flex;flex: 4;margin-left: 8px;width: 100%;"></textarea>
+	        	</div>
+	        	<div style="display: flex; flex-direction: row; flex: 1; justify-content: center; align-items: center;">
+	        		<input #ans1 name="ans1" type="text" class="form-control myCompany" style="padding: 6px;font-size: 13px;border: 1px solid #ccc;display: flex;flex: 4;margin-left: 8px;height: 32px;width: 100%;" [id]="'ans1-' + myList.id" [value]="myList.option1" placeholder="Option 1">
+	        	</div>
+	        	<div style="display: flex; flex-direction: row; flex: 1; justify-content: center; align-items: center;">
+	        		<input #ans2 name="ans2" type="text" class="form-control myCompany" style="padding: 6px;font-size: 13px;border: 1px solid #ccc;display: flex;flex: 4;margin-left: 8px;height: 32px;width: 100%;" [id]="'ans2-' + myList.id" [value]="myList.option2" placeholder="Option 2">
+	        	</div>
+	        	<div style="display: flex; flex-direction: row; flex: 1; justify-content: center; align-items: center;">
+	        		<input #ans3 name="ans3" type="text" class="form-control myCompany" style="padding: 6px;font-size: 13px;border: 1px solid #ccc;display: flex;flex: 4;margin-left: 8px;height: 32px;width: 100%;" [id]="'ans3-' + myList.id" [value]="myList.option3" placeholder="Option 3">
+	        	</div>
+	        	<div style="display: flex; flex-direction: row; flex: 1; justify-content: center; align-items: center;">
+	        		<input #ans4 name="ans4" type="text" class="form-control myCompany" style="padding: 6px;font-size: 13px;border: 1px solid #ccc;display: flex;flex: 4;margin-left: 8px;height: 32px;width: 100%;" [id]="'ans4-' + myList.id" [value]="myList.option4" placeholder="Option 4">
+	        	</div>
+	        	<div *ngIf="myList.question==''" style="display: flex; flex-direction: row; flex: 1; justify-content: center; align-items: center;">
+	        		<input #corr name="corr" type="text" class="form-control myCompany" style="padding: 6px;font-size: 13px;border: 1px solid #ccc;display: flex;flex: 4;margin-left: 8px;height: 32px;width: 100%;" [id]="'corr-' + myList.id" placeholder="Correct Option">
+	        	</div>
+            <div *ngIf="myList.question==''" style="display: flex; flex-direction: row; flex: 1; justify-content: center; align-items: center;">
+              <input #marks name="marks" type="text" class="form-control myCompany" style="padding: 6px;font-size: 13px;border: 1px solid #ccc;display: flex;flex: 4;margin-left: 8px;height: 32px;width: 100%;" [id]="'marks-' + myList.id" placeholder="marks">
+            </div>
+	        	<div style="display: flex; flex-direction: row; flex: 1; justify-content: center; align-items: center;">
+	        		<span *ngIf="myList.question==''" class="glyphicon glyphicon-ok" [id]="myList.id" (click)="addQuestion($event)" style="color: #0EAD69; opacity: 1; margin-left: 10px; font-weight: 200;font-size: 16px; cursor: pointer;"></span>
+	        		<span class="glyphicon glyphicon-remove" [id]="myList.id" (click)="removeRow($event)" style="color: #F12345; opacity: 0.8; margin-left: 10px; font-weight: 200;font-size: 16px; cursor: pointer;"></span>
+	        	</div>
+	        </div>
+	    </div>
+	    <div *ngIf="sVis2">
+        	<div style="display: flex;justify-content: flex-end;margin: 10px 0px 10px 0px;">
+	        	<button (click)="addRowMain2()" style="border: none;margin-left: 5px;padding: 5px 12px;background-color: #197CD3;border-radius: 1px;color: #fff;font-size: 14px;">Add<span class="glyphicon glyphicon-plus" style="padding-left: 5px;font-size: 13px;"></span></button>
+	        </div>
+	        <div *ngFor="let myList of myLists2" style="display: flex; margin: 10px 0px;">
+	        	<div style="display: flex; flex-direction: row; flex: 3; justify-content: center; align-items: center;">
+	        		<textarea #desc2 class="form-control myCompany" [id]="'ques2-' + myList.id" [value]="myList.question" name="desc" placeholder="Enter Subjective Question" rows="2" style="padding: 6px;font-size: 13px;border: 1px solid #ccc;display: flex;flex: 4;margin-left: 8px;width: 100%;"></textarea>
+	        	</div>
+            <div *ngIf="myList.question==''" style="display: flex; flex-direction: row; flex: 1; justify-content: center; align-items: center;">
+              <textarea #marks2 class="form-control myCompany" [id]="'marks2-' + myList.id" [value]="myList.marks" name="marks2" placeholder="Enter Marks" rows="1" style="padding: 6px;font-size: 13px;border: 1px solid #ccc;display: flex;flex: 4;margin-left: 8px;width: 100%;"></textarea>
+            </div>
+	        	<div style="display: flex; flex-direction: row; flex: 1; justify-content: center; align-items: center;">
+	        		<span *ngIf="myList.question==''" class="glyphicon glyphicon-ok" [id]="myList.id" (click)="addQuestion2($event)" style="color: #0EAD69; opacity: 1; margin-left: 10px; font-weight: 200;font-size: 16px; cursor: pointer;"></span>
+	        		<span class="glyphicon glyphicon-remove" [id]="myList.id" (click)="removeRow2($event)" style="color: #F12345; opacity: 0.8; margin-left: 10px; font-weight: 200;font-size: 16px; cursor: pointer;"></span>
+	        	</div>
+	        </div>
+	    </div>
+        <div class="mainButton" style="display: flex; justify-content: center; margin-top: 10px; margin-bottom: 10px; flex-direction: column; align-items: center;">
+          <a (click)="goBack()" style="cursor: pointer;color: #197CD3;margin-top: 5px;margin-bottom: 5px;">Go Back</a>
+        </div>
+      </form>
+    </div>
+</mat-card>

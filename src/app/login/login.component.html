@@ -1,7 +1,7 @@
-<div class="main" style="width: 100%; display: flex; flex-direction: row; margin-bottom: 5%; margin-top: 5px;">
-  <div class="left" style="display: flex; flex: 1;">
+<div class="main" *ngIf="!currentUser()" style="width: 100%; display: flex; flex-direction: row; margin-bottom: 5%; padding-top: 30px;" >
+  <div class="left" style="display: flex; flex: 2;">
   </div>
-  <div class="mid" style="display: flex; flex: 1;">
+  <div class="mid" style="display: flex; flex: 3; margin-bottom: 10%;">
     <form name="myForm" novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="imgcontainer">
         <img [src]="userImg" class="userImg" height="90" width="90">
@@ -10,7 +10,7 @@
         <label>
           <p style="font-weight: 600; margin: 10px 0px 8px 0px;">Username</p>
         </label>
-        <input [(ngModel)]="user.name" #userName="ngModel" name="name" type="text" placeholder="Enter Username" required>
+        <input [(ngModel)]="user.name" #userName="ngModel" name="name" type="text" style="font-size: 14px;" placeholder="Enter Username" required>
         <div *ngIf="userName.errors?.required && userName.touched" style="padding: 6px 10px; color: red; margin-left: 5px;">Username is Required</div>
         <label>
           <p style="font-weight: 600; margin: 10px 0px 8px 0px;">Email Id</p>
@@ -23,13 +23,28 @@
         <label>
           <p style="font-weight: 600; margin: 20px 0px 8px 0px;">Password</p>
         </label>
-        <input type="password" [(ngModel)]="user.password" #userPassword="ngModel" minlength="6" name="password" placeholder="Enter Password" required>
+        <input type="password" class="mypass" [(ngModel)]="user.password" (ngModelChange)="checkPass($event, confuserPassword.value); checkStrength($event)" #userPassword="ngModel" minlength="6" name="password" placeholder="Enter Password" required>
         <div *ngIf="userPassword.errors?.minlength && userPassword.touched" style="padding: 6px 10px; color: red; margin-left: 5px;">Password must be atleast 6 characters long</div>
+        <div *ngIf="userp" style="padding: 6px 10px; color: red; margin-left: 5px;">Weak Password</div>
+        <div *ngIf="userc" style="padding: 6px 10px; color: green; margin-left: 5px;">Strong Password</div>
         <div *ngIf="userPassword.errors?.required && userPassword.touched" style="padding: 6px 10px; color: red; margin-left: 5px;">Password is Required</div>
+        <label>
+          <p style="font-weight: 600; margin: 20px 0px 8px 0px;">Confirm Password</p>
+        </label>
+        <input type="password" [(ngModel)]="user.confpassword" (ngModelChange)="checkPass($event, userPassword.value)" #confuserPassword="ngModel" minlength="6" name="confpassword" placeholder="Re-enter Password" required>
+        <!-- <div *ngIf="confuserPassword.errors?.minlength && confuserPassword.touched" style="padding: 6px 10px; color: red; margin-left: 5px;">Password must be atleast 6 characters long</div> -->
+        <!-- <div *ngIf="confuserPassword.errors?.required && confuserPassword.touched" style="padding: 6px 10px; color: red; margin-left: 5px;">Password is Required</div> -->
+        <div *ngIf="conf && confuserPassword.touched" style="padding: 6px 10px; color: green; margin-left: 5px;">Passwords Match</div>
+        <div *ngIf="!conf && confuserPassword.touched || userp" style="padding: 6px 10px; color: red; margin-left: 5px;">Passwords Do not Match</div>
+        <div style="display: flex; justify-content: center; align-content: center; margin-top: 10px;">
+          <!-- <re-captcha (resolved)="resolved($event)" siteKey="6LcMyWgUAAAAAMUCaNeQVg1oppS5TbUyAqBoueyb"></re-captcha> -->
+          <re-captcha (resolved)="resolved($event)" siteKey="6Lf03CkUAAAAAC91MzAlsZuDdnPdqppUnQKf1Nc0"></re-captcha>
+        </div>
         <button type="submit" style="margin-top: 10px; background-color: #197CD3;" value="Login">Sign Up</button>
+        <div *ngIf="sent" style="padding: 6px 10px; color: red; margin-left: 5px;">A verification link has been sent your email address. Kindly click it to complete registration.</div>
       </div>
     </form>
   </div>
-  <div class="right" style="display: flex; flex: 1;">
+  <div class="right" style="display: flex; flex: 3;">
   </div>
 </div>

@@ -8,6 +8,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as $ from 'jquery';
+import { CalendarModule } from 'angular-calendar';
+import {CalendarprimModule} from 'primeng/calendar';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
+import { RecaptchaModule } from 'ng-recaptcha';
 import {
   MatButtonModule,
   MatSelectModule,
@@ -17,6 +23,8 @@ import {
   MatChipsModule,
 } from "@angular/material";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
+import { MyDatePickerModule } from 'mydatepicker';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -48,6 +56,32 @@ import { ForgotpassComponent } from './forgotpass/forgotpass.component';
 import { DataService } from './data.service';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { FilterPipe } from './filter.pipe';
+import { CreateresumeComponent } from './createresume/createresume.component';
+import { SpecardComponent } from './specard/specard.component';
+import { CardreqComponent } from './cardreq/cardreq.component';
+import { EditofferComponent } from './editoffer/editoffer.component';
+import { SpecresumeComponent } from './specresume/specresume.component';
+import { EditresumeComponent } from './editresume/editresume.component';
+import { ChartComponent } from './chart/chart.component';
+import { Filter2Pipe } from './filter2.pipe';
+import { AddemployeeComponent } from './addemployee/addemployee.component';
+import { ProjdashboardComponent } from './projdashboard/projdashboard.component';
+import { CreateprojectComponent } from './createproject/createproject.component';
+import { PompombuildComponent } from './pompombuild/pompombuild.component';
+import { PompombuildboardComponent } from './pompombuildboard/pompombuildboard.component';
+import { CreateissueComponent } from './createissue/createissue.component';
+import { BurndownComponent } from './burndown/burndown.component';
+import { PriceComponent } from './price/price.component';
+import { TaskComponent } from './task/task.component';
+import { CreatetestComponent } from './createtest/createtest.component';
+import { ListtestComponent } from './listtest/listtest.component';
+import { ListtestuserComponent } from './listtestuser/listtestuser.component';
+import { AttempttestComponent } from './attempttest/attempttest.component';
+import { AssignmentsComponent } from './assignments/assignments.component';
+import { CreatesprintComponent } from './createsprint/createsprint.component';
+import { SprintComponent } from './sprint/sprint.component';
+import { AvailsComponent } from './avails/avails.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 const appRoutes: Routes = [
   {
@@ -59,8 +93,60 @@ const appRoutes: Routes = [
     component: CardComponent
   },
   {
+    path: 'avail',
+    component: AvailsComponent
+  },
+  {
+    path: 'editresume',
+    component: EditresumeComponent
+  },
+  {
+    path: 'assignments',
+    component: AssignmentsComponent
+  },
+  {
+    path: 'cardreq',
+    component: CardreqComponent
+  },
+  {
+    path: 'specard/:id',
+    component: SpecardComponent
+  },
+  {
+    path: 'specresume/:id',
+    component: SpecresumeComponent
+  },
+  {
+    path: 'editoffer/:id',
+    component: EditofferComponent
+  },
+  {
     path: 'resume',
     component: ResumeComponent
+  },
+  {
+    path: 'createsprint',
+    component: CreatesprintComponent
+  },
+  {
+    path: 'createtest',
+    component: CreatetestComponent
+  },
+  {
+    path: 'listtest',
+    component: ListtestComponent
+  },
+  {
+    path: 'listtestuser',
+    component: ListtestuserComponent
+  },
+  {
+    path: 'attempttest',
+    component: AttempttestComponent
+  },
+  {
+    path: 'createresume',
+    component: CreateresumeComponent
   },
   {
     path: 'card/editcard',
@@ -127,7 +213,7 @@ const appRoutes: Routes = [
     component: ProvidereferenceComponent
   },
   {
-    path: 'showoffer',
+    path: 'showoffer/:id',
     component: ShowofferComponent
   },
   {
@@ -156,6 +242,46 @@ const appRoutes: Routes = [
     component: ForgotpassComponent
   },
   {
+    path: 'price',
+    component: PriceComponent
+  },
+  {
+    path: 'projdashboard',
+    component: ProjdashboardComponent
+  },
+  {
+    path: 'addemployee',
+    component: AddemployeeComponent
+  },
+  {
+    path: 'project/:id',
+    component: PompombuildComponent
+  },
+  {
+    path: 'projectboard/:id',
+    component: PompombuildboardComponent
+  },
+  {
+    path: 'viewtask/:id',
+    component: TaskComponent
+  },
+  {
+    path: 'createproject',
+    component: CreateprojectComponent
+  },
+  {
+    path: 'createissue',
+    component: CreateissueComponent
+  },
+  {
+    path: 'burndown',
+    component: SprintComponent
+  },
+  {
+    path: 'chart',
+    component: ChartComponent
+  },
+  {
     path: '**',
     component: NotfoundComponent
   }
@@ -173,6 +299,8 @@ const appRoutes: Routes = [
     ResumeComponent,
     SearchuserComponent,
     RequestsComponent,
+    CreatesprintComponent,
+    SprintComponent,
     PrivacyComponent,
     AppliedjobsComponent,
     MatchedjobsComponent,
@@ -191,10 +319,38 @@ const appRoutes: Routes = [
     LoginComponent,
     ForgotpassComponent,
     NotfoundComponent,
-    FilterPipe
+    FilterPipe,
+    CreateresumeComponent,
+    SpecardComponent,
+    CardreqComponent,
+    EditofferComponent,
+    SpecresumeComponent,
+    EditresumeComponent,
+    ChartComponent,
+    Filter2Pipe,
+    AddemployeeComponent,
+    ProjdashboardComponent,
+    CreateprojectComponent,
+    PompombuildComponent,
+    PompombuildboardComponent,
+    CreateissueComponent,
+    BurndownComponent,
+    PriceComponent,
+    TaskComponent,
+    TasksComponent,
+    CreatetestComponent,
+    ListtestComponent,
+    ListtestuserComponent,
+    AttempttestComponent,
+    AssignmentsComponent,
+    AvailsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
+    CalendarModule.forRoot(),
+    NgbModalModule.forRoot(),
+    CalendarprimModule,
+    CommonModule,
     MatButtonModule,
     MatSelectModule,
     NgxPaginationModule,
@@ -203,11 +359,14 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatChipsModule,
     MatSnackBarModule,
+    AmazingTimePickerModule, 
+    MyDatePickerModule,
     DragulaModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule, 
     HttpModule, 
+    RecaptchaModule.forRoot(), 
     ReactiveFormsModule
   ],
   providers: [DataService],

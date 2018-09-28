@@ -1,0 +1,24 @@
+<mat-card class="myCard" id="myCd" #myCard style="width:  80%; margin-left: 10%; margin-bottom: 12%;">
+  <div>
+    <div class="basic">
+      <p class="gInfo" style="display: flex; align-items: center; flex: 3; font-size: 19px;"><span class="glyphicon glyphicon-plus-sign" style="margin-right: 6px;font-size: 22px;margin-bottom: 3px;color: #197CD3;"></span>Available Time</p>
+    </div>
+    <div class="tab" id="received" #recd>
+      <form novalidate #f2="ngForm" (ngSubmit)="onSubmitForm(f2)" class="form-inline" style="display: flex; flex-direction: column;">
+        <div class="form-group mClass">
+          <span class="sClass">Available Start Time<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <!-- <input name="time" #stime type="text" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Available Start Time"> -->
+          <input type="time" (click)="open()" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 2;margin-left: 0px;height: 30px;width: 100%;color: #333;" value="{{selectedTime}}">
+        </div>
+        <div class="form-group mClass">
+          <span class="sClass">Available End Time<span style="color: #D84747;padding-left: 3px;opacity: 0.92;">*</span></span>
+          <!-- <input name="time" #etime type="text" class="form-control myCompany" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 4;" id="company" placeholder="Available End Time"> -->
+          <input type="time" (click)="open2()" style="padding: 8px;font-size: 14px;border: 1px solid #ccc;display: flex;flex: 2;margin-left: 0px;height: 30px;width: 100%;color: #333;" value="{{selectedTime2}}">
+        </div>
+        <div class="mainButton" style="display: flex; justify-content: center; margin-top: 20px;">
+          <button type="submit" style="border: none; padding: 5px 12px; background-color: #0EAD69; border-radius: 1px; color: #fff; font-size: 16px;"><span class="glyphicon glyphicon-ok" style="padding-right: 6px;font-size: 14px;"></span>Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card>

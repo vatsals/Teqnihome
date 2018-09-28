@@ -1,0 +1,53 @@
+<mat-card class="myCard" id="myCd2" #myCard2 style="width: 90%; margin-left: 5%; margin-bottom: 12%;">
+  <div>
+    <div class="basic">
+      <p class="gInfo" style="display: flex; align-items: center; flex: 1; font-size: 19px;"><span class="glyphicon glyphicon-filter" style="margin-right: 9px; margin-bottom: 3px; font-size: 20px; color: #0EAD69;"></span>Quick Filters</p>
+      <div style="display: flex; flex-direction: row; flex: 3; justify-content: flex-end;">
+        <button (click)="report()" style="display: flex;justify-content: center; margin-right: 5px; margin-top: 0px; align-items: center;border: none;padding: 5px 12px;background-color: #197CD3;opacity:1;border-radius: 1px;color: #fff;font-size: 13px;"><span class="glyphicon glyphicon-modal-window" style="padding-right:5px;padding-bottom:3px;font-size:12px;"></span>Sprint Report</button>
+    </div>
+    </div>
+    <div class="tab" id="received" #recd style="margin-top: 40px;">
+      <ul class="nav nav-tabs" style="width: 100%; display:  flex;">
+	    <li style="display: flex; flex: 1;" class="active"><a data-toggle="tab" href="#home" class="atab">Open Issues</a></li>
+	    <li style="display: flex; flex: 1;"><a data-toggle="tab" href="#menu1" class="atab">Only my Issues</a></li>
+	    <li style="display: flex; flex: 1;"><a data-toggle="tab" href="#menu2" class="atab">Recently Updated</a></li>
+	  </ul>
+
+	  <div class="tab-content">
+	  	<div style="display: flex; flex-direction: row; margin: 20px 0px;">
+		  	<li style="display:flex;flex:1;" class="active"><a class="atab" style="font-size:15px;color:#47525d;">To Do</a></li>
+		    <li style="display:flex;flex:1;"><a class="atab" style="font-size:15px; color:#47525d;">In Progress</a></li>
+		    <li style="display:flex;flex:1;"><a class="atab" style="font-size:15px; color:#47525d;">To Review</a></li>
+		    <li style="display:flex;flex:1;"><a class="atab" style="font-size:15px; color:#47525d;">Ready for QA</a></li>
+		    <li style="display:flex;flex:1;"><a class="atab" style="font-size: 15px; color:#47525d;">Completed</a></li>
+		 </div>
+	    <div id="home" class="tab-pane fade in active">
+	      <h4 style="font-size: 16px; margin-top: 4%;">wokiteq@gmail.com</h4>
+	      <div style="margin-top: 30px; display: flex; flex-direction: row;">
+		      <img [src]="blankImg" class="blkImage" height="150" width="100">
+		      <img [src]="blankImg" class="blkImage" height="150" width="100">
+		      <img [src]="blankImg" class="blkImage" height="150" width="100">
+		      <img [src]="blankImg" class="blkImage" height="150" width="100">
+		      <img [src]="blankImg" class="blkImage" height="150" width="100">
+		  </div>
+		  <hr style="margin: 20px 0px;">
+		  <h4 style="font-size: 16px; margin-top: 5%;">wokiteq@gmail.com</h4>
+	      <div style="margin-top: 30px; display: flex; flex-direction: row;">
+		      <img [src]="blankImg" class="blkImage" height="150" width="100">
+		      <img [src]="blankImg" class="blkImage" height="150" width="100">
+		      <img [src]="blankImg" class="blkImage" height="150" width="100">
+		      <img [src]="blankImg" class="blkImage" height="150" width="100">
+		      <img [src]="blankImg" class="blkImage" height="150" width="100">
+		  </div>
+		  <hr style="margin: 20px 0px;">
+	    </div>
+	    <div id="menu1" class="tab-pane fade">
+	      <h4 style="font-size: 16px;">wokiteq@gmail.com</h4>
+	    </div>
+	    <div id="menu2" class="tab-pane fade">
+	      <h4 style="font-size: 16px;">wokiteq@gmail.com</h4>
+	    </div>
+	  </div>
+    </div>
+  </div>
+</mat-card>

@@ -9,6 +9,11 @@
   border: 1px solid #ddd;
 }
 
+.innerDt {
+    font-size: 14px;
+    color: #555;
+}
+
 .gInfo {
   display: flex;
   flex: 4;
@@ -16,6 +21,10 @@
   color: #111;
   margin: 0px;
   font-weight: 600;
+}
+
+.innerDt {
+  padding-right: 40px;
 }
 
 .switch {

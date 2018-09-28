@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { DataService } from '../data.service';
+import { Http, Response, Headers } from '@angular/http';
+//import { TokenParams } from '../Classes/TokenParams';
 
 @Component({
   selector: 'app-forgotpass',
@@ -10,27 +13,50 @@ import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angula
 export class ForgotpassComponent implements OnInit {
   userImg: string;
   sent: boolean;
+  inval: boolean;
+  dupl: boolean;
+  //tokenParam: TokenParams;
   
   user = {
     email: ''
   }
 
-  constructor(private router:Router) {
+  constructor(private router:Router, private dataService:DataService) {
     this.userImg = '/assets/images/user.png';
     this.sent = false;
+    this.inval = false;
+    this.dupl = false;
   }
 
   ngOnInit() {
   }
 
   onSubmit({value, valid}) {
-    this.sent = true;
-    if(valid) {
-      // console.log(value);
+    if(value.email!='') {
+      this.sent = true;
+      this.inval = false;
+      this.dupl = false;
     }
-    else {
-      console.log('Form Invalid');
-    }
+    // this.dataService.forgotmail(value.email)
+    //   .subscribe(
+    //         data => {
+    //           this.sent = true;
+    //           this.inval = false;
+    //           this.dupl = false;
+    //         },
+    //         err => {
+    //           if(err.status==401) {
+    //             this.inval = false;
+    //             this.sent = false;
+    //             this.dupl = true;
+    //           }
+    //           else {
+    //             this.inval = true;
+    //             this.sent = false;
+    //             this.dupl = false;
+    //           }
+    //         }
+    //     );
   }
 
 }

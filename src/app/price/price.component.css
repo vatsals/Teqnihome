@@ -1,0 +1,361 @@
+body {
+  margin-top: 20px;
+}
+
+.hd {
+  width: 86%;
+  position: fixed;
+  top: 0;
+}
+
+.panel {
+  text-align: center;
+}
+
+.panel:hover {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4), 0 1px 5px rgba(130, 130, 130, 0.35);
+}
+
+.panel-body {
+  padding: 0px;
+  text-align: center;
+}
+
+.the-price {
+  background-color: rgba(220, 220, 220, .17);
+  box-shadow: 0 1px 0 #dcdcdc, inset 0 1px 0 #fff;
+  padding: 20px;
+  margin: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.the-price h1 {
+  line-height: 1em;
+  padding: 0;
+  margin: 0;
+}
+
+.subscript {
+  font-size: 25px;
+}
+
+.cnrflash {
+  position: absolute;
+  top: -9px;
+  right: 4px;
+  z-index: 1;
+  /*Set overflow to hidden, to mask inner square*/
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  border-radius: 3px 5px 3px 0;
+}
+
+.cnrflash-inner {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 145px;
+  height: 145px;
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -o-transform: rotate(45deg);
+  /* Opera */
+  -moz-transform: rotate(45deg);
+  /* Firefox */
+  -webkit-transform: rotate(45deg);
+  /* Safari and Chrome */
+  -webkit-transform-origin: 100% 100%;
+  /*Purely decorative effects to add texture and stuff*/
+  /* Safari and Chrome */
+  -ms-transform-origin: 100% 100%;
+  /* IE 9 */
+  -o-transform-origin: 100% 100%;
+  /* Opera */
+  -moz-transform-origin: 100% 100%;
+  /* Firefox */
+  background-image: linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, .1) 50%), linear-gradient(0deg, transparent 0%, rgba(1, 1, 1, .2) 50%);
+  background-size: 4px, auto, auto, auto;
+  background-color: #aa0101;
+  box-shadow: 0 3px 3px 0 rgba(1, 1, 1, .5), 0 1px 0 0 rgba(1, 1, 1, .5), inset 0 -1px 8px 0 rgba(255, 255, 255, .3), inset 0 -1px 0 0 rgba(255, 255, 255, .2);
+}
+
+.cnrflash-inner:before,
+.cnrflash-inner:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  bottom: -16px;
+  width: 0;
+  height: 0;
+  border: 8px solid #800000;
+}
+
+.cnrflash-inner:before {
+  left: 1px;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+.cnrflash-inner:after {
+  right: 0;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+
+.cnrflash-label {
+  /*Make the label look nice*/
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  padding-bottom: 5px;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(1, 1, 1, .8);
+  font-size: 0.95em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.btn-success {
+  border-radius: 1px;
+}
+
+.col-md-3 {
+  margin: 0px 20px;
+}
+
+.table>tbody>tr>td {
+  display: flex;
+  text-align: left;
+  color: #47525d;
+  background: #fff;
+  font-size: 13px;
+  border-top: none;
+}
+
+.panel-footer {
+  padding: 15px;
+}
+
+.my_planHeader {
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.my_planTitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cnct {
+  color: #197CD3;
+  display: flex;
+  justify-content: center;
+  font-family: Roboto;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  font-size: 28px;
+}
+
+.price {
+  color: #197CD3;
+  display: flex;
+  justify-content: center;
+  font-family: Roboto;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  font-size: 28px;
+}
+
+.my_planPrice {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.my_planDuration {
+  margin-top: -0.6em;
+}
+
+.price-row {
+    display: flex; 
+    justify-content: center;
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .my_planTitle {
+    font-size: small;
+  }
+}
+
+.my_feature {
+  line-height: 2.8em;
+}
+
+@media (max-width: 768px) {
+  .my_feature {
+    text-align: center
+  }
+  .price {
+    color: #197CD3;
+    display: flex;
+    justify-content: center;
+    font-family: Roboto;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 24px;
+  }
+  #cnt {
+    padding-left: 0px;
+  }
+  .price-row {
+    display: flex; 
+    justify-content: center;
+    margin-top: 10px;
+    flex-direction: column;
+  }
+  .price-main {
+    margin: 0px;
+  }
+}
+
+.my_featureRow {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: 1px solid #d0d4d9;
+  border-bottom: none;
+}
+
+.my_plan1 {}
+
+.my_planHeader.my_plan1 a {
+  background: rgb(72, 109, 139);
+  color: white;
+}
+
+.my_planHeader.my_plan1 {
+  background: #337ab7;
+  border-bottom: thick solid #337ab7;
+}
+
+.my_plan2 {}
+
+.my_planHeader.my_plan2 a {
+  background: rgb(108, 131, 62);
+  color: white;
+}
+
+.my_planHeader.my_plan2 {
+  background: rgb(253, 161, 49);
+  border-bottom: thick solid rgb(253, 161, 49);
+}
+
+.my_plan3 {}
+
+.my_planHeader.my_plan3 a {
+  background: rgb(199, 127, 40);
+  color: white;
+}
+
+.my_planHeader.my_plan3 {
+  background: #337ab7;
+  border-bottom: thick solid #337ab7;
+}
+
+.panel-success>.panel-heading {
+  color: #fff;
+  background-color: rgb(253, 161, 49);
+  border-color: rgb(253, 161, 49);
+}
+
+.my_planFeature {
+  text-align: center;
+  font-size: 2em;
+  border-left: 1px solid #d0d4d9;
+}
+
+.my_planFeature i.my_check {
+  color: #0EAD69;
+  font-size: 20px;
+}
+
+.primary-header {
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 44px;
+  margin: 12px auto 2px;
+  text-align: center;
+  color: #47525d;
+}
+
+.tour-features__features {
+  padding-top: 40px;
+  margin: 0 -15px -34px -15px;
+  text-align: center;
+}
+
+.tour-features__feature {
+  width: 340px;
+  padding: 0 15px 34px 15px;
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+}
+
+.secondary-header {
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 30px;
+  color: #47525d;
+}
+
+.tour-features__feature__text {
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 28px;
+  color: #47525d;
+  opacity: 0.8;
+}
+
+.secondary-header {
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 30px;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 96%;
+  }
+}
+
+.glyphicon {
+  cursor: pointer;
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+  border-radius: 3px;
+}
+
+.nav-pills>li>a {
+  border-radius: 1px;
+  color: #fff;
+}
+
+.nav-pills>li>a:hover {
+  border-radius: 1px;
+  color: #337ab7;
+}
+
+nav>li:hover {
+  text-decoration: none;
+}

@@ -9,6 +9,10 @@
   border: 1px solid #ddd;
   /*background: #197CD3;*/
 }
+.reschld {
+  display: flex;
+  align-items: center;
+}
 .det {
   display: flex; 
   flex: 1; 
@@ -131,7 +135,6 @@ input[type="range"] {
   align-items: center;
   padding: 8px 0px;
 }
-
 #myText {
   display: flex;
   flex: 1;
@@ -146,8 +149,7 @@ input[type="range"] {
 }
 .myCardChart {
   background: #fafafa;
-  margin: 15px 10px;
-  width: 47%;
+  margin: 15px 0px;
   min-height: 200px;
 }
 
@@ -186,11 +188,6 @@ input[type="range"] {
   background: #fbfbfb;
   border: 1px solid #ddd;
   /*background: #197CD3;*/
-}
-
-.myCardChart {
-	background: #fafafa;
-	margin: 15px 10px;
 }
 
 .gInfo {
@@ -284,7 +281,7 @@ ol {
   z-index: 2;
 }
 
-.noshift li::after {
+#noshift li::after {
   content: '';
   background: #5b5555;
   width: 30px;
@@ -375,19 +372,19 @@ h3 {
   line-height: 15px;
 }
 
-.shift li {
+#shift li {
   margin-left: 55% !important;
 }
 
-.shift li::before {
+#shift li::before {
   left: -1em !important;
 }
 
-.shift li::before {
+#shift li::before {
     border-top: 1em solid #377AB7 !important;
     border-left: 1em solid transparent !important;
 }
-.shift li::after {
+#shift li::after {
   content: '';
   background: #5b5555;
   width: 30px;
@@ -426,7 +423,7 @@ h3 {
     width: 97% !important;
     margin-left: 0% !important;
   }
-  .shift li {
+  #shift li {
       margin-left: 2% !important;
   }
   ul {
@@ -448,4 +445,7 @@ h3 {
     font-size: 15px !important;
     width: 20% !important;
   }
+}
+.pncl {
+  cursor: pointer;
 }
